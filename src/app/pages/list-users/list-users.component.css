@@ -1,0 +1,49 @@
+.btn-grpchat{
+  float: right;
+    padding: 12px 30px 12px 30px;
+    background-color: #09094c;
+    color: white;
+    font-size: 11px;
+}
+.btn-exitchat{
+  float: right;
+    padding: 12px 30px 12px 30px;
+    background-color: #d9117d;
+    color: white;
+}
+.chat-icon{
+  width: 25px;
+    height: 25px;
+}
+::ng-deep .card-stats .card-body {
+  padding: 15px 4px 0px;
+}
+.user-name{
+  margin-left: 20px;
+}
+@media only screen and (max-width: 768px) {
+  .btn-grpchat{
+    /* float: right; */
+      /* padding: 5px 8px 5px 8px; */
+      background-color: #09094c;
+      color: white;
+      font-size: 10px;
+  }
+  .btn-exitchat{
+    /* float: right; */
+      /* padding: 5px 10px 5px 10px; */
+      background-color: #d9117d;
+      color: white;
+      font-size: 10px;
+  }
+  .chat-icon{
+    width: 15px;
+      height: 15px;
+  }
+  .card-stats .card-body {
+    padding: 15px 51px 0px;
+}
+.user-name{
+  margin-left: 10px;
+}
+  }

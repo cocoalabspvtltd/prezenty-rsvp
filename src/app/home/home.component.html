@@ -1,0 +1,212 @@
+
+<header>
+  <div class="menu" >
+    <ul >
+      <img src="./assets/img/event-logo-white.png" style="width: 121px;
+      height: 39px;">
+
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+</header>
+  <div class="row" style="margin: 0 auto;">
+    <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
+      <div class="row d-icons">
+        <div class="col-lg-96 col-md-6 col-12 col-sm-12c mx-auto ">
+          <button  type="button" class="btn btn-sm btn-active"
+           style="background-color: #0a0aab !important;color: #fff !important;border-radius: 10px;max-height: 53px;" (click)="joinThisEvent()">
+           <span style="font-size: 12px;">Join this Event (RSVP)</span>   <i class="fa fa-angle-right  fa-2x" style="float:right" aria-hidden="true"></i></button>
+        </div>
+        <!-- <div class="col-lg-6 col-md-6 col-12 col-sm-12">
+          <button _ngcontent-prj-c157="" type="button" class="btn btn-sm btn-active" (click)="saveToCalender()" style="background-color: #fff !important;color: #0a0aab !important;"  >
+            <i _ngcontent-prj-c157="" aria-hidden="true" class="fa fa-calendar clndr-icon" ></i>Save to calender</button>
+        </div> -->
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 col-lg-12 col-12   " >
+      <div class="col-md-7 col-lg-7 col-8 col-sm-8 text-center mx-auto align-self-center">
+        <div class="row d-icons">
+          <div class="col-lg-12 col-md-12 col-12 col-sm-12 card " style="background-color: ghostwhite !important;border-radius: 10px;">
+            <img src="{{imageFilesLocation}}{{image_url}}" alt="" class="tmp-image" style="width: 100%;">
+            </div>
+            </div>
+            </div>
+             </div>
+    <!-- <div class="row d-icons1">
+      <div class="col-12 col-sm-12">
+        <button _ngcontent-prj-c157="" type="button" class="btn btn-sm btn-active"
+         style="background-color: #0a0aab !important;color: #fff !important; " (click)="joinThisEvent()">Join this Event (RSVP)  <i class="fa fa-angle-right  fa-2x" aria-hidden="true" style="float:right"></i></button>
+      </div>
+      </div> -->
+      <!-- question modal form -->
+      <div class="modal fade payed-modal" id="rsvpModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content" style="overflow: hidden;">
+            <!-- <div class="modal-header"> -->
+              <!-- <div class="" style="text-align: left;">
+                <div class="Fund-hd">
+                  <h2>Join this Event(RSVP)</h2>
+                </div>
+              </div>
+              <div style="text-align: right;">
+              <button type="button"  class="close btn-close1" data-dismiss="modal" aria-label="Close" (click)="closeRsvpModal()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div> -->
+            <div class="row">
+              <div class="col-lg-9 col-9">
+                <h2 style="color: white;
+                padding: 10px 0px 0px 22px;">Join this Event(RSVP)</h2>
+              </div>
+              <div class="col-lg-3 col-3">
+                <button type="button"  class="close btn-close1" data-dismiss="modal" aria-label="Close" (click)="closeRsvpModal()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+            <!-- </div> -->
+            <div class="modal-body">
+              <!-- <div class="col-lg-12 col-md-12"> -->
+                <div class="row">
+                  <div class="col-lg-12 col-md-12">
+                    <div class="payd-msg">
+                      <section class="payd-msg">
+                        <div class="container">
+
+                            <form [formGroup]="RSVPForm">
+
+                              <hr style="color: white;border-color: white;">
+                            <div class="row">
+                              <div class="col-md-6 col-lg-7 col-sm-6 col-12">
+                                <!-- <div class="st-fd-form" style="max-height: 141px;min-height: 140px;"> -->
+                                  <h4 style="padding: 8px 0px 0px 0px;">Do you want physically attend this event ?</h4>
+                                  <div class="form-row mt-2" >
+                                    <mat-radio-group aria-label="Select an option" formControlName="physically_attend" (change)="changePhysicallyAttend()" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.physically_attend.errors }">
+                                      <mat-radio-button value="yes">Yes</mat-radio-button>
+                                      <mat-radio-button value="no">No</mat-radio-button>
+                                    </mat-radio-group>
+                                     <div *ngIf="submitted && rsvpfrm.physically_attend.errors" class="invalid-feedback">
+                                          <div *ngIf="rsvpfrm.physically_attend.errors.required">This field is required</div>
+                                          </div>
+                                   </div>
+                                <!-- </div> -->
+                              </div>
+                              <div class="col-md-6 col-lg-5 col-sm-6 col-12"  *ngIf="receiveFood === true">
+                                <!-- <div class="st-fd-form" style="max-height: 141px;min-height: 140px;"> -->
+                                  <h4 style="padding: 8px 0px 0px 0px;">Do you want to receive the food ?</h4>
+                                  <div class="form-row mt-2" >
+                                    <mat-radio-group aria-label="Select an option" formControlName="receive_foods" (change)="changereceiveFood()" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.receive_foods.errors }">
+                                      <mat-radio-button value="yes">Yes</mat-radio-button>
+                                      <mat-radio-button value="no">No</mat-radio-button>
+                                    </mat-radio-group>
+                                    <div *ngIf="submitted && rsvpfrm.receive_foods.errors" class="invalid-feedback">
+                                      <div *ngIf="rsvpfrm.receive_foods.errors.required">This field is required</div>
+                                      </div>
+                                   </div>
+                                <!-- </div> -->
+                              </div>
+                            </div>
+                            <hr style="color: white;border-color: white;"  *ngIf="foodCat === true && receiveFood === true" >
+                              <div class="row">
+
+                              <div class="col-md-6 col-lg-6 col-sm-6 col-12"  *ngIf="foodCat === true && receiveFood === true && is_vegNonveg" >
+                                <div class="st-fd-form" style="max-height: 141px;min-height: 104px;">
+                                  <h4 style="padding: 8px 0px 0px 0px;">Vegetarian food or Non vegetarian food ?</h4>
+                                  <div class="form-row mt-2" >
+                                    <mat-radio-group aria-label="Select an option" formControlName="veg_nonnVeg" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.veg_nonnVeg.errors }">
+                                      <mat-radio-button value="veg">Veg</mat-radio-button>
+                                      <mat-radio-button value="nonveg">Non Veg</mat-radio-button>
+                                    </mat-radio-group>
+                                    <div *ngIf="submitted && rsvpfrm.veg_nonnVeg.errors" class="invalid-feedback">
+                                      <div *ngIf="rsvpfrm.veg_nonnVeg.errors.required">This field is required</div>
+                                      </div>
+                                   </div>
+                                </div>
+                              </div>
+                              <div class="col-md-6 col-lg-6 col-sm-6 col-12"  *ngIf="foodCat === true && receiveFood === true" >
+                                <div class="st-fd-form">
+                                  <h4 style="padding: 8px 0px 0px 0px;">How many members are attending ?</h4>
+                                  <div class="row">
+                                      <div class="form-group col-md-6 col-sm-6 col-lg-6 col-12">
+                                        <input type="text" class="st-fd-tbox brdr-clr"  placeholder="1" formControlName="attended_members" maxlength="2" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.attended_members.errors }">
+                                        <div *ngIf="submitted && rsvpfrm.attended_members.errors" class="invalid-feedback">
+                                          <div *ngIf="rsvpfrm.attended_members.errors.required">This field is required</div>
+                                          <div *ngIf="(rsvpfrm.attended_members.errors.pattern) && this.RSVPForm.value.attended_members ">Please, Enter valid  Number.</div>
+
+                                          </div>
+                                      </div>
+                                      </div>
+                                      </div>
+                                      </div>
+                                    </div>
+                                    <hr style="color: white;border-color: white;" *ngIf="foodCat === true && receiveFood === true && foodCat === true && receiveFood === true || foodCat === false && receiveFood === true">
+                                    <div class="row">
+                                      <h3 *ngIf="foodCat === true && receiveFood === true">Add your details</h3>
+                                      <h3 *ngIf="foodCat === false && receiveFood === true">Address for sending Return Gift</h3>
+                                      </div>
+                                      <div class="row">
+                                      <div class="col-md-12" *ngIf="foodCat === false && receiveFood === true">
+                                        <input type="checkbox" (click)="changeNotApplicable($event)" formControlName="not_applicable">
+                                          <span style="color: white;" class="ml-2">Not Applicable</span>
+                                      </div>
+
+                                      </div>
+                                      <div class="row" id="">
+                                        <div class="col-md-6 col-lg-6" *ngIf="foodCat === true && receiveFood === true || foodCat === false || receiveFood === false" >
+                                          <h4 style="padding: 8px 0px 0px 0px;">Name</h4>
+                                          <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Name" formControlName="name"   [ngClass]="{ 'is-invalid': submitted && rsvpfrm.name.errors }" >
+                                          <div *ngIf="submitted && rsvpfrm.name.errors" class="invalid-feedback">
+                                            <div *ngIf="rsvpfrm.name.errors.required">This field is required</div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6" *ngIf="foodCat === true && receiveFood === true || foodCat === false || receiveFood === false" >
+                                          <h4 style="padding: 8px 0px 0px 0px;">Email</h4>
+                                          <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Email" formControlName="email" [email]="true"   [ngClass]="{ 'is-invalid': submitted && rsvpfrm.email.errors }" >
+                                          <div *ngIf="submitted && rsvpfrm.email.errors" class="invalid-feedback">
+                                            <div *ngIf="rsvpfrm.email.errors.required">This field is required</div>
+                                            <div *ngIf="rsvpfrm.email.errors.pattern">Please, Enter valid email.</div>
+                                            </div>
+
+                                        </div>
+
+                                      </div>
+                                      <div class="row" id="second">
+                                        <div class="col-md-6 col-lg-6" *ngIf="foodCat === true && receiveFood === true || foodCat === false || receiveFood === false" >
+                                          <h4 style="padding: 8px 0px 0px 0px;">Phone Number</h4>
+                                          <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Phone Number" formControlName="phone_number"  maxlength="16" minlength="8" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.phone_number.errors }">
+                                          <div *ngIf="submitted && rsvpfrm.phone_number.errors" class="invalid-feedback">
+                                            <div *ngIf="rsvpfrm.phone_number.errors.required">This field is required</div>
+                                            <div *ngIf="(rsvpfrm.phone_number.errors.pattern || phoneerror === true) && this.RSVPForm.value.phone_number ">Please, Enter valid Phone Number.</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" *ngIf="foodCat === true && receiveFood === true || foodCat === false || receiveFood === false" >
+                                          <h4 style="padding: 8px 0px 0px 0px;">Address</h4>
+                                          <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Address" formControlName="address"  [readonly]="this.applicableStatus === true" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.address.errors }" >
+                                          <div *ngIf="submitted && rsvpfrm.address.errors" class="invalid-feedback">
+                                            <div *ngIf="rsvpfrm.address.errors.required">This field is required</div>
+                                            </div>
+                                        </div>
+                                      </div>
+
+
+                                                                <div class="row col-12 sbmt-rsvp" style="padding: 18px;" >
+                                  <button class="btn btn-sm fundraiser-btn sbmt-fund"  type="button"(click)="submitRSVP($event)"> <i class="fa" [ngClass]="{'fa-spin fa-spinner': loading}"></i><span>Submit</span></button>
+                                </div>
+                          </form>
+                          </div>
+
+
+                      </section>
+                  </div>
+                </div>
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>

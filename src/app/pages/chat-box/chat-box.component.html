@@ -1,0 +1,90 @@
+<div class="" style="background-color: black">
+  <div class="row">
+    <div class="col-lg-2 col-md-2 col-8" style="display: flex">
+      <div>
+        <img
+          src="./assets/img/profile-1.png"
+          style="width: 90px !important; height: 90px"
+        />
+      </div>
+      <div>
+        <h3
+          class="font-weight-bold" *ngIf="!hostName"
+          style="color: white; padding: 30px 0px 0px 0px"
+        >
+          {{ userDetailList.name }}
+        </h3>
+        <h3
+        class="font-weight-bold" *ngIf="hostName"
+        style="color: white; padding: 30px 0px 0px 0px"
+      >
+        {{ hostName }}
+      </h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form [formGroup]="chatForm">
+  <div id="panel2" class="panel">
+    <div id="msgArea">
+      <br />
+      <div *ngFor="let item of chatMessages">
+        <div
+          class="msg {{
+            item.sender_email == this.participantEmail ? 'userMSG' : 'otherMSG'
+          }} "
+        >
+          <div></div>
+          <div>
+            {{ item.message }}<br />
+            <span style="font-size: 10px">{{ item.time }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div
+        class="card card-user"
+        style="
+          margin-bottom: 0px;
+          border-radius: 4px;
+          border-radius: 4px;
+          position: fixed;
+          bottom: 0px;
+          width: 100%;
+        "
+      >
+        <div class="card-header"></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-9 col-9 col-sm-12 pr-1">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control inpt-border"
+                  placeholder="Write something.."
+                  formControlName="chatmessage"
+                  [ngClass]="{
+                    'is-invalid': submitted && chatfrm.chatmessage.errors
+                  }"
+                />
+              </div>
+            </div>
+            <div class="col-lg-3 col-3 pl-1">
+              <span
+                ><img
+                  src="./assets/img/send.png"
+                  style="cursor: pointer"
+                  (click)="sentMessage()"
+              /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,87 @@
+.btn-send{
+  width: 100%;
+  padding: 14px 30px 14px 30px;
+  background-color: #09094c;
+  color: white;
+  border-radius: 8px;
+}
+.box-card {
+	background: #fff;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+	border-radius: 8px;
+  height: 166px;
+  /* width: 500px;
+  margin-right: 65px; */
+  padding: 20px 10px 9px 18px;
+}
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  margin: 40px 2px;
+  cursor: pointer;
+}
+.button2 {background-color: #008CBA;} /* Blue */
+::ng-deep .modal-backdrop.show {
+  opacity: 0 !important;
+}
+.st-fd-tbox{
+  border-top: none;
+    border-left: none;
+    border-right: none;
+    padding: 55px 0px 0px 0px ;
+       width: 100%;
+}
+@media only screen and (max-width: 769px) {
+  .st-fd-tbox{
+    border-top: none;
+      border-left: none;
+      border-right: none;
+      padding: 22px 0px 0px 0px;
+      width: 100%;
+  }
+}
+@media only screen and (min-width: 769px) {
+  .st-fd-tbox{
+    border-top: none;
+      border-left: none;
+      border-right: none;
+      padding: 10px 0px 0px 0px;
+      width: 100%;
+  }
+::placeholder {
+font-size: 35px;
+ opacity: 1;
+ /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  font-size: 35px;
+  opacity: 1; }
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  font-size: 35px;
+  opacity: 1; }
+}
+.event-image{
+  width: 100%;
+    height: 91px;
+    object-fit: cover;
+    background-size: cover;
+}
+.btn-send1{
+  float: right;
+    padding: 7px 30px 7px 30px;
+    background-color: #09094c;
+    color: white;
+    border-radius: 8px;
+}
+
+.amount-card{
+  min-height: 177px;
+  padding: 27px 0px 0px 0px;
+}

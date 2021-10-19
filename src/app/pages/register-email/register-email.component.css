@@ -1,0 +1,10 @@
+.btn-send{
+  width: 100%;
+  padding: 14px 30px 14px 30px;
+  background-color: #09094c;
+  color: white;
+  border-radius: 8px;
+}
+::ng-deep .card-user .card-body {
+  min-height: 185px;
+}

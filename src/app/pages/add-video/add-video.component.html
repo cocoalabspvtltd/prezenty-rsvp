@@ -1,0 +1,367 @@
+<!--
+
+<form [formGroup]="uploadVideoForm">
+  <h3 class="text-center mb-5"></h3>
+  <div class=" ">
+    <div class="row">
+      <div class="col-md-2 col-lg-2 col-6" >
+        <button id="record" class="btn"  (click)="recordvideo()" ><img src="./assets/img/recording.png" style="width: 20px;height: 20px;">Record</button>
+        </div>
+
+        <div class="col-md-1 col-lg-1 col-2 mb-4">
+          <span style="color: brown;" *ngIf="recording">Recording...</span>
+         </div>
+         <div class="col-md-1 col-lg-1 col-2 mb-4" *ngIf="this.web">
+          <span style="" >Upload Video</span>
+         </div>
+         <div class="col-lg-3 col-12 img-box-height" *ngIf="this.web">
+           <div class="text center img-box">
+
+             <div class="upload">
+               <input
+                 type="file"
+                 class="img-input form-control"
+                 #attachments
+                 formControlName="video"
+                 (change)="uploadVideo($event)"
+               />
+               <h1 class="file mt-2 h1-img"><i class="fa fa-file-image-o"></i></h1>
+             </div>
+           </div>
+         </div>
+         <div class="col-lg-3 col-12 mx-auto" *ngIf="this.web">
+           <div class="" *ngFor="let list of thumbFileVideo; let index = index">
+             <span>{{fileName}}</span>
+           </div>
+         </div>
+         <div class="col-lg-3 col-12" *ngIf="!this.web">
+           <div class="text center">
+             <h4 class="modal-label-hd" *ngIf="!this.web">Upload Video</h4>
+
+             <div class="Neon Neon-theme-dragdropbox">
+               <input
+                 class="img-box-height-mob"
+                 name="files[]"
+                 id="filer_input2"
+                 type="file"
+                 #attachments
+                 formControlName="video"
+                 (change)="uploadVideo($event)"
+               />
+               <div class="Neon-input-dragDrop">
+                 <div class="Neon-input-inner">
+                   <div class="Neon-input-icon">
+                     <i class="fa fa-file-image-o"></i>
+                   </div>
+                   <div class="Neon-input-text">
+                     <h3>Drag&amp;Drop files here</h3>
+                     <span style="display: inline-block; margin: 15px 0">or</span>
+                   </div>
+                   <a class="Neon-input-choose-btn blue">Browse Files</a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="col-lg-3 col-12 mx-auto" *ngIf="!this.web">
+           <div class="" *ngFor="let list of thumbFileVideo; let index = index">
+             <span>{{fileName}}</span>
+
+           </div>
+         </div>
+       </div>
+     </div>
+          </form>
+          <form [formGroup]="videowishUploadform" *ngIf="showuploadVideo == true && !this.web">
+            <div class="row mt-4 mb-4">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card card-user" style="margin-top: 89px !important">
+                  <div class="card-header"></div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-11 col-lg-11 col-9 col-sm-12 pr-1">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control inpt-border"
+                            placeholder="Write something.."
+                            formControlName="videotitle"
+                            [ngClass]="{
+                              'is-invalid': submitted && uploadvideofrm.videotitle.errors
+                            }"
+                          />
+                          <div
+                            *ngIf="submitted && uploadvideofrm.videotitle.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="uploadvideofrm.videotitle.errors.required">
+                              This field is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-1 col-lg-1 col-3 pl-1">
+                        <span (click)="uploadVideoWish()">
+                          <i class="fa" [ngClass]="{ 'fa-spin fa-spinner': loading }"></i
+                          ><img src="./assets/img/send.png" style="cursor: pointer"
+                        /></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div
+            class="d-flex justify-content-center mx-auto"
+            *ngIf="startCam == false && this.web"
+          >
+            <div class="spinner-border text-success m-5" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div id="container mt-2">
+            <video id="gum" playsinline autoplay muted class="mx-auto"></video>
+            <video id="recorded" playsinline></video>
+          </div>
+          <form [formGroup]="videowishform" *ngIf="showtitle == true">
+            <div class="row mt-4 mb-4">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card card-user">
+                  <div class="card-header"></div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-11 col-lg-11 col-9 col-sm-12 pr-1">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control inpt-border"
+                            placeholder="Write something.."
+                            formControlName="title"
+                            [ngClass]="{
+                              'is-invalid': submitted && videofrm.title.errors
+                            }"
+                          />
+                          <div
+                            *ngIf="submitted && videofrm.title.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="videofrm.title.errors.required">
+                              This field is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-1 col-lg-1 col-3 pl-1">
+                        <span (click)="sendWish()"
+                          ><i class="fa" [ngClass]="{ 'fa-spin fa-spinner': loading }"></i
+                          ><img src="./assets/img/send.png" style="cursor: pointer"
+                        /></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form> -->
+
+
+
+
+ <!-- <div>
+  <button id="download" class="btn"   (click)="stopCam()"><img src="../../../assets/img/stop.png" style="width: 20px;height: 20px;">Stop</button>
+  <span style="color: brown;" *ngIf="recording">Recording...</span>
+</div> -->
+<form [formGroup]="uploadVideoForm">
+  <h3 class="text-center mb-5"></h3>
+  <div class=" ">
+    <div class="row">
+      <div class="col-md-2 col-lg-2 col-6" >
+        <button id="record" class="btn"  (click)="recordvideo()" style="background-color: darkgray;" ><img src="./assets/img/recording.png" style="width: 20px;height: 20px;">Record</button>
+        </div>
+        <!-- <div class="col-md-2 col-lg-2 col-6" >
+          <button id="download" class="btn"   (click)="stopCam()"><img src="./assets/img/stop.png" style="width: 20px;height: 20px;">Stop</button>
+        </div> -->
+        <div class="col-md-1 col-lg-1 col-2 mb-4">
+          <span style="color: brown;" *ngIf="recording">Recording...</span>
+         </div>
+         <div class="col-md-1 col-lg-1 col-2 mb-4" *ngIf="this.web">
+          <span style="" >Upload Video</span>
+         </div>
+         <div class="col-lg-3 col-12 img-box-height" *ngIf="this.web">
+           <div class="text center img-box">
+
+             <div class="upload">
+               <input
+                 type="file"
+                 class="img-input form-control"
+                 #attachments
+                 formControlName="video"
+                 (change)="uploadVideo($event)"
+               />
+               <h1 class="file mt-2 h1-img"><img src="./assets/img/upload.png" style="width: 20px;height: 20px;"></h1>
+             </div>
+           </div>
+         </div>
+         <div class="col-lg-3 col-12 mx-auto" *ngIf="this.web">
+           <div class="" *ngFor="let list of thumbFileVideo; let index = index">
+             <span>{{fileName}}</span>
+           </div>
+         </div>
+         <div class="col-lg-3 col-12" *ngIf="!this.web">
+           <div class="text center">
+             <h4 class="modal-label-hd" *ngIf="!this.web">Upload Video</h4>
+
+             <div class="Neon Neon-theme-dragdropbox">
+               <input
+                 class="img-box-height-mob"
+                 name="files[]"
+                 id="filer_input2"
+                 type="file"
+                 #attachments
+                 formControlName="video"
+                 (change)="uploadVideo($event)"
+               />
+               <div class="Neon-input-dragDrop">
+                 <div class="Neon-input-inner">
+                   <div class="Neon-input-icon">
+                     <i class="fa fa-file-image-o"></i>
+                   </div>
+                   <div class="Neon-input-text">
+                     <h3>Drag&amp;Drop files here</h3>
+                     <span style="display: inline-block; margin: 15px 0">or</span>
+                   </div>
+                   <a class="Neon-input-choose-btn blue">Browse Files</a>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+         <div class="col-lg-3 col-12 mx-auto" *ngIf="!this.web">
+           <div class="" *ngFor="let list of thumbFileVideo; let index = index">
+             <span>{{fileName}}</span>
+
+           </div>
+         </div>
+       </div>
+     </div>
+          </form>
+          <form [formGroup]="videowishUploadform" *ngIf="showuploadVideo == true && !this.web">
+            <div class="row mt-4 mb-4">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card card-user" style="margin-top: 89px !important">
+                  <div class="card-header"></div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-11 col-lg-11 col-9 col-sm-12 pr-1">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control inpt-border"
+                            placeholder="Write something.."
+                            formControlName="videotitle"
+                            [ngClass]="{
+                              'is-invalid': submitted && uploadvideofrm.videotitle.errors
+                            }"
+                          />
+                          <div
+                            *ngIf="submitted && uploadvideofrm.videotitle.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="uploadvideofrm.videotitle.errors.required">
+                              This field is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-1 col-lg-1 col-3 pl-1">
+                        <span (click)="uploadVideoWish()">
+                          <i class="fa" [ngClass]="{ 'fa-spin fa-spinner': loading }"></i
+                          ><img src="./assets/img/send.png" style="cursor: pointer"
+                        /></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div
+            class="d-flex justify-content-center mx-auto"
+            *ngIf="startCam == false && this.web"
+          >
+            <div class="spinner-border text-success m-5" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <div id="container mt-2">
+            <video id="gum" playsinline autoplay muted class="mx-auto"></video>
+            <video id="recorded" playsinline></video>
+          </div>
+          <form [formGroup]="videowishform" *ngIf="showtitle == true">
+            <div class="row mt-4 mb-4">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="card card-user">
+                  <div class="card-header"></div>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-11 col-lg-11 col-9 col-sm-12 pr-1">
+                        <div class="form-group">
+                          <input
+                            type="text"
+                            class="form-control inpt-border"
+                            placeholder="Write something.."
+                            formControlName="title"
+                            [ngClass]="{
+                              'is-invalid': submitted && videofrm.title.errors
+                            }"
+                          />
+                          <div
+                            *ngIf="submitted && videofrm.title.errors"
+                            class="invalid-feedback"
+                          >
+                            <div *ngIf="videofrm.title.errors.required">
+                              This field is required
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-1 col-lg-1 col-3 pl-1">
+                        <span (click)="sendWish()"
+                          ><i class="fa" [ngClass]="{ 'fa-spin fa-spinner': loading }"></i
+                          ><img src="./assets/img/send.png" style="cursor: pointer"
+                        /></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+ <!-- success modal -->
+
+ <div class="modal fade payed-modal" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="col-lg-12 col-lg-12">
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <div class="payd-msg">
+                <p class="mt-4">
+                  Video wish send successfully.</p>
+                <div class="row">
+                  <div class="col-md-2 col-12"></div>
+                  <div class="col-md-8 col-12">
+                    <button class="f-btn-border-red" type="submit"  data-dismiss="modal" (click)="closeSuccessModal()"  routerLink="/" >OK</button>
+                  </div>
+                  <div class="col-md-2 col-12"></div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

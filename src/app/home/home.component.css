@@ -1,0 +1,43 @@
+.sbmt-fund{
+  margin: 0 auto;
+    width: 195px;
+    height: 41px;
+}
+@media only screen and (max-width: 991px){
+  .sbmt-fund{
+    margin: 0 auto;
+    width: 350px;
+    height: 54px;
+}
+.sbmt-rsvp{
+  padding: 408px 0px 0px 0px;
+}
+}
+::ng-deep .mat-radio-label-content{
+  padding: 0px 7px 0px 6px !important;
+}
+::ng-deep .mat-radio-outer-circle {
+  border-color: white !important;
+}
+::ng-deep .modal-backdrop.show {
+  opacity: 0 !important;
+}
+.btn-close1{
+  background-color: #fff !important;
+  color:#c3313e;
+  z-index: 99999;
+  box-shadow: 1px 1px 6px rgba(0,0,0,.34);
+  border-radius: 40px;
+  margin:5px 20px 0px 0px;
+  opacity: 1;
+  width:40px;
+  height: 40px;
+  text-align: center;
+}
+
+.hide{
+  opacity: 0.5;
+}
+#toast-container > div {
+  opacity:1;
+}

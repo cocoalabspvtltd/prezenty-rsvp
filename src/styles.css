@@ -1,0 +1,265 @@
+/* You can add global styles to this file, and also import other style files */
+::ng-deep .navbar.navbar-transparent{
+  background-color: #d9117d !important;
+}
+/* Header section */
+.menu {
+  background-color:#d9117d;
+}
+.menu ul {
+  list-style: none;
+  padding: 20px;
+}
+.menu li {
+  display: inline-block;
+  padding: 0 20px;
+}
+.menu a {
+  text-decoration: none;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Lato';
+}
+.menu a:hover {
+  text-decoration: underline;
+}
+/* Header section end */
+
+/* home age start */
+.d-icons{
+  text-align: center;
+}
+.d-icons button, .d-icons a {
+  /* font-family: montserrat; */
+    padding: 15px;
+    background-color: #fff;
+    border: solid 3px #0a0aab;
+    color: #0a0aab;
+    list-style-type: none;
+    margin: 10px 10px;
+    text-transform: none;
+    font-weight: 600;
+    font-size: 15px;
+    /* border-radius: 13px; */
+    width: 78%;
+}
+.d-icons-mob button, .d-icons-mo a{
+  padding: 15px;
+  background-color: #fff;
+  border: solid 3px #0a0aab;
+  color: #0a0aab;
+  list-style-type: none;
+  margin: 10px 10px;
+  text-transform: none;
+  font-weight: 600;
+  font-size: 15px;
+  /* border-radius: 13px; */
+  width: 78%;
+}
+.clndr-icon{
+  padding: 0px 7px 0px 0px;
+}
+.event-img{
+  text-align: center;
+  padding: 20px 0px 0px 0px;
+}
+.rsvp-btn{
+  text-align: center;
+}
+.rsvp-btn button, .d-icons a {
+  padding: 10px;
+  background-color: #0a0aab;
+  border: solid 3px #0a0aab;
+  color: white;
+  list-style-type: none;
+  margin: 0px 10px;
+  text-transform: none;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 2px;
+}
+
+/* home page ends */
+
+/* Questions RSVP section start */
+ .fundraiser-btn{
+  background-color: #d9117d !important;
+  color:#fff !important;
+}
+ .payed-modal {
+  display: block !important;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+.payed-modal.show {
+  visibility: visible;
+  opacity: 1;
+  z-index: 99999;
+}
+.payed-modal .modal-dialog {
+  max-width: 50%;
+}
+.payed-modal .modal-content {
+  border-radius: 0;
+  /* max-height: 300px; */
+  overflow: auto;
+  border-radius: 10px;
+  background-color: #151a2e;
+}
+.payed-modal .modal-body {
+  padding: 30px 30px;
+}
+.payd-msg{
+  display: block;
+}
+.payd-msg{
+  color:#fff;
+}
+.brdr-clr{
+  border-color: white;
+  background-color: #151a2e;
+  color: white;
+  height: 38px;
+  width: 220px;
+
+}
+
+@media only screen and (: 992px) {
+  .start-fundraiser::before {
+    display: block;
+    width: 100%;
+    transform: none;
+    left:0;
+  }
+  .Fund-hd h2{
+    font-size: 40px;
+  }
+  .Fund-hd li{
+    font-size: 18px;
+  }
+  .fundraiser-btn{
+    background-color: #0a0aab !important;
+    color:white !important;
+  }
+  }
+  @media only screen and (max-width: 600px) {
+    .Fund-hd h2{
+      font-size: 34px;
+    }
+    .Fund-hd li{
+      font-size: 14px;
+    }
+    }
+    @media only screen and (max-width: 400px) {
+    .Fund-hd h2{
+      font-size: 26px;
+    }
+    .Fund-hd li{
+      font-size: 12px;
+    }
+    }
+
+    @media only screen and (max-width: 768px){
+      .sbmt-fund{
+        margin: 0 auto;
+        width: 350px;
+        height: 54px;
+    }
+
+    }
+    @media only screen and (max-width: 768px){
+    .d-icons button, .d-icons a {
+      padding: 10px;
+      background-color: #fff;
+      border: solid 3px #0a0aab;
+      color: #0a0aab;
+      list-style-type: none;
+      margin: 10px 10px;
+      text-transform: none;
+      font-weight: 600;
+      font-size: 12px;
+      width: 83%;
+    }
+    .d-icons1 button, .d-icons a {
+      padding: 15px;
+      background-color: #fff;
+      border: solid 3px #0a0aab;
+      color: #0a0aab;
+      list-style-type: none;
+      margin: 10px 10px;
+      text-transform: none;
+      font-weight: 600;
+      font-size: 15px;
+      position: absolute;
+      bottom: 0%;
+      right: 9%;
+      width: 83%;
+    }
+    .hidersvp{
+      display: none;
+    }
+    .tmp-image{
+      width: 255px;
+      height: 200px;
+    }
+  }
+  @media only screen and (min-width: 769px){
+    .d-icons1 button, .d-icons a {
+      display: none;
+    }
+    .d-icons-mob{
+      display: none;
+    }
+  }
+
+  /* questionn modal */
+  @media only screen and (max-width: 991px) {
+    .payed-modal .modal-dialog {
+      max-width: 60%;
+    }
+    .payd-msg p{
+    font-size:14px;
+  }
+  .g-height{
+    height: auto;
+    padding: 5px 13px;
+  }
+  }
+
+  @media only screen and (max-width: 767px) {
+    .payed-modal .modal-dialog {
+      max-width: 70%;
+    }
+    .hide-menu-mob{
+      display: none;
+    }
+    .d-icons-mob{
+      position: absolute;
+      bottom: 0%;
+      right: 9%;
+      width: 83%;
+
+    }
+    .tmp-image{
+      width: 100% !important;
+      height: 30vh !important;
+    }
+  }
+  @media only screen and (max-width: 600px) {
+    .payed-modal .modal-dialog {
+      max-width: 100%;
+    }
+  }
+  .header-fix{
+    z-index:9999 !important ;
+  position: fixed !important;
+  width: 100% !important;
+  top: 0;
+  }
+.menu-img{
+  height: 23px;
+    width: 30px;
+}

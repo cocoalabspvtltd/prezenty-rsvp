@@ -1,0 +1,27 @@
+<div class="row">
+  <h3 class="">Sent Vouchers</h3>
+</div>
+<div class="row">
+<div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+  <div class="card card-stats amount-card">
+    <div class="card-body ">
+        <form [formGroup]="AmounttPayForm">
+          <div class="row">
+            <div class="form-group col-md-8 col-sm-6 col-12 col-lg-8 mx-auto align-self-center">
+              <input type="text" class="st-fd-tbox" placeholder="₹0" style="outline: none;font-size:25px;"
+                formControlName="gift_amount" [ngClass]="{ 'is-invalid': submitted && paymntfrm.gift_amount.errors }">
+              <div *ngIf="submitted && paymntfrm.gift_amount.errors" class="invalid-feedback">
+                <div *ngIf="paymntfrm.gift_amount.errors.required">This field is required</div>
+                <div *ngIf="(paymntfrm.gift_amount.errors.pattern) ">Please, Enter valid Amount.</div>
+              </div>
+            </div>
+            <div class="col-md-4 col-lg-4 col-12 col-sm-12">
+              <div class="px-4 py-2 text-muted" style="text-align: center;">
+                <button class="button button2 btn-send1"  (click)="submitPayment()">Send Voucher</button>
+              </div>
+            </div>
+          </div>
+        </form>
+    </div>
+  </div>
+</div>
