@@ -1,15 +1,15 @@
 <div class="row">
-  <div class="col-md-8 col-lg-8 col-sm-12 col-12">
+  <div class="col-md-8 col-lg-7 col-sm-12 col-12">
     <h3 class="ml-2"><b>Users</b></h3>
   </div>
   <div class="col-md-2 col-lg-2 col-sm-6 col-6">
-    <button type="submit" class="btn-grpchat mb-3" (click)="groupChat()">
+    <button type="submit" class="btn-grpchat mb-3" routerLink="/group-chat/{{event_id}}">
       <img src="./assets/img/group-chat.png" class="chat-icon" />
       <span>Group Chat</span>
     </button>
   </div>
-  <div class="col-md-2 col-lg-2 col-sm-6 col-6">
-    <button type="submit" class="btn-exitchat mb-3" (click)="exitChat()">
+  <div class="col-md-2 col-lg-3 col-sm-6 col-6">
+    <button type="submit" class="btn-exitchat mb-3"  routerLink="/edit-events/{{event_id}}">
       <img src="./assets/img/exit-chat.png" class="chat-icon" />Exit Chat
     </button>
   </div>
@@ -24,13 +24,13 @@
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-  <div class="d-flex justify-content-center">
+  <!-- <div class="d-flex justify-content-center">
     <div class="" role="status">
       <h3 style="color: #c3313e" *ngIf="userList.length == 0">
         No Records Found
       </h3>
     </div>
-  </div>
+  </div> -->
   <div class="col-lg-2 col-12 col-md-6" style="cursor: pointer" routerLink="/chat" (click)="hostData()" >
     <div class="card card-stats" style="background-color: pink;">
       <div class="card-body" style="height: 116px !important">

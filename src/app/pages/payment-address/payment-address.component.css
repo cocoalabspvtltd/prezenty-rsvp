@@ -9,10 +9,16 @@
   width: 100px;
   height: 100px;
 }
+.payed-modal .modal-dialog {
+  max-width: 40%;
+}
 @media only screen and (max-width: 992px) {
   .gift-img{
     width: 88px;
     height: 58px;
+  }
+  .payed-modal .modal-dialog {
+    max-width: 100%  !important;
   }
 }
 /* success */
@@ -28,9 +34,7 @@
   opacity: 1;
   z-index: 99999;
 }
-.payed-modal .modal-dialog {
-  max-width: 40%;
-}
+
 .payed-modal .modal-content {
   border-radius: 0;
   max-height: 300px;

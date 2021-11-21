@@ -42,6 +42,7 @@ export class ListUsersComponent implements OnInit {
       this.hostName= res.name;
       this.hostEmail = res.email;
       this.userList = this.userList.filter( item => item.email != this.participantEmail);
+      console.log(this.userList)
        } else {
       }
     }, error => {

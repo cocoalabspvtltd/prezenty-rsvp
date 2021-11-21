@@ -35,6 +35,8 @@ export class HomeComponent implements OnInit {
   menuOrGifts: any;
   giftarray:any[]=[];
   is_vegNonveg: boolean;
+  veg: any;
+  nonveg: any;
   constructor(private fb: FormBuilder,private route:ActivatedRoute,private apiService:ApiService,private router:Router,private toastr: ToastrService) {
     this.applicableStatus = false;
     this.sessionidList = [];
@@ -93,11 +95,11 @@ export class HomeComponent implements OnInit {
       this.image_url = res['detail'].image_url;
       this.title =res['detail'].title;
       this.menuOrGifts = res.menuOrGifts;
-      var veg = this.menuOrGifts.filter(item=> item.is_veg == 1);
-      var nonveg = this.menuOrGifts.filter(item=> item.is_non_veg == 1);
-      console.log(veg)
-      console.log(nonveg)
-      if(veg.length >= 1 && nonveg.length >=1){
+      this.veg = this.menuOrGifts.filter(item=> item.is_veg == 1);
+      this.nonveg = this.menuOrGifts.filter(item=> item.is_non_veg == 1);
+      console.log(this.veg)
+      console.log(this.nonveg)
+      if(this.veg.length >= 1 && this.nonveg.length >=1){
         this.is_vegNonveg = true;
 
       }
@@ -145,6 +147,7 @@ export class HomeComponent implements OnInit {
   }
   changereceiveFood(){
     if(this.RSVPForm.value.receive_foods === 'yes'){
+
       this.need_food = 1;
       console.log(this.need_gift)
       this.need_gift = 1;
@@ -154,9 +157,10 @@ export class HomeComponent implements OnInit {
       this.RSVPForm.controls['veg_nonnVeg'].setValidators([Validators.required]);
       this.RSVPForm.controls['attended_members'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
       this.RSVPForm.controls['name'].setValidators([Validators.required]);
-      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")]);
+      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
       this.RSVPForm.controls['phone_number'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
       this.RSVPForm.controls['address'].setValidators([Validators.required])
+
     }
     else{
       this.need_food = 0;
@@ -168,7 +172,7 @@ export class HomeComponent implements OnInit {
       this.RSVPForm.controls['veg_nonnVeg'].setValidators([Validators.required]);
       this.RSVPForm.controls['attended_members'].setValidators([Validators.required,,Validators.pattern("^[0-9]*$")]);
       this.RSVPForm.controls['name'].setValidators([Validators.required]);
-      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")]);
+      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
       this.RSVPForm.controls['phone_number'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
       this.RSVPForm.controls['address'].setValidators([Validators.required])
     }
@@ -187,7 +191,7 @@ export class HomeComponent implements OnInit {
       this.RSVPForm.controls['attended_members'].clearValidators();
       this.RSVPForm.controls['attended_members'].updateValueAndValidity();
       this.RSVPForm.controls['name'].setValidators([Validators.required]);
-      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")]);
+      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
       // this.RSVPForm.controls['name'].clearValidators();
       // this.RSVPForm.controls['name'].updateValueAndValidity();
       // this.RSVPForm.controls['email'].clearValidators();
@@ -209,7 +213,7 @@ export class HomeComponent implements OnInit {
         this.RSVPForm.controls['veg_nonnVeg'].setValidators([Validators.required]);
         this.RSVPForm.controls['attended_members'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
         this.RSVPForm.controls['name'].setValidators([Validators.required]);
-        this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")]);
+        this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
         this.RSVPForm.controls['phone_number'].setValidators([ [Validators.required,Validators.pattern("^[0-9]*$")]]);
         this.RSVPForm.controls['address'].setValidators([Validators.required])
       }
@@ -224,19 +228,46 @@ export class HomeComponent implements OnInit {
     }
     this.checkphoneNumValidation();
     let formValue =  this.RSVPForm.value
-    if(formValue.veg_nonnVeg === 'veg'){
-      this.is_veg = 1;
-      formData.append('is_veg',this.is_veg);
+    if(this.veg.length > 0 && this.nonveg.length > 0){
+      console.log("aaaaa")
+          let formValue =  this.RSVPForm.value;
+      if(formValue.veg_nonnVeg === 'veg'){
+        console.log("bbbbbbb")
+        this.is_veg = 1;
+        formData.append('is_veg',this.is_veg);
+
     }
     else{
       this.is_veg = 0;
       formData.append('is_veg',this.is_veg);
+
     }
+  }
+  else if(this.veg.length > 0){
+    console.log("only veg")
+    this.is_veg = 1;
+    formData.append('is_veg',this.is_veg);
+
+  }
+  else if(this.nonveg.length > 0){
+    console.log("only nonveg")
+    this.is_veg = 0;
+    formData.append('is_veg',this.is_veg);
+
+  }
+    // if(formValue.veg_nonnVeg === 'veg'){
+    //   this.is_veg = 1;
+    //   formData.append('is_veg',this.is_veg);
+    // }
+    // else{
+    //   this.is_veg = 0;
+    //   formData.append('is_veg',this.is_veg);
+    // }
     formData.append('is_attending',this.is_attending)
     formData.append('need_food',this.need_food);
     formData.append('members_count',formValue.attended_members)
     formData.append('phone',formValue.phone_number)
-    formData.append('email',formValue.email)
+    formData.append('email',formValue.email.toLowerCase())
     formData.append('name',formValue.name)
     formData.append('address',formValue.address)
     formData.append('need_gift',this.need_gift)
@@ -268,8 +299,8 @@ export class HomeComponent implements OnInit {
         if (res.success == 1) {
           if(formValue.email){
             var OneSignal = window['OneSignal'] || [];
-             OneSignal.sendTag("user_id", formValue.email);
-             localStorage.setItem('participantEmail',formValue.email)
+             OneSignal.sendTag("user_id", formValue.email.toLowerCase());
+             localStorage.setItem('participantEmail',formValue.email.toLowerCase())
             }
           this.RSVPForm.reset();
           this.loading = false;

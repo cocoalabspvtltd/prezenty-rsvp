@@ -104,5 +104,7 @@ export class NavbarComponent implements OnInit{
         }
 
       }
-
+      goTohome(){
+        this.router.navigateByUrl('/dashboard')
+      }
 }

@@ -83,7 +83,7 @@
                             <div class="row">
                               <div class="col-md-6 col-lg-7 col-sm-6 col-12">
                                 <!-- <div class="st-fd-form" style="max-height: 141px;min-height: 140px;"> -->
-                                  <h4 style="padding: 8px 0px 0px 0px;">Do you want physically attend this event ?</h4>
+                                  <h4 style="padding: 8px 0px 0px 0px;">Do you want to physically attend this event ?</h4>
                                   <div class="form-row mt-2" >
                                     <mat-radio-group aria-label="Select an option" formControlName="physically_attend" (change)="changePhysicallyAttend()" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.physically_attend.errors }">
                                       <mat-radio-button value="yes">Yes</mat-radio-button>
@@ -166,7 +166,7 @@
                                         </div>
                                         <div class="col-md-6" *ngIf="foodCat === true && receiveFood === true || foodCat === false || receiveFood === false" >
                                           <h4 style="padding: 8px 0px 0px 0px;">Email</h4>
-                                          <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Email" formControlName="email" [email]="true"   [ngClass]="{ 'is-invalid': submitted && rsvpfrm.email.errors }" >
+                                          <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Email"  formControlName="email" [email]="true"   [ngClass]="{ 'is-invalid': submitted && rsvpfrm.email.errors }" >
                                           <div *ngIf="submitted && rsvpfrm.email.errors" class="invalid-feedback">
                                             <div *ngIf="rsvpfrm.email.errors.required">This field is required</div>
                                             <div *ngIf="rsvpfrm.email.errors.pattern">Please, Enter valid email.</div>
