@@ -1,3 +1,13 @@
+
+  <div class="col-md-2 col-lg-2 col-sm-6 col-6" style="float: right;">
+    <button type="submit" class="btn-grpchat mb-3" (click)="blockUser()" *ngIf="blocked_user == 'false'" >
+      <span>Block</span>
+    </button>
+
+    <button type="submit" class="btn-grpchat mb-3" (click)="UnblockUser()" *ngIf="blocked_user == 'true'" >
+      <span>UnBlock</span>
+    </button>
+  </div>
 <div class="" style="background-color: black">
   <div class="row">
     <div class="col-lg-2 col-md-2 col-8" style="display: flex">
@@ -59,7 +69,7 @@
         "
       >
         <div class="card-header"></div>
-        <div class="card-body">
+        <div class="card-body" *ngIf="(blocked_user == 'false' || !blocked_user) && showblockedalert == false">
           <div class="row">
             <div class="col-lg-9 col-9 col-sm-12 pr-1">
               <div class="form-group">
@@ -84,6 +94,24 @@
             </div>
           </div>
         </div>
+        <div class="card-body" *ngIf="blocked_user == 'true'">
+          <div class="row">
+            <div class="col-lg-12 col-12 col-sm-12 pr-1">
+            <span class="text-muted" > This chat is blocked.Unbloct to send/receive messages</span>
+            </div>
+
+          </div>
+        </div>
+        <div class="card-body" *ngIf="showblockedalert == true">
+          <div class="row">
+            <div class="col-lg-12 col-12 col-sm-12 pr-1">
+            <span class="text-muted" > This chat is blocked</span>
+            </div>
+
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>

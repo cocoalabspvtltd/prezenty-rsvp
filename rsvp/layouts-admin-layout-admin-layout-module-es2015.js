@@ -530,7 +530,7 @@ const AdminLayoutRoutes = [
     { path: 'payment/:id', component: app_pages_payment_address_payment_address_component__WEBPACK_IMPORTED_MODULE_10__["PaymentAddressComponent"] },
     { path: 'sent-video', component: app_pages_add_video_add_video_component__WEBPACK_IMPORTED_MODULE_11__["AddVideoComponent"] },
     { path: 'users', component: app_pages_list_users_list_users_component__WEBPACK_IMPORTED_MODULE_12__["ListUsersComponent"] },
-    { path: 'chat/:id', component: app_pages_chat_box_chat_box_component__WEBPACK_IMPORTED_MODULE_13__["ChatBoxComponent"] },
+    { path: 'chat/:id/:buser', component: app_pages_chat_box_chat_box_component__WEBPACK_IMPORTED_MODULE_13__["ChatBoxComponent"] },
     { path: 'chat', component: app_pages_chat_box_chat_box_component__WEBPACK_IMPORTED_MODULE_13__["ChatBoxComponent"] },
     { path: 'user', component: _pages_user_user_component__WEBPACK_IMPORTED_MODULE_1__["UserComponent"] },
     { path: 'table', component: _pages_table_table_component__WEBPACK_IMPORTED_MODULE_2__["TableComponent"] },

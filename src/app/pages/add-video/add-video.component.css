@@ -18,7 +18,7 @@ video {
   vertical-align: top;
   --width: 100%;
   width: var(--width);
-  height: 649px;
+  height: 480px;
   object-fit: cover;
 }
 

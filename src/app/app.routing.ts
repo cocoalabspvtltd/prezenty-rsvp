@@ -10,10 +10,7 @@ export const AppRoutes: Routes = [
     component: HomeComponent,
 
   },
-  {
-    path: 'dashboard',
-    redirectTo: 'dashboard',
-  },
+
   {
     path: '',
     component: AdminLayoutComponent,
@@ -22,8 +19,8 @@ export const AppRoutes: Routes = [
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
   }]},
-  {
-    path: '**',
-    redirectTo: 'dashboard'
-  }
+  // {
+  //   path: '**',
+  //   redirectTo: 'dashboard'
+  // }
 ]

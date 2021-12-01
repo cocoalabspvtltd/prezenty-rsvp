@@ -241,6 +241,8 @@
   }
 }
 
+
+
 @media only screen and (max-width: 767px) {
   .payed-modal .modal-dialog {
     max-width: 70%;
@@ -286,3 +288,11 @@
   margin-top: 12 px;
 }
 
+.nav .active {
+  background-color: #02065f !important;
+  color: white;
+}
+.nav-padding{
+  padding: 25px 20px 25px 20px;
+
+}

@@ -11,17 +11,25 @@
 
     </a>
   </div>
+
     <ul class="nav">
-        <div class="row ml-3 mt-4" routerLink="/
-        " title="preview" style="cursor: pointer;">
+        <!-- <div class="row nav-padding" routerLink="/list-gift-vouchers "  style="cursor: pointer;"  [routerLinkActive]="['active']">
           <div class="col-md-3 col-3">
             <img src="./assets/img/preview-02.png" class="menu-img">
           </div>
           <div class="col-md-4 col-4">
             <b>Preview</b>
           </div>
+        </div> -->
+        <div class="row nav-padding" routerLink="/dashboard" style="cursor: pointer;" [routerLinkActive]="['active']">
+          <div class="col-md-3 col-3">
+            <img src="./assets/img/preview-02.png" class="menu-img">
+          </div>
+          <div class="col-md-9 col-7">
+            <b>Preview</b>
+          </div>
         </div>
-        <div class="row ml-3 mt-5" routerLink="/list-gift-vouchers" style="cursor: pointer;">
+        <div class="row nav-padding " routerLink="/list-gift-vouchers" style="cursor: pointer;" [routerLinkActive]="['active']">
           <div class="col-md-3 col-3">
             <img src="./assets/img/send_gift.png" class="menu-img">
           </div>
@@ -29,7 +37,7 @@
             <b>Send Gift or Vouchers</b>
           </div>
         </div>
-        <div class="row ml-3 mt-5" routerLink="/sent-video" style="cursor: pointer;">
+        <div class="row nav-padding" routerLink="/sent-video" style="cursor: pointer;" [routerLinkActive]="['active']">
           <div class="col-md-3 col-3">
             <img src="./assets/img/send-video-02.png" class="menu-img">
           </div>
@@ -37,7 +45,7 @@
             <b>Send Video Wish</b>
           </div>
         </div>
-        <div class="row ml-3 mt-5" routerLink="/users" style="cursor: pointer;">
+        <div class="row  nav-padding" routerLink="/users" style="cursor: pointer;" [routerLinkActive]="['active']">
           <div class="col-md-3 col-3">
             <img src="./assets/img/join-chat-02.png" class="menu-img">
           </div>

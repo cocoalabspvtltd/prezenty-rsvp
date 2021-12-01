@@ -117,6 +117,7 @@ export class PaymentAddressComponent implements OnInit {
   getKey() {
     this.apiService.getPaymentkey().subscribe((res: any) => {
       this.key = res.apiKey;
+      console.log(this.key)
     });
   }
   get paymntfrm() {

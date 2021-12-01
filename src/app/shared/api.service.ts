@@ -11,7 +11,9 @@ var httpOptions = {
 })
 export class ApiService {
 
-   public  BASE_URL= 'https://www.cocoalabs.in/event/api/web/v1'
+  // public BASE_URL = " http://prezenty.in/prezenty-staging/api/web/v1";
+  public BASE_URL = " http://prezenty.in/prezenty/api/web/v1";
+
 
   constructor(private http: HttpClient) { }
 
@@ -92,4 +94,45 @@ export class ApiService {
     return this.http.get(this.BASE_URL + `/chat/group-message?event_id=` +event_id)
 
   }
+  getBlockedUsers(id){
+    var loginToken = localStorage.getItem("loginToken");
+    let headers = new HttpHeaders();
+    headers = headers.set("Authorization", "Bearer " + loginToken);
+    let params = new HttpParams();
+    params = params.append("event_id", id);
+    params = params.append("page", "1");
+    params = params.append("per_page", "20");
+    const options = { params: params,headers:headers };
+    return this.http.get(
+      this.BASE_URL + `/blocked-users`,
+      options
+    );
+  }
+
+  blockUserMessage(data){
+    console.log(data)
+    for (let val of data) {
+      console.log(val);
+    }
+    var loginToken = localStorage.getItem("loginToken");
+    console.log(loginToken);
+    var httpOptions1 = {
+      headers: new HttpHeaders({
+        Authorization: "Bearer " + loginToken,
+      }),
+    };
+      return this.http.post(this.BASE_URL + `/chat/block-user`, data,httpOptions1);
+    }
+
+    unblockUserMessage(data){
+      var loginToken = localStorage.getItem("loginToken");
+      console.log(loginToken);
+      var httpOptions1 = {
+        headers: new HttpHeaders({
+          Authorization: "Bearer " + loginToken,
+        }),
+      };
+        return this.http.post(this.BASE_URL + `/chat/un-block-user`, data,httpOptions1);
+    }
+
 }

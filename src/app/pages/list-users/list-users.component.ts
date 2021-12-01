@@ -9,7 +9,6 @@ import { ApiService } from 'app/shared/api.service';
   styleUrls: ['./list-users.component.css']
 })
 export class ListUsersComponent implements OnInit {
-  [x: string]: any;
   userList: any;
   evntid: string;
   participant_id: string;
@@ -18,33 +17,36 @@ export class ListUsersComponent implements OnInit {
   clicked: boolean;
   loading: boolean;
   participantEmail: string;
-
+  blockedUserList: any;
+  user: boolean;
+  blockuser: boolean;
+  userListlength:any;
+  hostEmail:any;
+  hostName: any;
+  blockeduserlength: any;
   constructor(private fb: FormBuilder,private route:ActivatedRoute,private apiService:ApiService,private router:Router) {
     this.evntid = localStorage.getItem('eventId');
     this.participant_id = localStorage.getItem('pid');
-    console.log(this.participant_id)
     this.participantEmail = localStorage.getItem('participantEmail');
-    console.log(this.participantEmail
-
-
-    )
     this.handlePayment();
   }
   ngOnInit(): void {
     this.listUsers();
+    this.user = true;
+    this.blockuser = false;
   }
 
   listUsers(){
+    console.log("aaaaaaaaaaaaa")
     this.apiService.getUsers().subscribe((res:any)=>{
-      console.log(res)
-      if (res) {
+      console.log(res);
       this.userList = res['list'];
       this.hostName= res.name;
       this.hostEmail = res.email;
+      console.log(this.hostEmail)
       this.userList = this.userList.filter( item => item.email != this.participantEmail);
-      console.log(this.userList)
-       } else {
-      }
+      this.userListlength = this.userList.length;
+
     }, error => {
     })
   }
@@ -55,19 +57,46 @@ handlePayment(){
     email: ['',[Validators.required,Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")]],
  })
 }
+showUserList(){
+  this.user = true;
+  this.blockuser = false;
+  this.listUsers();
+}
+showBlockList(){
+  this.user = false;
+  this.blockuser = true;
+  this.handleBlockedUsers();
+}
+handleBlockedUsers(){
+  this.apiService.getBlockedUsers(this.evntid).subscribe((res:any)=>{
+    if(res){
+      this.blockedUserList = res['list'];
+
+      this.blockeduserlength = this.blockedUserList.length;
+
+    }
+  })
+}
+goToChat(uid, eid){
+  this.router.navigate(['chat',uid, eid, 'true']);
+
+}
 hostData(){
   localStorage.setItem('hostEmail',this.hostEmail);
   localStorage.setItem('hostName',this.hostName);
+  this.router.navigate(['chat']);
+
 }
-hostDataRemove(){
+hostDataRemove(uid,is_blocked){
   localStorage.removeItem('hostEmail');
   localStorage.removeItem('hostName');
+  this.router.navigate(['chat',uid, is_blocked]);
+
 }
 get emailfrm() {
   return this.registerEmailForm.controls;
 }
 exitChat(){
-  console.log("exit")
   this.router.navigateByUrl('/dashboard')
 }
 groupChat(){
@@ -91,7 +120,6 @@ registerEmail(){
     this.apiService.updateParticipantEmail(formData).subscribe((res:any)=>{
       if (res.success == 1) {
         this.loading = true;
-        console.log(res.detail['email']);
         var OneSignal = window['OneSignal'] || [];
         if(res){
          OneSignal.sendTag("user_id", res.detail['email']);

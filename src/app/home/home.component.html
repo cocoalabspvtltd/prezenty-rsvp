@@ -110,53 +110,11 @@
                                 <!-- </div> -->
                               </div>
                             </div>
-                            <hr style="color: white;border-color: white;"  *ngIf="foodCat === true && receiveFood === true" >
-                              <div class="row">
+                                    <hr style="color: white;border-color: white;" *ngIf="receiveFood === true">
 
-                              <div class="col-md-6 col-lg-6 col-sm-6 col-12"  *ngIf="foodCat === true && receiveFood === true && is_vegNonveg" >
-                                <div class="st-fd-form" style="max-height: 141px;min-height: 104px;">
-                                  <h4 style="padding: 8px 0px 0px 0px;">Vegetarian food or Non vegetarian food ?</h4>
-                                  <div class="form-row mt-2" >
-                                    <mat-radio-group aria-label="Select an option" formControlName="veg_nonnVeg" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.veg_nonnVeg.errors }">
-                                      <mat-radio-button value="veg">Veg</mat-radio-button>
-                                      <mat-radio-button value="nonveg">Non Veg</mat-radio-button>
-                                    </mat-radio-group>
-                                    <div *ngIf="submitted && rsvpfrm.veg_nonnVeg.errors" class="invalid-feedback">
-                                      <div *ngIf="rsvpfrm.veg_nonnVeg.errors.required">This field is required</div>
-                                      </div>
-                                   </div>
-                                </div>
-                              </div>
-                              <div class="col-md-6 col-lg-6 col-sm-6 col-12"  *ngIf="foodCat === true && receiveFood === true" >
-                                <div class="st-fd-form">
-                                  <h4 style="padding: 8px 0px 0px 0px;">How many members are attending ?</h4>
-                                  <div class="row">
-                                      <div class="form-group col-md-6 col-sm-6 col-lg-6 col-12">
-                                        <input type="text" class="st-fd-tbox brdr-clr"  placeholder="1" formControlName="attended_members" maxlength="2" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.attended_members.errors }">
-                                        <div *ngIf="submitted && rsvpfrm.attended_members.errors" class="invalid-feedback">
-                                          <div *ngIf="rsvpfrm.attended_members.errors.required">This field is required</div>
-                                          <div *ngIf="(rsvpfrm.attended_members.errors.pattern) && this.RSVPForm.value.attended_members ">Please, Enter valid  Number.</div>
 
-                                          </div>
-                                      </div>
-                                      </div>
-                                      </div>
-                                      </div>
-                                    </div>
-                                    <hr style="color: white;border-color: white;" *ngIf="foodCat === true && receiveFood === true && foodCat === true && receiveFood === true || foodCat === false && receiveFood === true">
-                                    <div class="row">
-                                      <h3 *ngIf="foodCat === true && receiveFood === true">Add your details</h3>
-                                      <h3 *ngIf="foodCat === false && receiveFood === true">Address for sending Return Gift</h3>
-                                      </div>
-                                      <div class="row">
-                                      <div class="col-md-12" *ngIf="foodCat === false && receiveFood === true">
-                                        <input type="checkbox" (click)="changeNotApplicable($event)" formControlName="not_applicable">
-                                          <span style="color: white;" class="ml-2">Not Applicable</span>
-                                      </div>
-
-                                      </div>
-                                      <div class="row" id="">
-                                        <div class="col-md-6 col-lg-6" *ngIf="foodCat === true && receiveFood === true || foodCat === false || receiveFood === false" >
+                                      <div class="row" *ngIf="receiveFood === true" >
+                                        <div class="col-md-6 col-lg-6"  >
                                           <h4 style="padding: 8px 0px 0px 0px;">Name</h4>
                                           <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Name" formControlName="name"   [ngClass]="{ 'is-invalid': submitted && rsvpfrm.name.errors }" >
                                           <div *ngIf="submitted && rsvpfrm.name.errors" class="invalid-feedback">
@@ -164,7 +122,7 @@
                                             </div>
 
                                         </div>
-                                        <div class="col-md-6" *ngIf="foodCat === true && receiveFood === true || foodCat === false || receiveFood === false" >
+                                        <div class="col-md-6" >
                                           <h4 style="padding: 8px 0px 0px 0px;">Email</h4>
                                           <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Email"  formControlName="email" [email]="true"   [ngClass]="{ 'is-invalid': submitted && rsvpfrm.email.errors }" >
                                           <div *ngIf="submitted && rsvpfrm.email.errors" class="invalid-feedback">
@@ -175,8 +133,8 @@
                                         </div>
 
                                       </div>
-                                      <div class="row" id="second">
-                                        <div class="col-md-6 col-lg-6" *ngIf="foodCat === true && receiveFood === true || foodCat === false || receiveFood === false" >
+                                      <div class="row"  *ngIf="receiveFood === true" >
+                                        <div class="col-md-6 col-lg-6" >
                                           <h4 style="padding: 8px 0px 0px 0px;">Phone Number</h4>
                                           <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Phone Number" formControlName="phone_number"  maxlength="16" minlength="8" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.phone_number.errors }">
                                           <div *ngIf="submitted && rsvpfrm.phone_number.errors" class="invalid-feedback">
@@ -184,7 +142,7 @@
                                             <div *ngIf="(rsvpfrm.phone_number.errors.pattern || phoneerror === true) && this.RSVPForm.value.phone_number ">Please, Enter valid Phone Number.</div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6" *ngIf="foodCat === true && receiveFood === true || foodCat === false || receiveFood === false" >
+                                        <div class="col-md-6" >
                                           <h4 style="padding: 8px 0px 0px 0px;">Address</h4>
                                           <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Address" formControlName="address"  [readonly]="this.applicableStatus === true" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.address.errors }" >
                                           <div *ngIf="submitted && rsvpfrm.address.errors" class="invalid-feedback">

@@ -95,19 +95,6 @@ export class HomeComponent implements OnInit {
       this.image_url = res['detail'].image_url;
       this.title =res['detail'].title;
       this.menuOrGifts = res.menuOrGifts;
-      this.veg = this.menuOrGifts.filter(item=> item.is_veg == 1);
-      this.nonveg = this.menuOrGifts.filter(item=> item.is_non_veg == 1);
-      console.log(this.veg)
-      console.log(this.nonveg)
-      if(this.veg.length >= 1 && this.nonveg.length >=1){
-        this.is_vegNonveg = true;
-
-      }
-      else{
-        this.is_vegNonveg = false;
-        this.RSVPForm.controls['veg_nonnVeg'].clearValidators();
-        this.RSVPForm.controls['veg_nonnVeg'].updateValueAndValidity();
-           }
        } else {
       }
     }, error => {
@@ -120,6 +107,10 @@ export class HomeComponent implements OnInit {
      this.receiveFood = true;
      this.RSVPForm.controls['receive_foods'].setValidators([Validators.required])
      this.is_attending = 0;
+     this.RSVPForm.controls['name'].setValidators([Validators.required]);
+     this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
+     this.RSVPForm.controls['phone_number'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
+     this.RSVPForm.controls['address'].setValidators([Validators.required])
 
    }
    else{
@@ -149,75 +140,16 @@ export class HomeComponent implements OnInit {
     if(this.RSVPForm.value.receive_foods === 'yes'){
 
       this.need_food = 1;
-      console.log(this.need_gift)
-      this.need_gift = 1;
       this.submitted = false;
       this.loading = false;
-      this.foodCat = true;
-      this.RSVPForm.controls['veg_nonnVeg'].setValidators([Validators.required]);
-      this.RSVPForm.controls['attended_members'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
-      this.RSVPForm.controls['name'].setValidators([Validators.required]);
-      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
-      this.RSVPForm.controls['phone_number'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
-      this.RSVPForm.controls['address'].setValidators([Validators.required])
-
     }
     else{
       this.need_food = 0;
-      this.need_gift = 0;
-      console.log(this.need_gift)
       this.submitted = false;
       this.loading = false;
-      this.foodCat = false;
-      this.RSVPForm.controls['veg_nonnVeg'].setValidators([Validators.required]);
-      this.RSVPForm.controls['attended_members'].setValidators([Validators.required,,Validators.pattern("^[0-9]*$")]);
-      this.RSVPForm.controls['name'].setValidators([Validators.required]);
-      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
-      this.RSVPForm.controls['phone_number'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
-      this.RSVPForm.controls['address'].setValidators([Validators.required])
     }
   }
-  changeNotApplicable(event){
-   this.applicableStatus = event.target.checked;
-    if(this.applicableStatus === true){
-      $('#first').addClass('hide');
-      $('#second').addClass('hide');
-      this.need_gift = 0;
-      this.submitted = false;
-      this.loading = false;
-      this.disableAdrress = true;
-      this.RSVPForm.controls['veg_nonnVeg'].clearValidators();
-      this.RSVPForm.controls['veg_nonnVeg'].updateValueAndValidity();
-      this.RSVPForm.controls['attended_members'].clearValidators();
-      this.RSVPForm.controls['attended_members'].updateValueAndValidity();
-      this.RSVPForm.controls['name'].setValidators([Validators.required]);
-      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
-      // this.RSVPForm.controls['name'].clearValidators();
-      // this.RSVPForm.controls['name'].updateValueAndValidity();
-      // this.RSVPForm.controls['email'].clearValidators();
-      // this.RSVPForm.controls['email'].updateValueAndValidity();
-      this.RSVPForm.controls['phone_number'].clearValidators();
-      this.RSVPForm.controls['phone_number'].updateValueAndValidity();
-      this.RSVPForm.controls['address'].clearValidators();
-      this.RSVPForm.controls['address'].updateValueAndValidity();
-      console.log("reqyured");
 
-    }
-    else{
-      $('#first').removeClass('hide');
-      $('#second').removeClass('hide');
-      this.need_gift = 1;
-      this.submitted = false;
-      this.loading = false;
-        this.disableAdrress = false;
-        this.RSVPForm.controls['veg_nonnVeg'].setValidators([Validators.required]);
-        this.RSVPForm.controls['attended_members'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
-        this.RSVPForm.controls['name'].setValidators([Validators.required]);
-        this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
-        this.RSVPForm.controls['phone_number'].setValidators([ [Validators.required,Validators.pattern("^[0-9]*$")]]);
-        this.RSVPForm.controls['address'].setValidators([Validators.required])
-      }
-  }
   submitRSVP(e){
     console.log("jhgjhg")
     this.submitted = true;
@@ -228,49 +160,12 @@ export class HomeComponent implements OnInit {
     }
     this.checkphoneNumValidation();
     let formValue =  this.RSVPForm.value
-    if(this.veg.length > 0 && this.nonveg.length > 0){
-      console.log("aaaaa")
-          let formValue =  this.RSVPForm.value;
-      if(formValue.veg_nonnVeg === 'veg'){
-        console.log("bbbbbbb")
-        this.is_veg = 1;
-        formData.append('is_veg',this.is_veg);
-
-    }
-    else{
-      this.is_veg = 0;
-      formData.append('is_veg',this.is_veg);
-
-    }
-  }
-  else if(this.veg.length > 0){
-    console.log("only veg")
-    this.is_veg = 1;
-    formData.append('is_veg',this.is_veg);
-
-  }
-  else if(this.nonveg.length > 0){
-    console.log("only nonveg")
-    this.is_veg = 0;
-    formData.append('is_veg',this.is_veg);
-
-  }
-    // if(formValue.veg_nonnVeg === 'veg'){
-    //   this.is_veg = 1;
-    //   formData.append('is_veg',this.is_veg);
-    // }
-    // else{
-    //   this.is_veg = 0;
-    //   formData.append('is_veg',this.is_veg);
-    // }
     formData.append('is_attending',this.is_attending)
     formData.append('need_food',this.need_food);
-    formData.append('members_count',formValue.attended_members)
     formData.append('phone',formValue.phone_number)
     formData.append('email',formValue.email.toLowerCase())
     formData.append('name',formValue.name)
     formData.append('address',formValue.address)
-    formData.append('need_gift',this.need_gift)
     formData.append('event_id',this.event_id);
     if(formValue.address){
       console.log(formValue.address)

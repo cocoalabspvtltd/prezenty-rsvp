@@ -4,12 +4,18 @@
     background-color: #09094c;
     color: white;
     font-size: 11px;
+    width: 165px;
+    height: 53px;
+
 }
 .btn-exitchat{
   float: right;
     padding: 12px 30px 12px 30px;
     background-color: #d9117d;
     color: white;
+    width: 165px;
+    height: 53px;
+
 }
 .chat-icon{
   width: 25px;
@@ -20,6 +26,14 @@
 }
 .user-name{
   margin-left: 20px;
+}
+.btn-exitchat{
+  float: right;
+    padding: 12px 30px 12px 30px;
+    background-color: #d9117d;
+    color: white;
+    width: 165px;
+    height: 53px;
 }
 @media only screen and (max-width: 768px) {
   .btn-grpchat{

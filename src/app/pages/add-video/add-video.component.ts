@@ -50,10 +50,10 @@ export class AddVideoComponent implements OnInit {
   ) {
     this.showtitle = false;
     this.videowishform = this.fb.group({
-      title: ['', [Validators.required]],
+      title: [''],
     });
     this.videowishUploadform = this.fb.group({
-      videotitle: ['', [Validators.required]],
+      videotitle: [''],
     });
 
     this.uploadVideoForm = this.fb.group({

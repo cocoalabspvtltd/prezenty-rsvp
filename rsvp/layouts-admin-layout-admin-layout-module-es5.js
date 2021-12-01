@@ -788,7 +788,7 @@
         path: 'users',
         component: app_pages_list_users_list_users_component__WEBPACK_IMPORTED_MODULE_12__["ListUsersComponent"]
       }, {
-        path: 'chat/:id',
+        path: 'chat/:id/:buser',
         component: app_pages_chat_box_chat_box_component__WEBPACK_IMPORTED_MODULE_13__["ChatBoxComponent"]
       }, {
         path: 'chat',

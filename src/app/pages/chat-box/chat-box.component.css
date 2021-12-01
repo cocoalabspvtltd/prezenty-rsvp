@@ -413,3 +413,21 @@ input{
     padding: .25% 2.5% 0.25% 1.5%;
   }
 }
+
+.btn-grpchat {
+  float: right;
+  padding: 12px 30px 12px 30px;
+  background-color: #d9117d;
+  color: white;
+  font-size: 11px;
+  padding: 10px;
+  border-radius: 11px;
+  border-color: #d9117d;
+  margin: 10px;
+  width: 89px;
+  height: 53px;
+}
+.chat-icon{
+  width: 25px;
+    height: 25px;
+}

@@ -24,7 +24,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'payment/:id',           component: PaymentAddressComponent },
     { path: 'sent-video',           component: AddVideoComponent },
     { path: 'users',           component: ListUsersComponent },
-    { path: 'chat/:id',           component: ChatBoxComponent },
+    { path: 'chat/:id/:buser',           component: ChatBoxComponent },
     { path: 'chat',           component: ChatBoxComponent },
     { path: 'user',           component: UserComponent },
     { path: 'table',          component: TableComponent },
@@ -36,7 +36,10 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'register',        component: RegisterEmailComponent },
     { path: 'group-chat',        component: GroupChatComponent },
 
-
+    {
+      path: '**',
+      redirectTo: 'dashboard'
+    }
 
 
 ];
