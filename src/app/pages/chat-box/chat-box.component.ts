@@ -123,7 +123,7 @@ sentMessage(){
         }
         else if(res.success == false){
 
-          if(res.message = 'You are blocked by kichu@gmail.com'){
+          if(res.message){
 
             this.showblockedalert = true;
             this.chatForm.reset();

@@ -820,6 +820,9 @@
       }, {
         path: 'group-chat',
         component: app_pages_group_chat_group_chat_component__WEBPACK_IMPORTED_MODULE_15__["GroupChatComponent"]
+      }, {
+        path: '**',
+        redirectTo: 'dashboard'
       }];
       /***/
     },

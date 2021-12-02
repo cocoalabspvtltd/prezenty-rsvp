@@ -6,13 +6,13 @@
 
   </div>
   <div class="col-md-2 col-lg-2 col-sm-6 col-6">
-    <button type="submit" class="btn-grpchat mb-3" routerLink="/group-chat/{{event_id}}">
+    <button type="submit" class="btn-grpchat mb-3" routerLink="/group-chat/{{evntid}}">
       <img src="./assets/img/group-chat.png" class="chat-icon" />
       <span>Group Chat</span>
     </button>
   </div>
   <div class="col-md-2 col-lg-3 col-sm-6 col-6">
-    <button type="submit" class="btn-exitchat mb-3"  routerLink="/edit-events/{{event_id}}">
+    <button type="submit" class="btn-exitchat mb-3"  routerLink="/edit-events/{{evntid}}">
       <img src="./assets/img/exit-chat.png" class="chat-icon" />Exit Chat
     </button>
   </div>
@@ -103,7 +103,7 @@
 
     <div
     class="col-lg-2 col-12 col-md-6"
-    *ngFor="let items of blockedUserList" (click)="goToChat(items.participant.id,this.event_id)"
+    *ngFor="let items of blockedUserList" (click)="goToChat(items.participant.id,this.evntid)"
 
     style="cursor: pointer"
   >

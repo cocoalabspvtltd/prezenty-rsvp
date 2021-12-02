@@ -541,6 +541,10 @@ const AdminLayoutRoutes = [
     { path: 'upgrade', component: _pages_upgrade_upgrade_component__WEBPACK_IMPORTED_MODULE_7__["UpgradeComponent"] },
     { path: 'register', component: app_pages_register_email_register_email_component__WEBPACK_IMPORTED_MODULE_14__["RegisterEmailComponent"] },
     { path: 'group-chat', component: app_pages_group_chat_group_chat_component__WEBPACK_IMPORTED_MODULE_15__["GroupChatComponent"] },
+    {
+        path: '**',
+        redirectTo: 'dashboard'
+    }
 ];
 
 

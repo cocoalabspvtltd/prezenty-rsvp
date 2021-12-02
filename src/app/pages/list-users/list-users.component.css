@@ -61,3 +61,108 @@
   margin-left: 10px;
 }
   }
+/* deleet modal */
+
+.payed-modal {
+  display: block !important;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+.payed-modal.show {
+  visibility: visible;
+  opacity: 1;
+  z-index: 99999;
+}
+.payed-modal .modal-dialog {
+  /* max-width: 40%; */
+}
+@media screen and (max-width: 992px) {
+  .payed-modal .modal-dialog {
+    max-width: 100%;
+  }
+}
+.payed-modal .modal-content {
+  border-radius: 0;
+  max-height: 300px;
+  overflow: auto;
+  border-radius: 20px;
+  background-color: white;
+}
+.payed-modal .modal-body {
+  /* padding: 30px 30px; */
+}
+.payd-msg {
+  display: block;
+}
+.payd-msg p {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  text-transform: capitalize;
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  margin: 0px 0px 20px 0px;
+}
+.f-btn-border,
+.f-btn-border-red {
+  width: 86%;
+  padding: 8px 0px;
+  border: none;
+  border: solid 2px #fff;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  /* float: right; */
+  text-transform: capitalize;
+  border-radius: 10px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0px 0px 10px 5px;
+}
+.f-btn-border,
+.f-btn-border-No {
+  width: 86%;
+  padding: 8px 0px;
+  border: none;
+  border: solid 2px #fff;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  /* float: right; */
+  text-transform: capitalize;
+  border-radius: 10px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0px 0px 10px 5px;
+}
+.f-btn-border-No {
+  background-color: white;
+  border: solid 2px #d9117d;
+  color: #d9117d;
+}
+
+.f-btn-border-red {
+  background-color: #d9117d;
+  border: solid 2px #d9117d;
+}
+.input-group-text {
+  border-radius: 0;
+  border: none;
+}
+.info-icon{
+  top: 8%;
+    position: absolute;
+    right: 10%;
+    width: 17px;
+}

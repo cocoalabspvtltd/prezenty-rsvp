@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'app/shared/api.service';
+declare var $:any;
 
 @Component({
   selector: 'app-list-users',
@@ -24,6 +25,12 @@ export class ListUsersComponent implements OnInit {
   hostEmail:any;
   hostName: any;
   blockeduserlength: any;
+  userDetailList: any;
+  uemail: any;
+  uname: any;
+  uphone: any;
+  uaddress:any;
+  userEmail: any;
   constructor(private fb: FormBuilder,private route:ActivatedRoute,private apiService:ApiService,private router:Router) {
     this.evntid = localStorage.getItem('eventId');
     this.participant_id = localStorage.getItem('pid');
@@ -78,19 +85,22 @@ handleBlockedUsers(){
   })
 }
 goToChat(uid, eid){
-  this.router.navigate(['chat',uid, eid, 'true']);
+  console.log(uid)
+  console.log(eid)
+
+  this.router.navigate(['/chat',uid, 'true']);
 
 }
 hostData(){
   localStorage.setItem('hostEmail',this.hostEmail);
   localStorage.setItem('hostName',this.hostName);
-  this.router.navigate(['chat']);
+  this.router.navigate(['/chat']);
 
 }
 hostDataRemove(uid,is_blocked){
   localStorage.removeItem('hostEmail');
   localStorage.removeItem('hostName');
-  this.router.navigate(['chat',uid, is_blocked]);
+  this.router.navigate(['/chat',uid, is_blocked]);
 
 }
 get emailfrm() {
@@ -129,5 +139,23 @@ registerEmail(){
       }
       })
   }
+}
+openUserInfoModal(uid){
+  $('#userinfoModal').modal('show');
+  $('body').css('padding-right','0');
+  this.apiService.getParticipantDetail(uid).subscribe(
+    (res: any) => {
+        this.userDetailList = res['detail'];
+        this.uemail =  this.userDetailList.email;
+        this.uname =  this.userDetailList.name;
+        this.uphone =  this.userDetailList.phone;
+        this.uaddress = this.userDetailList.address;
+      })
+
+}
+
+closeuserModal(){
+  $('#userinfoModal').modal('hide');
+
 }
 }

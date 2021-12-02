@@ -34,10 +34,13 @@ export class SidebarComponent implements OnInit {
   participant_email: any;
     constructor(private apiService:ApiService,private router:Router) {
       this.pid = localStorage.getItem('pid');
+      this.eventDetailsList();
 
     }
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
+        var current_date = new Date();
+
 
 
     }
@@ -65,6 +68,22 @@ export class SidebarComponent implements OnInit {
       this.eventDetailsList();
     }
 
+    joinlivestream(){
+      // const md5 = new Md5();
+      // if(this.sharelive === true){
+      //   window.open('https://meet.jit.si/Prezenty/' +  md5.appendStr(this.event_id).end(), '_blank').focus();
+      //   // this.liveLink = 'https://meet.jit.si/Prezenty/' +  md5.appendStr(this.event_id).end() ;
+      //   // $('#sharelinkLiveLink').modal('show');
+      // }
+      // else{
+      //   $('#live-warning-modal').modal('show');
+      //   $('body').css('padding-right','0');
 
+      //   setTimeout(() => {
+      //     $('#live-warning-modal').modal('hide');
+
+      //   }, 2000);
+      // }
+    }
 
 }
