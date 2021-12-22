@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit{
 
     public isCollapsed = true;
     @ViewChild("navbar-cmp", {static: false}) button;
+  routerUrl: boolean = false;
+
 
     constructor(location:Location, private renderer : Renderer2, private element : ElementRef, private router: Router) {
         this.location = location;
@@ -26,6 +28,10 @@ export class NavbarComponent implements OnInit{
     }
 
     ngOnInit(){
+      this.router.events.subscribe((val: any) =>{
+        this.routerUrl = val?.url!='/dashboard'? true: false;
+      });
+     console.log(this.router.url)
       $(document).scroll(function () {
         var win_height = $(window).height();
         var doc_height = $(document).height();
@@ -105,6 +111,7 @@ export class NavbarComponent implements OnInit{
 
       }
       goTohome(){
-        this.router.navigateByUrl('/dashboard')
+        this.router.navigateByUrl('/dashboard');
+        this.ngOnInit();
       }
 }

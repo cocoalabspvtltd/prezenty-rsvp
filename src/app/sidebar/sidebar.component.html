@@ -34,7 +34,7 @@
             <img src="./assets/img/send_gift.png" class="menu-img">
           </div>
           <div class="col-md-9 col-9">
-            <b>Send Gift or Vouchers</b>
+            <b>Send Gift & Vouchers</b>
           </div>
         </div>
         <div class="row nav-padding" routerLink="/sent-video" style="cursor: pointer;" [routerLinkActive]="['active']">
@@ -56,7 +56,7 @@
 
         <div class="row  nav-padding" style="cursor: pointer;" (click)="joinlivestream()">
           <div class="col-md-3 col-3">
-            <img src="./assets/img/join-chat-02.png" class="menu-img">
+            <img src="./assets/img/go-live.png" class="menu-img">
           </div>
           <div class="col-md-9 col-7">
             <b>Join Live Stream</b>
@@ -64,3 +64,147 @@
         </div>
     </ul>
 </div>
+<!-- update password warning for google login -->
+
+<div
+  class="modal fade payed-modal"
+  id="live-warning-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered"
+    role="document"
+    style="max-width: 25% !important"
+  >
+    <div class="modal-content">
+      <div class="modal-body" style="background-color: white">
+        <div class="col-lg-12 col-lg-12">
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+              <div class="payd-msg">
+                <p class="mt-4" style="color: black; text-align: center">
+                  Please check the day and time for live stream
+                </p>
+                <div class="row">
+                  <div class="col-md-6 col-lg-6 col-12"></div>
+                  <div
+                    class="col-md-6 col-lg-6 col-12"
+                    style="display: flex"
+                  ></div>
+                  <div class="col-md-2 col-12"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+
+  /* deleet modal */
+
+.payed-modal {
+  display: block !important;
+  visibility: hidden;
+  opacity: 0;
+  z-index: -1;
+}
+.payed-modal.show {
+  visibility: visible;
+  opacity: 1;
+  z-index: 99999;
+}
+.payed-modal .modal-dialog {
+  /* max-width: 40%; */
+}
+@media screen and (max-width: 992px) {
+  .payed-modal .modal-dialog {
+    max-width: 100%;
+  }
+}
+.payed-modal .modal-content {
+  border-radius: 0;
+  max-height: 300px;
+  overflow: auto;
+  border-radius: 20px;
+  background-color: white;
+}
+.payed-modal .modal-body {
+  /* padding: 30px 30px; */
+}
+.payd-msg {
+  display: block;
+}
+.payd-msg p {
+  display: block;
+  font-family: "Montserrat", sans-serif;
+  text-transform: capitalize;
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  margin: 0px 0px 20px 0px;
+}
+.f-btn-border,
+.f-btn-border-red {
+  width: 86%;
+  padding: 8px 0px;
+  border: none;
+  border: solid 2px #fff;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  /* float: right; */
+  text-transform: capitalize;
+  border-radius: 10px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0px 0px 10px 5px;
+}
+.f-btn-border,
+.f-btn-border-No {
+  width: 86%;
+  padding: 8px 0px;
+  border: none;
+  border: solid 2px #fff;
+  background-color: transparent;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  /* float: right; */
+  text-transform: capitalize;
+  border-radius: 10px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  margin: 0px 0px 10px 5px;
+}
+.f-btn-border-No {
+  background-color: white;
+  border: solid 2px #d9117d;
+  color: #d9117d;
+}
+
+.f-btn-border-red {
+  background-color: #d9117d;
+  border: solid 2px #d9117d;
+}
+.input-group-text {
+  border-radius: 0;
+  border: none;
+}
+
+</style>

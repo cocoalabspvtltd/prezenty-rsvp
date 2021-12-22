@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'app/shared/api.service';
 import { ToastrService } from 'ngx-toastr';
+import {DatePipe} from '@angular/common';
 declare var $:any;
 declare var gapi:any;
 @Component({
@@ -37,19 +38,20 @@ export class HomeComponent implements OnInit {
   is_vegNonveg: boolean;
   veg: any;
   nonveg: any;
-  constructor(private fb: FormBuilder,private route:ActivatedRoute,private apiService:ApiService,private router:Router,private toastr: ToastrService) {
+  physically_attend: boolean;
+  eventDate: any;
+  currentDtae: string;
+  eventStatus: boolean;
+  constructor(private fb: FormBuilder,private datePipe: DatePipe,private route:ActivatedRoute,private apiService:ApiService,private router:Router,private toastr: ToastrService) {
     this.applicableStatus = false;
     this.sessionidList = [];
     this.RSVPForm = this.fb.group({
       physically_attend: ['',[Validators.required]],
       receive_foods:[''],
-      veg_nonnVeg:[''],
-      attended_members:[''],
       phone_number: ['',[Validators.required]],
       email: ['',[Validators.required]],
       name:['',[Validators.required]],
       address:['',[Validators.required]],
-      not_applicable:['']
     })
   }
   ngOnInit(): void {
@@ -87,6 +89,8 @@ export class HomeComponent implements OnInit {
     this.foodCat = false;
   }
   eventDetails(){
+    var date = new Date();
+    this.currentDtae = this.datePipe.transform(date,"yyyy-MM-dd"); //output : 2018-02-13
     this.apiService.getEventDetail(this.event_id).subscribe((res:any)=>{
       if (res) {
         console.log(res.menuOrGifts)
@@ -95,6 +99,19 @@ export class HomeComponent implements OnInit {
       this.image_url = res['detail'].image_url;
       this.title =res['detail'].title;
       this.menuOrGifts = res.menuOrGifts;
+      this.eventDate = res['detail'].date;
+      console.log(this.currentDtae)
+      console.log(this.eventDate)
+
+      if(this.eventDate >= this.currentDtae){
+        this.eventStatus = true;
+        console.log("ongoing")
+      }
+      else{
+        this.eventStatus = false;
+
+        console.log("finished")
+      }
        } else {
       }
     }, error => {
@@ -117,8 +134,17 @@ export class HomeComponent implements OnInit {
     this.submitted = false;
     this.loading = false;
      this.receiveFood = false;
+     this.physically_attend = true;
      this.RSVPForm.controls['receive_foods'].clearValidators();
      this.RSVPForm.controls['receive_foods'].updateValueAndValidity();
+     this.RSVPForm.controls['name'].clearValidators();
+     this.RSVPForm.controls['name'].updateValueAndValidity();
+     this.RSVPForm.controls['email'].clearValidators();
+     this.RSVPForm.controls['email'].updateValueAndValidity();
+     this.RSVPForm.controls['phone_number'].clearValidators();
+     this.RSVPForm.controls['phone_number'].updateValueAndValidity();
+     this.RSVPForm.controls['address'].clearValidators();
+     this.RSVPForm.controls['address'].updateValueAndValidity();
      this.RSVPForm.value.receive_foods = '';
      this.is_attending = 1;
    }

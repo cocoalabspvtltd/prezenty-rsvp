@@ -5,19 +5,9 @@
 
 
   </div>
-  <div class="col-md-2 col-lg-2 col-sm-6 col-6">
-    <button type="submit" class="btn-grpchat mb-3" routerLink="/group-chat/{{evntid}}">
-      <img src="./assets/img/group-chat.png" class="chat-icon" />
-      <span>Group Chat</span>
-    </button>
-  </div>
-  <div class="col-md-2 col-lg-3 col-sm-6 col-6">
-    <button type="submit" class="btn-exitchat mb-3"  routerLink="/edit-events/{{evntid}}">
-      <img src="./assets/img/exit-chat.png" class="chat-icon" />Exit Chat
-    </button>
-  </div>
+
 </div>
-<div class="row">
+<div class="row" style="padding: 0px 10px 0px 34px;">
 
   <div class="col-md-2 col-lg-2 col-sm-6 col-6">
     <button type="submit" class="btn-exitchat mb-3" (click)="showUserList()">
@@ -27,6 +17,20 @@
   <div class="col-md-2 col-lg-2 col-sm-6 col-6">
     <button type="submit" class="btn-exitchat mb-3" (click)="showBlockList()">
      Blocked Users
+    </button>
+  </div>
+  <div class="col-md-2 col-lg-3 col-sm-6 col-6" *ngIf="web">
+    </div>
+
+  <div class="col-md-2 col-lg-2 col-sm-6 col-6">
+    <button type="submit" class="btn-grpchat mb-3" routerLink="/group-chat/{{evntid}}">
+      <img src="./assets/img/group-chat.png" class="chat-icon" />
+      <span>Group Chat</span>
+    </button>
+  </div>
+  <div class="col-md-2 col-lg-2 col-sm-6 col-6">
+    <button type="submit" class="btn-exitchat mb-3"  routerLink="/edit-events/{{evntid}}">
+      <img src="./assets/img/exit-chat.png" class="chat-icon" />Exit Chat
     </button>
   </div>
   </div>

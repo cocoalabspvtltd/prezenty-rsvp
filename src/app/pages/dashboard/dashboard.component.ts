@@ -1,9 +1,11 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'app/shared/api.service';
+
+import * as moment from 'moment';
+import {Md5} from 'ts-md5/dist/md5';
 declare var $:any;
 declare var gapi:any;
-
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
@@ -16,7 +18,16 @@ export class DashboardComponent implements OnInit{
   image_url: any;
   evntid: string;
   evntDetail: any;
-
+  timestmp: number;
+  liveLink: string;
+  minutes: any;
+  currentTime: any;
+  join: boolean;
+  sharelive: boolean;
+  eventId: string;
+  date: Date;
+  time: any;
+  eventDay: string;
   constructor(private apiService:ApiService,private router:Router) {
     this.evntid = localStorage.getItem('eventId');
    }
@@ -36,9 +47,48 @@ export class DashboardComponent implements OnInit{
       this.evntDetail = res['detail'];
       this.imageFilesLocation = res.imageFilesLocation;
       this.image_url = res['detail'].image_url;
-       } else {
-      }
-    }, error => {
+      this.date = new Date(this.evntDetail.date);
+      let longMonth = this.date.toLocaleString('en-us', { month: 'short' }); /* June */
+     let year = this.evntDetail.date.slice(0,4);
+     let day = this.evntDetail.date.slice(8,10);
+      this.time = this.evntDetail.time;
+      this.eventDay = day + '-' + longMonth + '-' + year;
+      const eventday = new Date(this.eventDay).toLocaleString('en-us', {weekday:'long'})
+     var currenDay = new Date().toLocaleString('en-us', {  weekday: 'long' })
+     var today = new Date();
+     let hours = new Date(today).getHours();
+      this.minutes = new Date(today).getMinutes();
+     var ampm = hours >= 12 ? 'PM' : 'AM';
+     hours = hours % 12;
+     hours = hours ? hours : 12; // the hour '0' should be '12'
+     this.minutes = this.minutes < 10 ? '0' + this.minutes : this.minutes;
+     var strTime = hours + ':' + this.minutes + ' ' + ampm;
+     var format = 'hh:mm:ss';
+     this.currentTime =  moment(strTime, 'hh:mm A').format('HH:mm');
+     console.log(eventday)
+     console.log(currenDay)
+     console.log(this.currentTime)
+     console.log(this.time)
+     var specific_date = new Date(this.eventDay);
+     var current_date = new Date();
+     if(current_date.getDate() == specific_date.getDate())
+     {
+         console.log('current_date date is grater than specific_date')
+         if(eventday ==  currenDay){
+           this.sharelive = true;
+         }
+         else{
+           this.sharelive = false;
+
+          }
+     }
+     else
+     {
+      this.sharelive = false;
+         console.log('current_date date is lower than specific_date')
+     }
+     }
+
     })
   }
 
@@ -101,4 +151,23 @@ this.authenticate();
 }
 
 // function to add events to google calender end
+
+joinlivestream(){
+
+
+  const md5 = new Md5();
+  console.log(this.sharelive)
+  if(this.sharelive === true){
+    window.open('https://meet.jit.si/' +  md5.appendStr('event:'+this.eventId).end(), '_blank').focus();
+  }
+  else{
+    $('#live-warning-modal1').modal('show');
+    $('body').css('padding-right','0');
+
+    setTimeout(() => {
+      $('#live-warning-modal1').modal('hide');
+
+    }, 2000);
+  }
+}
 }

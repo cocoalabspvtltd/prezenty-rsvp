@@ -203,9 +203,7 @@ export class PaymentAddressComponent implements OnInit {
             order_id: "",
             customer_id: "",
             description: "App Payment",
-            image:
-              "https://livestatic.novopay.in/resources/img/nodeapp/img/Logo_NP.jpg",
-            prefill: {
+                  prefill: {
               name: "",
               email: "",
               contact: "",
@@ -218,9 +216,7 @@ export class PaymentAddressComponent implements OnInit {
               pid: this.pid,
             },
             modal: {},
-            theme: {
-              color: "#0096C5",
-            },
+
           };
           this.RAZORPAY_OPTIONS.amount = this.amount;
           this.RAZORPAY_OPTIONS.key = this.key;

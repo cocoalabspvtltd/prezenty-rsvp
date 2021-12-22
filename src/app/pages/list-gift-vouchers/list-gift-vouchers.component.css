@@ -68,7 +68,7 @@ font-size: 35px;
 }
 .btn-send{
   float: right;
-    padding: 7px 30px 7px 30px;
+  padding: 4px 20px 4px 20px;
     background-color: #09094c;
     color: white;
     border-radius: 8px;
@@ -78,9 +78,69 @@ font-size: 35px;
   width: 100px;
   height: 100px;
 }
+.box-space{
+  padding: 0px 0px 0px 36px;
+}
+.card-desk{
+  box-shadow: 0px 0px 6px 0px rgb(110 123 131);
+}
+.box-sze{
+  /* background-color: #4e4e9d; */
+  max-height: 113px;
+  min-height: 113px;
+  border-radius: 14px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.img-size{
+  padding: 29px 12px 0px 85px;  }
+.img-width{
+  width: 52%;
+  min-height: 57px;
+    max-height: 57px;
+}
+.p-text{
+  text-align: center;
+    font-size: 10px;
+}
+.title-size{
+  color: black;
+  font-size: 6px;
+}
+
+.title{
+  font-size: 11px;
+    position: absolute;
+    left: 122px;
+    top: 5px;
+    background: lightgray;
+    border-radius: 9px;
+}
 @media only screen and (max-width: 992px) {
   .gift-img{
     width: 100px;
     height: 58px;
   }
+  .box-space{
+    /* padding: 0px 10px 0px 8px; */
+    padding: 0px 27px 0px 30px;
+  }
+
+  .img-size {
+    padding: 31px 0px 0px 85px;
+}
+.img-width{
+  width: 62%;
+}
+.title {
+  font-size: 10px;
+  position: absolute;
+  left: 231px;
+  top: 6px;
+}
+.title-size{
+  color: black;
+  font-size: 10px;
+}
 }

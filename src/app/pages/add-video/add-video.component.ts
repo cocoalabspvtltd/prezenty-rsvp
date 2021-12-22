@@ -37,17 +37,22 @@ export class AddVideoComponent implements OnInit {
   uploadfileType: boolean;
   fileType: string;
   videowishUploadform: any;
-  showuploadVideo: boolean;
+  showuploadVideo: boolean = false;
   mob: boolean;
   web: boolean;
   fileName: any;
   pid: any;
+  url: string | ArrayBuffer;
+  broseVideo: boolean;
+  loadingvideo: boolean;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private apiService: ApiService
   ) {
+    this.uploadfileType = false;
+    this.broseVideo = false;
     this.showtitle = false;
     this.videowishform = this.fb.group({
       title: [''],
@@ -63,11 +68,12 @@ export class AddVideoComponent implements OnInit {
 
   ngOnInit() {
     $('html, body').animate({ scrollTop: 0 }, 'fast');
-    this.startCamera();
+    // this.startCamera();
     this.checkMobileorDesktop();
   }
   checkMobileorDesktop() {
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    console.log(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
     var element = document.getElementById('text');
     if (isMobile) {
       this.mob = true;
@@ -167,9 +173,10 @@ export class AddVideoComponent implements OnInit {
     document.getElementById('gum').style.display = 'block';
     document.getElementById('recorded').style.display = 'none';
     setTimeout(() => {
-      this.stopCam();
+      // this.stopCam();
       this.showtitle = true;
     }, 1000);
+    this.showuploadVideo = true
   }
   handleSuccess(stream) {
     // document.querySelector('button#record').disabled = false;
@@ -208,13 +215,21 @@ export class AddVideoComponent implements OnInit {
         height: 720,
       },
     };
+    console.log(constraints)
     await this.init(constraints);
   }
   async stopCam() {
-    document.getElementById('gum').style.display = 'none';
+    // document.getElementById('gum').style.display = 'none';
     this.stream.getTracks().forEach((element) => {
       element.stop();
-      document.getElementById('recorded').style.display = 'block';
+      if(this.broseVideo == true){
+        document.getElementById('recorded').style.display = 'none';
+
+      }
+      else{
+        document.getElementById('recorded').style.display = 'block';
+
+      }
       setTimeout(() => {
         this.playVideo();
       }, 1000);
@@ -223,6 +238,7 @@ export class AddVideoComponent implements OnInit {
 
   uploadVideo(event: any) {
     this.selectedVideo = event.target.files[0];
+    this.loadingvideo = true;
     this.fileList.push(this.selectedVideo);
     var reader = new FileReader();
     reader.readAsDataURL(this.selectedVideo);
@@ -233,11 +249,20 @@ export class AddVideoComponent implements OnInit {
       this.attachment.nativeElement.value = '';
       if (this.selectedVideo.type != 'video/mp4') {
         this.uploadfileType = false;
+        this.broseVideo = false;
+
       } else {
+        this.url = (<FileReader>event.target).result;
+        console.log(this.url)
         this.fileType = 'video';
         this.uploadfileType = true;
         this.showtitle = true;
         this.showuploadVideo = true;
+        this.loadingvideo = false;
+
+
+        this.broseVideo = true;
+        // this.stopCam();
         this.fileName = this.selectedVideo.name;
       }
     };
@@ -301,10 +326,9 @@ export class AddVideoComponent implements OnInit {
           this.loading = false;
           this.submitted = false;
           this.clicked = false;
-          this.stopCam();
+          // this.stopCam();
           // this.mediaRecorder.stop();
           $('#successModal').modal('show');
-          this.router.navigateByUrl('/dashboard');
 
         },
         (error) => {}

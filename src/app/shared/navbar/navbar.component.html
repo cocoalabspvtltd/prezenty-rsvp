@@ -8,7 +8,8 @@
           <span class="navbar-toggler-bar bar2"></span>
           <span class="navbar-toggler-bar bar3"></span>
         </button> -->
-        <img src="./assets/img/left-arrow.png" class="back-arrow mt-3"  (click)="goTohome()">
+
+        <img src="./assets/img/left-arrow.png" class="back-arrow mt-3" *ngIf="routerUrl"  (click)="goTohome()">
 
       </div>
       <a class="navbar-brand" href="javascript:void(0)">{{getTitle()}}</a>

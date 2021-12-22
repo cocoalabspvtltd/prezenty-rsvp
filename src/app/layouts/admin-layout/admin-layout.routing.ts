@@ -34,7 +34,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'notifications',  component: NotificationsComponent },
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'register',        component: RegisterEmailComponent },
-    { path: 'group-chat',        component: GroupChatComponent },
+    { path: 'group-chat/:id',        component: GroupChatComponent },
 
     {
       path: '**',

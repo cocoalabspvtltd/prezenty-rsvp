@@ -40,7 +40,7 @@ export class ListGiftVouchersComponent implements OnInit {
   ngOnInit() {
     $(".modal-backdrop").removeClass('modal-backdrop');
     this.listGiftItems();
-    this.mediaRecorder.stop();
+    // this.mediaRecorder.stop();
 
   }
   get paymntfrm() {
@@ -61,5 +61,9 @@ export class ListGiftVouchersComponent implements OnInit {
 }
 detailPage(){
   this.router.navigateByUrl('/voucher-details')
+}
+
+terms(id){
+  window.open('https://prezenty.in/terms_and_conditions_gift/' + id)
 }
 }

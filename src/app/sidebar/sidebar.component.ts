@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'app/shared/api.service';
-
+import * as moment from 'moment';
+import {Md5} from 'ts-md5/dist/md5';
+declare var $:any;
 
 export interface RouteInfo {
     path: string;
@@ -32,6 +34,17 @@ export class SidebarComponent implements OnInit {
     public menuItems: any[];
   pid: string;
   participant_email: any;
+  timestmp: number;
+  liveLink: string;
+  minutes: any;
+  currentTime: any;
+  join: boolean;
+  sharelive: boolean;
+  eventId: string;
+  eventDetails: any;
+  date: Date;
+  time: any;
+  eventDay: string;
     constructor(private apiService:ApiService,private router:Router) {
       this.pid = localStorage.getItem('pid');
       this.eventDetailsList();
@@ -39,10 +52,60 @@ export class SidebarComponent implements OnInit {
     }
     ngOnInit() {
         this.menuItems = ROUTES.filter(menuItem => menuItem);
-        var current_date = new Date();
+this.handleEventDetail();
 
+    }
 
+    handleEventDetail(){
+      this.eventId = localStorage.getItem('eventId');
+      this.apiService.getEventDetail(this.eventId).subscribe((res:any)=>{
+        console.log(res)
+        if (res) {
+          this.eventDetails = res.detail;
 
+          this.date = new Date(this.eventDetails.date);
+          let longMonth = this.date.toLocaleString('en-us', { month: 'short' }); /* June */
+         let year = this.eventDetails.date.slice(0,4);
+         let day = this.eventDetails.date.slice(8,10);
+          this.time = this.eventDetails.time;
+          this.eventDay = day + '-' + longMonth + '-' + year;
+          const eventday = new Date(this.eventDay).toLocaleString('en-us', {weekday:'long'})
+         var currenDay = new Date().toLocaleString('en-us', {  weekday: 'long' })
+         var today = new Date();
+         let hours = new Date(today).getHours();
+          this.minutes = new Date(today).getMinutes();
+         var ampm = hours >= 12 ? 'PM' : 'AM';
+         hours = hours % 12;
+         hours = hours ? hours : 12; // the hour '0' should be '12'
+         this.minutes = this.minutes < 10 ? '0' + this.minutes : this.minutes;
+         var strTime = hours + ':' + this.minutes + ' ' + ampm;
+         var format = 'hh:mm:ss';
+         this.currentTime =  moment(strTime, 'hh:mm A').format('HH:mm');
+         console.log(eventday)
+         console.log(currenDay)
+         console.log(this.currentTime)
+         console.log(this.time)
+         var specific_date = new Date(this.eventDay);
+         var current_date = new Date();
+         if(current_date.getDate() == specific_date.getDate())
+         {
+             console.log('current_date date is grater than specific_date')
+             if(eventday ===  currenDay){
+               this.sharelive = true;
+             }
+             else{
+               this.sharelive = false;
+
+              }
+         }
+         else
+         {
+             console.log('current_date date is lower than specific_date')
+         }
+         }
+
+      }
+      )
     }
     eventDetailsList(){
       this.apiService.getEventdetailsList(this.pid).subscribe((res:any)=>{
@@ -52,13 +115,13 @@ export class SidebarComponent implements OnInit {
         console.log(this.participant_email)
         if(this.participant_email){
           console.log(this.participant_email)
-          this.router.navigateByUrl('/users')
+          this.router.navigateByUrl('/dashboard')
         }
-        else{
-          console.log(this.participant_email)
-         this.router.navigateByUrl('/register')
+        // else{
+        //   console.log(this.participant_email)
+        //  this.router.navigateByUrl('/register')
 
-        }
+        // }
          } else {
         }
       }, error => {
@@ -69,21 +132,25 @@ export class SidebarComponent implements OnInit {
     }
 
     joinlivestream(){
-      // const md5 = new Md5();
-      // if(this.sharelive === true){
-      //   window.open('https://meet.jit.si/Prezenty/' +  md5.appendStr(this.event_id).end(), '_blank').focus();
-      //   // this.liveLink = 'https://meet.jit.si/Prezenty/' +  md5.appendStr(this.event_id).end() ;
-      //   // $('#sharelinkLiveLink').modal('show');
-      // }
-      // else{
-      //   $('#live-warning-modal').modal('show');
-      //   $('body').css('padding-right','0');
 
-      //   setTimeout(() => {
-      //     $('#live-warning-modal').modal('hide');
 
-      //   }, 2000);
-      // }
+      const md5 = new Md5();
+      // const link =  window.open('https://meet.jit.si/' +  md5.appendStr('event:'+this.eventId).end(), '_blank').focus();
+      console.log(this.liveLink)
+      if(this.sharelive === true){
+        window.open('https://meet.jit.si/' +  md5.appendStr('event:'+this.eventId).end(), '_blank').focus();
+        // this.liveLink = 'https://meet.jit.si/Prezenty/' +  md5.appendStr(this.event_id).end() ;
+        // $('#sharelinkLiveLink').modal('show');
+      }
+      else{
+        $('#live-warning-modal').modal('show');
+        $('body').css('padding-right','0');
+
+        setTimeout(() => {
+          $('#live-warning-modal').modal('hide');
+
+        }, 2000);
+      }
     }
 
 }

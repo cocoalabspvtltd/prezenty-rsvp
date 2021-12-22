@@ -13,11 +13,11 @@
 </header>
   <div class="row" style="margin: 0 auto;">
     <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
-      <div class="row d-icons">
+      <div class="row d-icons" *ngIf="eventStatus == true">
         <div class="col-lg-96 col-md-6 col-12 col-sm-12c mx-auto ">
           <button  type="button" class="btn btn-sm btn-active"
            style="background-color: #0a0aab !important;color: #fff !important;border-radius: 10px;max-height: 53px;" (click)="joinThisEvent()">
-           <span style="font-size: 12px;">Join this Event (RSVP)</span>   <i class="fa fa-angle-right  fa-2x" style="float:right" aria-hidden="true"></i></button>
+           <span style="font-size: 12px;" >Join this Event (RSVP)</span>   <i class="fa fa-angle-right  fa-2x" style="float:right" aria-hidden="true"></i></button>
         </div>
         <!-- <div class="col-lg-6 col-md-6 col-12 col-sm-12">
           <button _ngcontent-prj-c157="" type="button" class="btn btn-sm btn-active" (click)="saveToCalender()" style="background-color: #fff !important;color: #0a0aab !important;"  >
@@ -110,10 +110,10 @@
                                 <!-- </div> -->
                               </div>
                             </div>
-                                    <hr style="color: white;border-color: white;" *ngIf="receiveFood === true">
+                                    <hr style="color: white;border-color: white;" *ngIf="receiveFood === true || physically_attend === true">
 
 
-                                      <div class="row" *ngIf="receiveFood === true" >
+                                      <div class="row" *ngIf="receiveFood === true || physically_attend === true" >
                                         <div class="col-md-6 col-lg-6"  >
                                           <h4 style="padding: 8px 0px 0px 0px;">Name</h4>
                                           <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Name" formControlName="name"   [ngClass]="{ 'is-invalid': submitted && rsvpfrm.name.errors }" >
@@ -133,7 +133,7 @@
                                         </div>
 
                                       </div>
-                                      <div class="row"  *ngIf="receiveFood === true" >
+                                      <div class="row"  *ngIf="receiveFood === true || physically_attend === true" >
                                         <div class="col-md-6 col-lg-6" >
                                           <h4 style="padding: 8px 0px 0px 0px;">Phone Number</h4>
                                           <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Phone Number" formControlName="phone_number"  maxlength="16" minlength="8" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.phone_number.errors }">

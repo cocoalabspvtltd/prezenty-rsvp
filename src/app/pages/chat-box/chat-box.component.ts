@@ -42,6 +42,7 @@ export class ChatBoxComponent implements OnInit {
       this.id=urlParams['id'];
       this.blocked_user=urlParams['buser'];
     });
+    console.log(this.blocked_user)
     this.participantEmail = localStorage.getItem('participantEmail');
     this.hostName = localStorage.getItem('hostName');
     this.participant_id = localStorage.getItem('pid');
@@ -49,7 +50,7 @@ export class ChatBoxComponent implements OnInit {
     this.chatMessages = [];
      this.handleParticipantDetail();
      setInterval(() =>{
-      // this.getChatMessage();
+      this.getChatMessage();
     },4000)
 
 
@@ -65,6 +66,8 @@ handleParticipantDetail(){
     }
       else if(this.id == null){
         this.receiver_email = localStorage.getItem('hostEmail');
+        this.blocked_user = 'false';
+
       }
      this.getChatMessage();
      } else {

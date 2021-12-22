@@ -201,7 +201,7 @@
       /* harmony default export */
 
 
-      __webpack_exports__["default"] = "\n\n\n<div class=\"col-md-12\">\n  <div class=\"col-md-8 col-lg-8 col-8 col-sm-8 align-self-center mx-auto\">\n    <!-- <div class=\"row d-icons\">\n      <div class=\"col-lg-8 col-md-8 col-12 col-sm-12\" style=\"margin: 0 auto;\">\n        <button _ngcontent-prj-c157=\"\" type=\"button\" class=\"btn btn-sm btn-active\" (click)=\"saveToCalender()\" style=\"background-color: #fff !important;color: #0a0aab !important;\"  >\n          <i _ngcontent-prj-c157=\"\" aria-hidden=\"true\" class=\"fa fa-calendar clndr-icon\"></i>Save to calender</button>\n      </div>\n      </div> -->\n    </div>\n  </div>\n  <div class=\"col-md-12 col-12 col-sm-12\" style=\"padding: 20px 0px 0px 0px;\">\n    <div class=\"col-md-8 col-lg-8 col-8 col-sm-8 align-self-center mx-auto\">\n      <div class=\"row d-icons\">\n        <div class=\"col-lg-12 col-md-12 col-12 col-sm-12\">\n          <img src=\"{{imageFilesLocation}}{{image_url}}\" alt=\"\" class=\"tmp-image\" style=\"width: 90%; height: 85vh;\">\n          <!-- <img src=\"../../../assets/img/R.jpg\" alt=\"Flowers in Chania\" class=\"tmp-image\" style=\"width: 90%; height: 85vh;\"> -->\n\n        </div>\n          </div>\n          </div>\n           </div>\n           <div class=\"row mob-views \" style=\"margin: 0 auto;cursor: pointer;\" routerLink=\"/list-gift-vouchers\">\n            <div class=\"col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center \" >\n              <div class=\"row d-icons mob-views\">\n                <div class=\"col-lg-6 col-md-6 col-12 col-sm-12c mx-auto \">\n                  <button  type=\"button\" class=\"btn btn-sm btn-active menu-btn\" >\n                  <span style=\"font-size: 12px;color:#d9117d ;\">\n                               <img src=\"./assets/img/send_gift.png\" class=\"menu-img\">\n                    Send Gift Vouchers</span>\n                     <i class=\"fa fa-angle-right  fa-2x\" style=\"float: right;color: #d9117d;\" aria-hidden=\"true\"></i></button>\n                </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"row mob-views\" style=\"margin: 0 auto;cursor: pointer;\" routerLink=\"/sent-video\">\n              <div class=\"col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center \" >\n                <div class=\"row d-icons\">\n                  <div class=\"col-lg-6 col-md-6 col-12 col-sm-12c mx-auto \">\n                    <button  type=\"button\" class=\"btn btn-sm btn-active menu-btn\">\n                     <span style=\"font-size: 12px;color: #d9117d;\">\n                                 <img src=\"./assets/img/send-video-02.png\" class=\"menu-img\">\n                      Send Video Wishes </span>\n                        <i class=\"fa fa-angle-right  fa-2x\" style=\"float: right;color: #d9117d;\"  aria-hidden=\"true\"></i></button>\n                  </div>\n                  </div>\n                </div>\n              </div>\n              <div class=\"row mob-views\" style=\"margin: 0 auto;cursor: pointer;\" routerLink=\"/users\" >\n                <div class=\"col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center \" >\n                  <div class=\"row d-icons\">\n                    <div class=\"col-lg-6 col-md-6 col-12 col-sm-12c mx-auto \">\n                      <button  type=\"button\" class=\"btn btn-sm btn-active menu-btn\">\n                      <span style=\"font-size: 12px; color: #d9117d;\">\n                            <img src=\"./assets/img/join-chat-02.png\" class=\"menu-img mr-4\"></span>\n                       <span class=\"mr-5\" style=\"color: #d9117d;\"> Join Chat</span>\n                          <i class=\"fa fa-angle-right  fa-2x\" style=\"float: right;color: #d9117d;\" aria-hidden=\"true\"></i></button>\n                    </div>\n                    </div>\n                  </div>\n                </div>\n\n\n\n                <style>\n                 .btn:hover{\n                    background-color: white !important;\n                  }\n                  @media screen and (max-width: 991px) {\n  .mob-views{\n    display: block;\n  }\n}\n                </style>\n";
+      __webpack_exports__["default"] = "\n\n\n<div class=\"col-md-12\">\n  <div class=\"col-md-8 col-lg-8 col-8 col-sm-8 align-self-center mx-auto\">\n    <!-- <div class=\"row d-icons\">\n      <div class=\"col-lg-8 col-md-8 col-12 col-sm-12\" style=\"margin: 0 auto;\">\n        <button _ngcontent-prj-c157=\"\" type=\"button\" class=\"btn btn-sm btn-active\" (click)=\"saveToCalender()\" style=\"background-color: #fff !important;color: #0a0aab !important;\"  >\n          <i _ngcontent-prj-c157=\"\" aria-hidden=\"true\" class=\"fa fa-calendar clndr-icon\"></i>Save to calender</button>\n      </div>\n      </div> -->\n    </div>\n  </div>\n  <div class=\"col-md-12 col-12 col-sm-12\" style=\"padding: 20px 0px 0px 0px;\">\n    <div class=\"col-md-8 col-lg-8 col-8 col-sm-8 align-self-center mx-auto\">\n      <div class=\"row d-icons\">\n        <div class=\"col-lg-12 col-md-12 col-12 col-sm-12\">\n          <img src=\"{{imageFilesLocation}}{{image_url}}\" alt=\"\" class=\"tmp-image\" style=\"width: 90%; height: 85vh;\">\n          <!-- <img src=\"../../../assets/img/R.jpg\" alt=\"Flowers in Chania\" class=\"tmp-image\" style=\"width: 90%; height: 85vh;\"> -->\n\n        </div>\n          </div>\n          </div>\n           </div>\n           <div class=\"row mob-views \" style=\"margin: 0 auto;cursor: pointer;\" routerLink=\"/list-gift-vouchers\">\n            <div class=\"col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center \" >\n              <div class=\"row d-icons mob-views\">\n                <div class=\"col-lg-6 col-md-6 col-12 col-sm-12c mx-auto \">\n                  <button  type=\"button\" class=\"btn btn-sm btn-active menu-btn\" >\n                  <span style=\"font-size: 12px;color:#d9117d ;\">\n                               <img src=\"./assets/img/send_gift.png\" class=\"menu-img\">\n                    Send Gift Vouchers</span>\n                     <i class=\"fa fa-angle-right  fa-2x\" style=\"float: right;color: #d9117d;\" aria-hidden=\"true\"></i></button>\n                </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"row mob-views\" style=\"margin: 0 auto;cursor: pointer;\" routerLink=\"/sent-video\">\n              <div class=\"col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center \" >\n                <div class=\"row d-icons\">\n                  <div class=\"col-lg-6 col-md-6 col-12 col-sm-12c mx-auto \">\n                    <button  type=\"button\" class=\"btn btn-sm btn-active menu-btn\">\n                     <span style=\"font-size: 12px;color: #d9117d;\">\n                                 <img src=\"./assets/img/send-video-02.png\" class=\"menu-img\">\n                      Send Video Wishes </span>\n                        <i class=\"fa fa-angle-right  fa-2x\" style=\"float: right;color: #d9117d;\"  aria-hidden=\"true\"></i></button>\n                  </div>\n                  </div>\n                </div>\n              </div>\n              <div class=\"row mob-views\" style=\"margin: 0 auto;cursor: pointer;\" routerLink=\"/users\" >\n                <div class=\"col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center \" >\n                  <div class=\"row d-icons\">\n                    <div class=\"col-lg-6 col-md-6 col-12 col-sm-12c mx-auto \">\n                      <button  type=\"button\" class=\"btn btn-sm btn-active menu-btn\">\n                      <span style=\"font-size: 12px; color: #d9117d;\">\n                            <img src=\"./assets/img/join-chat-02.png\" class=\"menu-img mr-4\"></span>\n                       <span class=\"mr-5\" style=\"color: #d9117d;\"> Join Chat</span>\n                          <i class=\"fa fa-angle-right  fa-2x\" style=\"float: right;color: #d9117d;\" aria-hidden=\"true\"></i></button>\n                    </div>\n                    </div>\n                  </div>\n                </div>\n                <div class=\"row mob-views\" style=\"margin: 0 auto;cursor: pointer;\"  >\n                  <div class=\"col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center \" >\n                    <div class=\"row d-icons\">\n                      <div class=\"col-lg-6 col-md-6 col-12 col-sm-12c mx-auto \">\n                        <button  type=\"button\" class=\"btn btn-sm btn-active menu-btn\" (click)=\"joinlivestream()\">\n                        <span style=\"font-size: 12px; color: #d9117d;\">\n                              <img src=\"./assets/img/go-live.png\" class=\"menu-img mr-4\"></span>\n                         <span class=\"mr-5\" style=\"color: #d9117d;\"> Join Live Stream</span>\n                            <i class=\"fa fa-angle-right  fa-2x\" style=\"float: right;color: #d9117d;\" aria-hidden=\"true\"></i></button>\n                      </div>\n                      </div>\n                    </div>\n                  </div>\n\n\n\n\n\n<div\n  class=\"modal fade payed-modal\"\n  id=\"live-warning-modal1\"\n  tabindex=\"-1\"\n  role=\"dialog\"\n  aria-hidden=\"true\"\n>\n  <div\n    class=\"modal-dialog modal-dialog-centered\"\n    role=\"document\"\n    style=\"\"\n  >\n    <div class=\"modal-content\">\n      <div class=\"modal-body\" style=\"background-color: white\">\n        <div class=\"col-lg-12 col-lg-12\">\n          <div class=\"row\">\n            <div class=\"col-lg-12 col-md-12\">\n              <div class=\"payd-msg\">\n                <p class=\"mt-4\" style=\"color: black; text-align: center\">\n                  Please check the day and time for live stream\n                </p>\n                <div class=\"row\">\n                  <div class=\"col-md-6 col-lg-6 col-12\"></div>\n                  <div\n                    class=\"col-md-6 col-lg-6 col-12\"\n                    style=\"display: flex\"\n                  ></div>\n                  <div class=\"col-md-2 col-12\"></div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n\n<style>\n\n\n.payed-modal {\n  display: block !important;\n  visibility: hidden;\n  opacity: 0;\n  z-index: -1;\n}\n.payed-modal.show {\n  visibility: visible;\n  opacity: 1;\n  z-index: 99999;\n}\n.payed-modal .modal-dialog {\n}\n@media screen and (max-width: 992px) {\n  .payed-modal .modal-dialog {\n    max-width: 100%;\n  }\n}\n.payed-modal .modal-content {\n  border-radius: 0;\n  max-height: 300px;\n  overflow: auto;\n  border-radius: 20px;\n  background-color: white;\n}\n.payed-modal .modal-body {\n}\n.payd-msg {\n  display: block;\n}\n.payd-msg p {\n  display: block;\n  font-family: \"Montserrat\", sans-serif;\n  text-transform: capitalize;\n  font-size: 16px;\n  color: black;\n  text-align: center;\n  margin: 0px 0px 20px 0px;\n}\n.f-btn-border,\n.f-btn-border-red {\n  width: 86%;\n  padding: 8px 0px;\n  border: none;\n  border: solid 2px #fff;\n  background-color: transparent;\n  text-align: center;\n  cursor: pointer;\n  color: #fff;\n  font-family: \"Montserrat\", sans-serif;\n  font-size: 16px;\n  font-weight: 500;\n  text-transform: capitalize;\n  border-radius: 10px;\n  box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  margin: 0px 0px 10px 5px;\n}\n.f-btn-border,\n.f-btn-border-No {\n  width: 86%;\n  padding: 8px 0px;\n  border: none;\n  border: solid 2px #fff;\n  background-color: transparent;\n  text-align: center;\n  cursor: pointer;\n  color: #fff;\n  font-family: \"Montserrat\", sans-serif;\n  font-size: 16px;\n  font-weight: 500;\n  text-transform: capitalize;\n  border-radius: 10px;\n  box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  margin: 0px 0px 10px 5px;\n}\n.f-btn-border-No {\n  background-color: white;\n  border: solid 2px #d9117d;\n  color: #d9117d;\n}\n\n.f-btn-border-red {\n  background-color: #d9117d;\n  border: solid 2px #d9117d;\n}\n.input-group-text {\n  border-radius: 0;\n  border: none;\n}\n.btn:hover{\n     background-color: white !important;\n   }\n   @media screen and (max-width: 991px) {\n.mob-views{\ndisplay: block;\n}\n}\n</style>\n\n";
       /***/
     },
 
@@ -323,6 +323,26 @@
       var app_shared_api_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! app/shared/api.service */
       "eokG");
+      /* harmony import */
+
+
+      var moment__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+      /*! moment */
+      "wd/R");
+      /* harmony import */
+
+
+      var moment__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_5__);
+      /* harmony import */
+
+
+      var ts_md5_dist_md5__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! ts-md5/dist/md5 */
+      "kScs");
+      /* harmony import */
+
+
+      var ts_md5_dist_md5__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(ts_md5_dist_md5__WEBPACK_IMPORTED_MODULE_6__);
 
       var DashboardComponent = /*#__PURE__*/function () {
         function DashboardComponent(apiService, router) {
@@ -358,8 +378,58 @@
                 _this.evntDetail = res['detail'];
                 _this.imageFilesLocation = res.imageFilesLocation;
                 _this.image_url = res['detail'].image_url;
-              } else {}
-            }, function (error) {});
+                _this.date = new Date(_this.evntDetail.date);
+
+                var longMonth = _this.date.toLocaleString('en-us', {
+                  month: 'short'
+                });
+                /* June */
+
+
+                var year = _this.evntDetail.date.slice(0, 4);
+
+                var day = _this.evntDetail.date.slice(8, 10);
+
+                _this.time = _this.evntDetail.time;
+                _this.eventDay = day + '-' + longMonth + '-' + year;
+                var eventday = new Date(_this.eventDay).toLocaleString('en-us', {
+                  weekday: 'long'
+                });
+                var currenDay = new Date().toLocaleString('en-us', {
+                  weekday: 'long'
+                });
+                var today = new Date();
+                var hours = new Date(today).getHours();
+                _this.minutes = new Date(today).getMinutes();
+                var ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12; // the hour '0' should be '12'
+
+                _this.minutes = _this.minutes < 10 ? '0' + _this.minutes : _this.minutes;
+                var strTime = hours + ':' + _this.minutes + ' ' + ampm;
+                var format = 'hh:mm:ss';
+                _this.currentTime = moment__WEBPACK_IMPORTED_MODULE_5__(strTime, 'hh:mm A').format('HH:mm');
+                console.log(eventday);
+                console.log(currenDay);
+                console.log(_this.currentTime);
+                console.log(_this.time);
+                var specific_date = new Date(_this.eventDay);
+                var current_date = new Date();
+
+                if (current_date.getDate() == specific_date.getDate()) {
+                  console.log('current_date date is grater than specific_date');
+
+                  if (eventday == currenDay) {
+                    _this.sharelive = true;
+                  } else {
+                    _this.sharelive = false;
+                  }
+                } else {
+                  _this.sharelive = false;
+                  console.log('current_date date is lower than specific_date');
+                }
+              }
+            });
           }
         }, {
           key: "sendVideoWish",
@@ -416,6 +486,23 @@
           key: "saveToCalender",
           value: function saveToCalender() {
             this.authenticate();
+          } // function to add events to google calender end
+
+        }, {
+          key: "joinlivestream",
+          value: function joinlivestream() {
+            var md5 = new ts_md5_dist_md5__WEBPACK_IMPORTED_MODULE_6__["Md5"]();
+            console.log(this.sharelive);
+
+            if (this.sharelive === true) {
+              window.open('https://meet.jit.si/' + md5.appendStr('event:' + this.eventId).end(), '_blank').focus();
+            } else {
+              $('#live-warning-modal1').modal('show');
+              $('body').css('padding-right', '0');
+              setTimeout(function () {
+                $('#live-warning-modal1').modal('hide');
+              }, 2000);
+            }
           }
         }]);
 
@@ -818,7 +905,7 @@
         path: 'register',
         component: app_pages_register_email_register_email_component__WEBPACK_IMPORTED_MODULE_14__["RegisterEmailComponent"]
       }, {
-        path: 'group-chat',
+        path: 'group-chat/:id',
         component: app_pages_group_chat_group_chat_component__WEBPACK_IMPORTED_MODULE_15__["GroupChatComponent"]
       }, {
         path: '**',

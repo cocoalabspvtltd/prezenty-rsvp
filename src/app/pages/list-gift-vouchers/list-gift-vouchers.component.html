@@ -15,7 +15,53 @@
       <h3 style="color: #c3313e">No Records Found</h3>
     </div>
   </div>
-  <div
+
+    <div class="col-lg-3 col-md-6 col-12" *ngFor="let item of giftVoucherList">
+      <div class="card card-stats">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-lg-10 col-12 box-space">
+              <div
+                class="card box-sze"
+                style="
+                  background-image: url({{baseUrlBg}}{{item.image_bg_url}});
+                  margin: 0;
+                "
+              >
+                <div class="row">
+                  <div class="col-lg-12 col-12 img-size">
+                    <img
+                      src="{{baseUrl}}{{item.image_url}}"
+                      class="img-width"
+                    />
+                  </div>
+                  <!-- <div class="col-lg-4 col-3 title">
+                    <span class="title-size" >Gift Card</span>
+                  </div> -->
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-12" >
+                <p style="text-align: center"><b>{{item.title}} </b></p>
+                <p class="p-text" style="cursor: pointer;" (click)="terms(item.id)">Terms & Conditions Apply</p>
+              </div>
+
+            </div>
+          </div>
+          <div class="col-lg-12 col-sm-12 col-12 ">
+            <button
+              type="submit"
+              class="btn-send mb-1"
+              routerLink="/voucher-details/{{ item.id }}"
+            >
+              Get
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- <div
     class="col-lg-5 col-md-6 col-sm-6 "
     *ngFor="let item of giftVoucherList"
   >
@@ -49,5 +95,5 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
 </div>

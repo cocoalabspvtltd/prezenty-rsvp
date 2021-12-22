@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'app/shared/api.service';
+import { isBigIntLiteral } from 'typescript';
 declare var $:any;
 
 @Component({
@@ -31,6 +32,8 @@ export class ListUsersComponent implements OnInit {
   uphone: any;
   uaddress:any;
   userEmail: any;
+  mob: boolean;
+  web: boolean;
   constructor(private fb: FormBuilder,private route:ActivatedRoute,private apiService:ApiService,private router:Router) {
     this.evntid = localStorage.getItem('eventId');
     this.participant_id = localStorage.getItem('pid');
@@ -41,11 +44,12 @@ export class ListUsersComponent implements OnInit {
     this.listUsers();
     this.user = true;
     this.blockuser = false;
+    this.checkMobileorDesktop();
   }
 
   listUsers(){
-    console.log("aaaaaaaaaaaaa")
-    this.apiService.getUsers().subscribe((res:any)=>{
+    console.log(this.participantEmail)
+    this.apiService.getUsers(this.participantEmail).subscribe((res:any)=>{
       console.log(res);
       this.userList = res['list'];
       this.hostName= res.name;
@@ -75,10 +79,9 @@ showBlockList(){
   this.handleBlockedUsers();
 }
 handleBlockedUsers(){
-  this.apiService.getBlockedUsers(this.evntid).subscribe((res:any)=>{
+  this.apiService.getBlockedUsers(this.evntid,this.participantEmail).subscribe((res:any)=>{
     if(res){
       this.blockedUserList = res['list'];
-
       this.blockeduserlength = this.blockedUserList.length;
 
     }
@@ -91,6 +94,19 @@ goToChat(uid, eid){
   this.router.navigate(['/chat',uid, 'true']);
 
 }
+
+
+checkMobileorDesktop() {
+  var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  var element = document.getElementById('text');
+  if (isMobile) {
+    this.mob = true;
+    this.web = false;
+  } else {
+    this.web = true;
+    this.mob = false;
+  }
+}
 hostData(){
   localStorage.setItem('hostEmail',this.hostEmail);
   localStorage.setItem('hostName',this.hostName);
@@ -98,6 +114,7 @@ hostData(){
 
 }
 hostDataRemove(uid,is_blocked){
+  console.log(is_blocked)
   localStorage.removeItem('hostEmail');
   localStorage.removeItem('hostName');
   this.router.navigate(['/chat',uid, is_blocked]);

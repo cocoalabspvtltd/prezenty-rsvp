@@ -24,6 +24,7 @@ import { ChatBoxComponent } from './pages/chat-box/chat-box.component';
 import { RegisterEmailComponent } from './pages/register-email/register-email.component';
 import { GroupChatComponent } from './pages/group-chat/group-chat.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import {DatePipe} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     FooterModule,
     FixedPluginModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

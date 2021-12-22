@@ -60,9 +60,13 @@ export class ApiService {
   }
     return this.http.post(this.BASE_URL + `/event-participant/send-video-wishes`,data)
   }
-  getUsers(){
+  getUsers(participantEmail){
+    let params = new HttpParams();
     var id = localStorage.getItem('eventId')
-    return this.http.get(this.BASE_URL + `/event-participant/participants?id=` +id)
+    params = params.append('email', participantEmail);
+    params = params.append('id', id);
+    const options = { params:params}
+    return this.http.get(this.BASE_URL + `/event-participant/participants`,options)
   }
   getParticipantDetail(id){
       return this.http.get(this.BASE_URL + `/event-participant/detail?id=` +id)
@@ -94,12 +98,13 @@ export class ApiService {
     return this.http.get(this.BASE_URL + `/chat/group-message?event_id=` +event_id)
 
   }
-  getBlockedUsers(id){
+  getBlockedUsers(id,blocked_by_user_email){
     var loginToken = localStorage.getItem("loginToken");
     let headers = new HttpHeaders();
     headers = headers.set("Authorization", "Bearer " + loginToken);
     let params = new HttpParams();
     params = params.append("event_id", id);
+    params = params.append("blocked_by_user_email", blocked_by_user_email);
     params = params.append("page", "1");
     params = params.append("per_page", "20");
     const options = { params: params,headers:headers };

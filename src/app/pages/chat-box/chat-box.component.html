@@ -1,5 +1,15 @@
 
-  <div class="col-md-2 col-lg-2 col-sm-6 col-6" style="float: right;">
+<div class="row">
+  <img src="./assets/img/left-arrow.png" class="back-arrow mt-3"style="width: 40px;
+  cursor: pointer;
+  background-color: #d9117d;
+  border-radius: 21px;
+  /* float: right; */
+  margin-left: 2%;" routerLink="/users"  >
+
+</div>
+
+  <div class="col-md-2 col-lg-2 col-sm-6 col-6" style="float: right;" *ngIf="!hostName">
     <button type="submit" class="btn-grpchat mb-3" (click)="blockUser()" *ngIf="blocked_user == 'false'" >
       <span>Block</span>
     </button>
@@ -10,11 +20,12 @@
   </div>
 <div class="" style="background-color: black">
   <div class="row">
-    <div class="col-lg-2 col-md-2 col-8" style="display: flex">
+    <div class="col-lg-5 col-md-2 col-12" style="display: flex">
       <div>
         <img
           src="./assets/img/profile-1.png"
-          style="width: 90px !important; height: 90px"
+          style="    width: 65px !important;
+          height: 70px;"
         />
       </div>
       <div>
@@ -58,15 +69,8 @@
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <div
-        class="card card-user"
-        style="
-          margin-bottom: 0px;
-          border-radius: 4px;
-          border-radius: 4px;
-          position: fixed;
-          bottom: 0px;
-          width: 100%;
-        "
+        class="card card-user title-wdth"
+
       >
         <div class="card-header"></div>
         <div class="card-body" *ngIf="(blocked_user == 'false' || !blocked_user) && showblockedalert == false">
@@ -84,7 +88,7 @@
                 />
               </div>
             </div>
-            <div class="col-lg-3 col-3 pl-1">
+            <div class="col-lg-3 col-3 send-btn">
               <span
                 ><img
                   src="./assets/img/send.png"
