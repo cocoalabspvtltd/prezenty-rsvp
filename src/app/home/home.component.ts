@@ -5,6 +5,8 @@ import { ApiService } from 'app/shared/api.service';
 import { ToastrService } from 'ngx-toastr';
 import {DatePipe} from '@angular/common';
 declare var $:any;
+import * as moment from 'moment';
+
 declare var gapi:any;
 @Component({
   selector: 'app-home',
@@ -42,6 +44,11 @@ export class HomeComponent implements OnInit {
   eventDate: any;
   currentDtae: string;
   eventStatus: boolean;
+  baseUrlVideo: any;
+  video_file: any;
+  time: any;
+  eventTime: string;
+  created_by: any;
   constructor(private fb: FormBuilder,private datePipe: DatePipe,private route:ActivatedRoute,private apiService:ApiService,private router:Router,private toastr: ToastrService) {
     this.applicableStatus = false;
     this.sessionidList = [];
@@ -95,8 +102,20 @@ export class HomeComponent implements OnInit {
       if (res) {
         console.log(res.menuOrGifts)
         this.evntDetail = res['detail'];
-      this.imageFilesLocation = res.imageFilesLocation;
-      this.image_url = res['detail'].image_url;
+        this.title = this.evntDetail.title;
+        this.time = this.evntDetail.time;
+        this.created_by = this.evntDetail.created_by;
+        this.eventTime = this.time = moment(this.time, ["HH:mm"]).format("hh:mm A");
+        console.log(this.eventTime);
+      if(res.detail.video_file){
+        this.baseUrlVideo = res.baseUrlVideo;
+        this.video_file = res.detail.video_file;
+       }
+       else{
+        this.imageFilesLocation = res.imageFilesLocation;
+        this.image_url = res.detail.image_url;
+
+       }
       this.title =res['detail'].title;
       this.menuOrGifts = res.menuOrGifts;
       this.eventDate = res['detail'].date;

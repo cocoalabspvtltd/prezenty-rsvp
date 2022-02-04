@@ -45,6 +45,7 @@ export class AddVideoComponent implements OnInit {
   url: string | ArrayBuffer;
   broseVideo: boolean;
   loadingvideo: boolean;
+  eventt: any;
 
   constructor(
     private fb: FormBuilder,
@@ -237,7 +238,11 @@ export class AddVideoComponent implements OnInit {
   }
 
   uploadVideo(event: any) {
+    this.selectedVideo = '';
+    this.url = '';
+    this.eventt = event;
     this.selectedVideo = event.target.files[0];
+    this.selectedVideo
     this.loadingvideo = true;
     this.fileList.push(this.selectedVideo);
     var reader = new FileReader();
@@ -247,9 +252,12 @@ export class AddVideoComponent implements OnInit {
       this.thumbFileVideo = [];
       this.thumbFileVideo.push(this.fileData.result);
       this.attachment.nativeElement.value = '';
-      if (this.selectedVideo.type != 'video/mp4') {
+      console.log(this.selectedVideo.type)
+      if (this.selectedVideo.type == 'image/jpeg' || this.selectedVideo.type == 'image/png' || this.selectedVideo.type == 'image/jpg'   ) {
         this.uploadfileType = false;
         this.broseVideo = false;
+        this.loadingvideo = false;
+        this.showuploadVideo = false;
 
       } else {
         this.url = (<FileReader>event.target).result;
@@ -259,11 +267,10 @@ export class AddVideoComponent implements OnInit {
         this.showtitle = true;
         this.showuploadVideo = true;
         this.loadingvideo = false;
-
-
         this.broseVideo = true;
         // this.stopCam();
         this.fileName = this.selectedVideo.name;
+        console.log(this.fileName);
       }
     };
   }

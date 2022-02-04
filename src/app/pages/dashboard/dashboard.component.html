@@ -1,80 +1,142 @@
-
-
-
 <div class="col-md-12">
-  <div class="col-md-8 col-lg-8 col-8 col-sm-8 align-self-center mx-auto">
-    <!-- <div class="row d-icons">
-      <div class="col-lg-8 col-md-8 col-12 col-sm-12" style="margin: 0 auto;">
-        <button _ngcontent-prj-c157="" type="button" class="btn btn-sm btn-active" (click)="saveToCalender()" style="background-color: #fff !important;color: #0a0aab !important;"  >
-          <i _ngcontent-prj-c157="" aria-hidden="true" class="fa fa-calendar clndr-icon"></i>Save to calender</button>
+  <div class="col-md-8 col-lg-8 col-8 col-sm-8 align-self-center mx-auto"></div>
+</div>
+<div class="col-md-12 col-12 col-sm-12" style="padding: 20px 0px 0px 0px">
+  <div class="col-md-8 col-lg-8 col-10 col-sm-10 align-self-center mx-auto">
+        <div class="row d-icons" >
+      <div class="col-lg-4 col-6">
+        <span class="event-det">Title:<strong>&nbsp;&nbsp;{{title}}</strong> </span>
       </div>
+      <div class="col-lg-4 col-6">
+        <span class="event-det">Time:<strong>&nbsp;&nbsp;{{eventTime}}</strong> </span>
+      </div>
+      <!-- <div class="col-lg-4 col-12" *ngIf="created_by">
+        <span class="event-det">created by:<strong>&nbsp;&nbsp;{{created_by}}</strong> </span>
       </div> -->
     </div>
+    <div class="row d-icons">
+      <div class="col-lg-12 col-md-12 col-12 col-sm-12">
+        <img
+          src="{{ imageFilesLocation }}{{ image_url }}"
+          *ngIf="image_url"
+          alt=""
+          class="tmp-image"
+          style="width: 79%; height: 70vh"
+        />
+        <video
+          class="video-img"
+          src="{{ baseUrlVideo }}{{ video_file }}"
+          *ngIf="video_file"
+          height="200"
+          controls
+        ></video>
+      </div>
+    </div>
   </div>
-  <div class="col-md-12 col-12 col-sm-12" style="padding: 20px 0px 0px 0px;">
-    <div class="col-md-8 col-lg-8 col-8 col-sm-8 align-self-center mx-auto">
-      <div class="row d-icons">
-        <div class="col-lg-12 col-md-12 col-12 col-sm-12">
-          <img src="{{imageFilesLocation}}{{image_url}}" alt="" class="tmp-image" style="width: 90%; height: 85vh;">
-          <!-- <img src="../../../assets/img/R.jpg" alt="Flowers in Chania" class="tmp-image" style="width: 90%; height: 85vh;"> -->
-
-        </div>
-          </div>
-          </div>
-           </div>
-           <div class="row mob-views " style="margin: 0 auto;cursor: pointer;" routerLink="/list-gift-vouchers">
-            <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
-              <div class="row d-icons mob-views">
-                <div class="col-lg-6 col-md-6 col-12 col-sm-12c mx-auto ">
-                  <button  type="button" class="btn btn-sm btn-active menu-btn" >
-                  <span style="font-size: 12px;color:#d9117d ;">
-                               <img src="./assets/img/send_gift.png" class="menu-img">
-                    Send Gift Vouchers</span>
-                     <i class="fa fa-angle-right  fa-2x" style="float: right;color: #d9117d;" aria-hidden="true"></i></button>
-                </div>
-                </div>
-              </div>
-            </div>
-            <div class="row mob-views" style="margin: 0 auto;cursor: pointer;" routerLink="/sent-video">
-              <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
-                <div class="row d-icons">
-                  <div class="col-lg-6 col-md-6 col-12 col-sm-12c mx-auto ">
-                    <button  type="button" class="btn btn-sm btn-active menu-btn">
-                     <span style="font-size: 12px;color: #d9117d;">
-                                 <img src="./assets/img/send-video-02.png" class="menu-img">
-                      Send Video Wishes </span>
-                        <i class="fa fa-angle-right  fa-2x" style="float: right;color: #d9117d;"  aria-hidden="true"></i></button>
-                  </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row mob-views" style="margin: 0 auto;cursor: pointer;" routerLink="/users" >
-                <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
-                  <div class="row d-icons">
-                    <div class="col-lg-6 col-md-6 col-12 col-sm-12c mx-auto ">
-                      <button  type="button" class="btn btn-sm btn-active menu-btn">
-                      <span style="font-size: 12px; color: #d9117d;">
-                            <img src="./assets/img/join-chat-02.png" class="menu-img mr-4"></span>
-                       <span class="mr-5" style="color: #d9117d;"> Join Chat</span>
-                          <i class="fa fa-angle-right  fa-2x" style="float: right;color: #d9117d;" aria-hidden="true"></i></button>
-                    </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row mob-views " style="margin: 0 auto;cursor: pointer;" >
-                  <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
-                    <div class="row d-icons mob-views">
-                      <div class="col-lg-6 col-md-6 col-12 col-sm-12c mx-auto ">
-                        <button  type="button" class="btn btn-sm btn-active menu-btn" (click)="joinlivestream()" >
-                        <span style="font-size: 12px;color:#d9117d ;">
-                                     <img src="./assets/img/ic_live_stream_outlined.jpeg" class="menu-img">
-                                     Join Live Stream</span>
-                           <i class="fa fa-angle-right  fa-2x" style="float: right;color: #d9117d;" aria-hidden="true"></i></button>
-                      </div>
-                      </div>
-                    </div>
-                  </div>
-
+</div>
+<div
+  class="row mob-views"
+  style="margin: 0 auto; cursor: pointer"
+  routerLink="/list-gift-vouchers"
+>
+  <div
+    class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center"
+  >
+    <div class="row d-icons mob-views">
+      <div class="col-lg-6 col-md-6 col-12 col-sm-12c mx-auto">
+        <button type="button" class="btn btn-sm btn-active menu-btn">
+          <span style="font-size: 12px; color: #d9117d">
+            <img src="./assets/img/send_gift.png" class="menu-img" />
+            Send Gift Vouchers</span
+          >
+          <i
+            class="fa fa-angle-right fa-2x"
+            style="float: right; color: #d9117d"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="row mob-views"
+  style="margin: 0 auto; cursor: pointer"
+  routerLink="/sent-video"
+>
+  <div
+    class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center"
+  >
+    <div class="row d-icons">
+      <div class="col-lg-6 col-md-6 col-12 col-sm-12c mx-auto">
+        <button type="button" class="btn btn-sm btn-active menu-btn">
+          <span style="font-size: 12px; color: #d9117d">
+            <img src="./assets/img/send-video-02.png" class="menu-img" />
+            Send Video Wishes
+          </span>
+          <i
+            class="fa fa-angle-right fa-2x"
+            style="float: right; color: #d9117d"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="row mob-views"
+  style="margin: 0 auto; cursor: pointer"
+  routerLink="/users"
+>
+  <div
+    class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center"
+  >
+    <div class="row d-icons">
+      <div class="col-lg-6 col-md-6 col-12 col-sm-12c mx-auto">
+        <button type="button" class="btn btn-sm btn-active menu-btn">
+          <span style="font-size: 12px; color: #d9117d">
+            <img src="./assets/img/join-chat-02.png" class="menu-img mr-4"
+          /></span>
+          <span class="mr-5" style="color: #d9117d"> Join Chat</span>
+          <i
+            class="fa fa-angle-right fa-2x"
+            style="float: right; color: #d9117d"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row mob-views" style="margin: 0 auto; cursor: pointer">
+  <div
+    class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center"
+  >
+    <div class="row d-icons mob-views">
+      <div class="col-lg-6 col-md-6 col-12 col-sm-12c mx-auto">
+        <button
+          type="button"
+          class="btn btn-sm btn-active menu-btn"
+          (click)="joinlivestream()"
+        >
+          <span style="font-size: 12px; color: #d9117d">
+            <img
+              src="./assets/img/ic_live_stream_outlined.jpeg"
+              class="menu-img"
+            />
+            Join Live Stream</span
+          >
+          <i
+            class="fa fa-angle-right fa-2x"
+            style="float: right; color: #d9117d"
+            aria-hidden="true"
+          ></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div
   class="modal fade payed-modal"
@@ -83,11 +145,7 @@
   role="dialog"
   aria-hidden="true"
 >
-  <div
-    class="modal-dialog modal-dialog-centered"
-    role="document"
-    style=""
-  >
+  <div class="modal-dialog modal-dialog-centered" role="document" style="">
     <div class="modal-content">
       <div class="modal-body" style="background-color: white">
         <div class="col-lg-12 col-lg-12">
@@ -114,110 +172,129 @@
   </div>
 </div>
 
-
 <style>
-
-
-.payed-modal {
-  display: block !important;
-  visibility: hidden;
-  opacity: 0;
-  z-index: -1;
-}
-.payed-modal.show {
-  visibility: visible;
-  opacity: 1;
-  z-index: 99999;
-}
-.payed-modal .modal-dialog {
-}
-@media screen and (max-width: 992px) {
-  .payed-modal .modal-dialog {
-    max-width: 100%;
+  .payed-modal {
+    display: block !important;
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
   }
-}
-.payed-modal .modal-content {
-  border-radius: 0;
-  max-height: 300px;
-  overflow: auto;
-  border-radius: 20px;
-  background-color: white;
-}
-.payed-modal .modal-body {
-}
-.payd-msg {
-  display: block;
-}
-.payd-msg p {
-  display: block;
-  font-family: "Montserrat", sans-serif;
-  text-transform: capitalize;
-  font-size: 16px;
-  color: black;
-  text-align: center;
-  margin: 0px 0px 20px 0px;
-}
-.f-btn-border,
-.f-btn-border-red {
-  width: 86%;
-  padding: 8px 0px;
-  border: none;
-  border: solid 2px #fff;
-  background-color: transparent;
-  text-align: center;
-  cursor: pointer;
-  color: #fff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: capitalize;
-  border-radius: 10px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  margin: 0px 0px 10px 5px;
-}
-.f-btn-border,
-.f-btn-border-No {
-  width: 86%;
-  padding: 8px 0px;
-  border: none;
-  border: solid 2px #fff;
-  background-color: transparent;
-  text-align: center;
-  cursor: pointer;
-  color: #fff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  text-transform: capitalize;
-  border-radius: 10px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
-  margin: 0px 0px 10px 5px;
-}
-.f-btn-border-No {
-  background-color: white;
-  border: solid 2px #d9117d;
-  color: #d9117d;
-}
+  .payed-modal.show {
+    visibility: visible;
+    opacity: 1;
+    z-index: 99999;
+  }
+  .payed-modal .modal-dialog {
+  }
+  @media screen and (max-width: 992px) {
+    .payed-modal .modal-dialog {
+      max-width: 100%;
+    }
+  }
+  .payed-modal .modal-content {
+    border-radius: 0;
+    max-height: 300px;
+    overflow: auto;
+    border-radius: 20px;
+    background-color: white;
+  }
+  .payed-modal .modal-body {
+  }
+  .payd-msg {
+    display: block;
+  }
+  .payd-msg p {
+    display: block;
+    font-family: "Montserrat", sans-serif;
+    text-transform: capitalize;
+    font-size: 16px;
+    color: black;
+    text-align: center;
+    margin: 0px 0px 20px 0px;
+  }
+  .f-btn-border,
+  .f-btn-border-red {
+    width: 86%;
+    padding: 8px 0px;
+    border: none;
+    border: solid 2px #fff;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-radius: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 0px 0px 10px 5px;
+  }
+  .f-btn-border,
+  .f-btn-border-No {
+    width: 86%;
+    padding: 8px 0px;
+    border: none;
+    border: solid 2px #fff;
+    background-color: transparent;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: capitalize;
+    border-radius: 10px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin: 0px 0px 10px 5px;
+  }
+  .f-btn-border-No {
+    background-color: white;
+    border: solid 2px #d9117d;
+    color: #d9117d;
+  }
 
-.f-btn-border-red {
-  background-color: #d9117d;
-  border: solid 2px #d9117d;
+  .f-btn-border-red {
+    background-color: #d9117d;
+    border: solid 2px #d9117d;
+  }
+  .input-group-text {
+    border-radius: 0;
+    border: none;
+  }
+  .btn:hover {
+    background-color: white !important;
+  }
+  .event-det {
+    padding: 10px 2px 10px 80px;
+    font-size: 20px;
+  }
+  .video-img {
+    min-height: 71vh;
+    max-height: 71vh;
+    padding: 0px 10px 10px 10px;
+    width: 100%;
+  }
+  .event-det{
+  text-align: start;
 }
-.input-group-text {
-  border-radius: 0;
-  border: none;
-}
-.btn:hover{
-     background-color: white !important;
-   }
-   @media screen and (max-width: 991px) {
-.mob-views{
-display: block;
-}
-}
+  @media screen and (max-width: 991px) {
+    .mob-views {
+      display: block;
+    }
+    .video-img {
+      min-height: 24vh;
+      max-height: 49vh;
+      padding: 0px 10px 10px 10px;
+      width: 100%;
+    }
+    .event-det {
+      padding: 10px 2px 10px 2px;
+      font-size: 14px;
+    }
+  }
 </style>
-

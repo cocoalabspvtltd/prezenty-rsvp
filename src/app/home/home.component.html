@@ -11,6 +11,23 @@
     </ul>
   </div>
 </header>
+<div class="row">
+  <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
+    <div class="row d-icons" >
+  <div class="col-lg-4 col-6">
+    <span class="event-det">Title:<strong>&nbsp;&nbsp;{{title}}</strong> </span>
+  </div>
+  <div class="col-lg-4 col-6">
+    <span class="event-det">Time:<strong>&nbsp;&nbsp;{{eventTime}}</strong> </span>
+  </div>
+  <div class="col-lg-4 col-12" *ngIf="created_by">
+    <span class="event-det">created by:<strong>&nbsp;&nbsp;{{created_by}}</strong> </span>
+  </div>
+
+</div>
+</div>
+</div>
+
   <div class="row" style="margin: 0 auto;">
     <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
       <div class="row d-icons" *ngIf="eventStatus == true">
@@ -19,44 +36,29 @@
            style="background-color: #0a0aab !important;color: #fff !important;border-radius: 10px;max-height: 53px;" (click)="joinThisEvent()">
            <span style="font-size: 12px;" >Join this Event (RSVP)</span>   <i class="fa fa-angle-right  fa-2x" style="float:right" aria-hidden="true"></i></button>
         </div>
-        <!-- <div class="col-lg-6 col-md-6 col-12 col-sm-12">
-          <button _ngcontent-prj-c157="" type="button" class="btn btn-sm btn-active" (click)="saveToCalender()" style="background-color: #fff !important;color: #0a0aab !important;"  >
-            <i _ngcontent-prj-c157="" aria-hidden="true" class="fa fa-calendar clndr-icon" ></i>Save to calender</button>
-        </div> -->
         </div>
       </div>
     </div>
 
     <div class="col-md-12 col-lg-12 col-12   " >
-      <div class="col-md-7 col-lg-7 col-8 col-sm-8 text-center mx-auto align-self-center">
+      <div class="col-md-7 col-lg-7 col-10 col-sm-10 text-center mx-auto align-self-center">
         <div class="row d-icons">
           <div class="col-lg-12 col-md-12 col-12 col-sm-12 card " style="background-color: ghostwhite !important;border-radius: 10px;">
-            <img src="{{imageFilesLocation}}{{image_url}}" alt="" class="tmp-image" style="width: 100%;">
+            <img src="{{imageFilesLocation}}{{image_url}}" *ngIf="image_url" alt="" class="tmp-image" style="width: 100%;">
+            <video class="video-img"
+            src="{{baseUrlVideo}}{{video_file}}"
+            *ngIf="video_file"
+            height="200"
+            controls
+          ></video>
             </div>
             </div>
             </div>
              </div>
-    <!-- <div class="row d-icons1">
-      <div class="col-12 col-sm-12">
-        <button _ngcontent-prj-c157="" type="button" class="btn btn-sm btn-active"
-         style="background-color: #0a0aab !important;color: #fff !important; " (click)="joinThisEvent()">Join this Event (RSVP)  <i class="fa fa-angle-right  fa-2x" aria-hidden="true" style="float:right"></i></button>
-      </div>
-      </div> -->
       <!-- question modal form -->
       <div class="modal fade payed-modal" id="rsvpModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content" style="overflow: hidden;">
-            <!-- <div class="modal-header"> -->
-              <!-- <div class="" style="text-align: left;">
-                <div class="Fund-hd">
-                  <h2>Join this Event(RSVP)</h2>
-                </div>
-              </div>
-              <div style="text-align: right;">
-              <button type="button"  class="close btn-close1" data-dismiss="modal" aria-label="Close" (click)="closeRsvpModal()">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div> -->
             <div class="row">
               <div class="col-lg-9 col-9">
                 <h2 style="color: white;

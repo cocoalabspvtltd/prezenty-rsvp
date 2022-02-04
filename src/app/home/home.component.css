@@ -3,11 +3,32 @@
     width: 195px;
     height: 41px;
 }
+.video-img{
+
+  min-height: 71vh;
+  max-height: 71vh;
+  padding: 0px 10px 10px 10px;
+  width: 100%;
+
+}
+.event-det{
+  text-align: start;
+}
+
 @media only screen and (max-width: 991px){
   .sbmt-fund{
     margin: 0 auto;
     width: 350px;
     height: 54px;
+}
+.event-det{
+  text-align: start;
+}
+.video-img{
+  min-height: 24vh;
+    max-height: 49vh;
+    padding: 0px 10px 10px 10px;
+    width: 100%;
 }
 .sbmt-rsvp{
   padding: 408px 0px 0px 0px;

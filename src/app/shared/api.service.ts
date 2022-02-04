@@ -11,8 +11,9 @@ var httpOptions = {
 })
 export class ApiService {
 
-  // public BASE_URL = " http://prezenty.in/prezenty-staging/api/web/v1";
-  public BASE_URL = " http://prezenty.in/prezenty/api/web/v1";
+  public BASE_URL = " http://prezenty.in/prezenty-staging/api/web/v1";
+  // public BASE_URL = " http://prezenty.in/prezenty/api/web/v1";
+  // public BASE_URL ='https://5fbe-2409-4073-31c-9bd0-4914-78d6-92f6-23a3.ngrok.io/prezenty/api/web/v1/'
 
 
   constructor(private http: HttpClient) { }
@@ -88,10 +89,7 @@ export class ApiService {
 
   }
   updateParticipantEmail(data){
-    console.log(data)
-    for(let val of data){
-  console.log(val)
-}
+
     return this.http.post(this.BASE_URL + `/event-participant/update-participant`,data)
   }
   getGroupMessages(event_id){
@@ -139,5 +137,40 @@ export class ApiService {
       };
         return this.http.post(this.BASE_URL + `/chat/un-block-user`, data,httpOptions1);
     }
+
+
+
+    getFoodPartners() {
+      let params = new HttpParams();
+      params = params.append("page", "1");
+      params = params.append("per_page", "20");
+      const options = { params: params };
+      return this.http.get(this.BASE_URL + `gift-vouchers/list`, options);
+    }
+
+
+    getfoodVouchers(){
+      var loginToken = localStorage.getItem("loginToken");
+      let headers = new HttpHeaders();
+      headers = headers.set("Authorization", "Bearer " + loginToken);
+      const options = { headers: headers };
+       headers = headers.set('Content-Type', 'application/json');
+      headers = headers.set("Access-Control-Allow-Methods", 'GET,POST,OPTIONS,DELETE,PUT');
+      headers = headers.set("Access-Control-Allow-Origin", '*');
+      headers = headers.set("Access-Control-Allow-Credentials", 'false');
+      return this.http.get(this.BASE_URL + `/food-coupons`,options);
+    }
+
+createDecentroUpi(data){
+  return this.http.post(this.BASE_URL + `/decentro-api/create-upi`,data)
+}
+
+transactionStatus(id){
+  console.log(id);
+  let params = new HttpParams();
+  params = params.append("id", id);
+  const options = { params: params};
+  return this.http.get(this.BASE_URL + `/decentro-api/transaction-status`,options)
+}
 
 }

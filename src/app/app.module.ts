@@ -25,6 +25,7 @@ import { RegisterEmailComponent } from './pages/register-email/register-email.co
 import { GroupChatComponent } from './pages/group-chat/group-chat.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {DatePipe} from '@angular/common';
+import { FoodPartnersComponent } from './pages/food-partners/food-partners.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {DatePipe} from '@angular/common';
     ChatBoxComponent,
     RegisterEmailComponent,
     GroupChatComponent,
+    FoodPartnersComponent,
   ],
   imports: [
     BrowserAnimationsModule,

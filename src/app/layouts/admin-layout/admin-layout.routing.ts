@@ -1,3 +1,4 @@
+import { FoodPartnersComponent } from './../../pages/food-partners/food-partners.component';
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
@@ -35,6 +36,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'upgrade',        component: UpgradeComponent },
     { path: 'register',        component: RegisterEmailComponent },
     { path: 'group-chat/:id',        component: GroupChatComponent },
+    { path: 'food-partners',        component: FoodPartnersComponent },
 
     {
       path: '**',

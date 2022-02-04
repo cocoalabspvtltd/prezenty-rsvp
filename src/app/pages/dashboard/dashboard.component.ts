@@ -28,6 +28,11 @@ export class DashboardComponent implements OnInit{
   date: Date;
   time: any;
   eventDay: string;
+  title: any;
+  eventTime: string;
+  baseUrlVideo: any;
+  video_file: any;
+  created_by: any;
   constructor(private apiService:ApiService,private router:Router) {
     this.evntid = localStorage.getItem('eventId');
    }
@@ -45,6 +50,21 @@ export class DashboardComponent implements OnInit{
       if (res) {
         console.log(res)
       this.evntDetail = res['detail'];
+      this.title = this.evntDetail.title;
+      this.time = this.evntDetail.time;
+      this.created_by = this.evntDetail.created_by;
+
+      if(res.detail.video_file){
+        this.baseUrlVideo = res.baseUrlVideo;
+        this.video_file = res.detail.video_file;
+       }
+       else{
+        this.imageFilesLocation = res.imageFilesLocation;
+        this.image_url = res.detail.image_url;
+
+       }
+      this.eventTime = this.time = moment(this.time, ["HH:mm"]).format("hh:mm A");
+      console.log(this.eventTime);
       this.imageFilesLocation = res.imageFilesLocation;
       this.image_url = res['detail'].image_url;
       this.date = new Date(this.evntDetail.date);

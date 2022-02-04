@@ -25,7 +25,7 @@ export class PaymentAddressComponent implements OnInit {
   key: any;
   participant_email: any;
   event_id: any;
-  amount: number;
+  amount: any;
   orderId: any;
   RAZORPAY_OPTIONS: any;
   rzppay: any;
@@ -45,203 +45,143 @@ export class PaymentAddressComponent implements OnInit {
   gift_id: any;
   pid: string;
   zone: any;
+  reference_id: string;
+  eventId: string;
+  va_number: any;
+  participant_id: string;
+  encodedDynamicQrCode: any;
+  upiUri: any;
+  mob: boolean;
+  web: boolean;
+  callTimeOut: boolean;
+  display: string;
   constructor(
     private fb: FormBuilder,
     private _ngZone: NgZone,
     private route: ActivatedRoute,
     private apiService: ApiService,
     private router: Router,
-    private spinner: NgxSpinnerService,
+    private spinner: NgxSpinnerService
   ) {
     this.id = this.route.snapshot.paramMap.get("id");
+    this.eventId = localStorage.getItem("eventId");
+    this.participant_id = localStorage.getItem("pid");
+
     this.showpaymntbox = false;
     this.showGiftDetail = true;
     this.evntid = localStorage.getItem("eventId");
     this.giftAmount = localStorage.getItem("giftAmount");
     this.gift_id = localStorage.getItem("gift_id");
     this.pid = localStorage.getItem("pid");
-
-    this.eventDetailsList();
-    this.handlePayment();
+    this.handleEventDetail();
   }
   ngOnInit(): void {
     $("html, body").animate({ scrollTop: 0 }, "fast");
-    this.getKey();
-    this.voucherdetails();
-    this.parti_address = JSON.parse(localStorage.getItem("participantAddress"));
+    this.spinner.show();
+    this.checkMobileorDesktop();
   }
-  handlePayment() {
-    this.submitAddressForm = this.fb.group({
-      name: ["", [Validators.required]],
-      email: [
-        "",
-        [
-          Validators.required,
-          Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,}$"),
-        ],
-      ],
-      address: ["", [Validators.required]],
-      phone: ["", [Validators.required]],
-    });
+  checkMobileorDesktop() {
+    var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    var element = document.getElementById('text');
+    if (isMobile) {
+      this.mob = true;
+      this.web = false;
+    } else {
+      this.web = true;
+      this.mob = false;
+    }
   }
-  voucherdetails() {
-    this.apiService.getvoucherDetail(this.id).subscribe(
-      (res: any) => {
-        if (res) {
-          this.baseUrl = res.baseUrl;
-          this.title = res["detail"].title;
-          this.image_url = res["detail"].image_url;
-          this.expiry_date = res["detail"].expiry_date;
-        } else {
-        }
-      },
-      (error) => {}
-    );
+  timer(minute) {
+    // let minute = 1;
+    let seconds: number = minute * 60;
+    let textSec: any = "0";
+    let statSec: number = 60;
+
+    const prefix = minute < 10 ? "0" : "";
+
+    const timer = setInterval(() => {
+      seconds--;
+      if (statSec != 0) statSec--;
+      else statSec = 59;
+
+      if (statSec < 10) {
+        textSec = "0" + statSec;
+      } else textSec = statSec;
+
+      this.display = `${prefix}${Math.floor(seconds / 60)}:${textSec}`;
+
+      if (seconds == 0) {
+        console.log("finished");
+        clearInterval(timer);
+      }
+    }, 1000);
   }
-  eventDetailsList() {
-    this.apiService.getEventdetailsList(this.pid).subscribe(
+  handleEventDetail() {
+    this.apiService.getEventDetail(this.eventId).subscribe(
       (res: any) => {
         console.log(res);
         if (res) {
-          this.address = res["detail"].address;
-          this.name = res["detail"].name;
-          this.participant_email = res["detail"].email;
-          this.phone = res["detail"].phone;
-          this.event_id = res["detail"].event_id;
+          this.amount = this.route.snapshot.paramMap.get("id");
+          var date = Date.now();
+          this.reference_id = this.eventId + "-" + "GIFT" + "-" + date;
+          console.log(this.reference_id);
+          var data = {
+            reference_id: this.reference_id,
+            payee_account: res.detail.va_number,
+            amount: this.amount,
+            purpose_message: "test",
+            participant_id: this.participant_id,
+            user_id: "",
+            event_id: this.eventId,
+            voucher_type: "GIFT",
+          };
+          this.apiService.createDecentroUpi(data).subscribe((res: any) => {
+            console.log(res);
+            var dec_id = res.detail.id;
+            this.encodedDynamicQrCode = res.detail.encodedDynamicQrCode;
+            this.upiUri =res.detail.upiUri;
+            console.log(dec_id);
+            this.spinner.hide();
+            if (res.statusCode == 200) {
+              this.timer(10);
+              var i = setInterval(
+                  () =>
+                    this.apiService.transactionStatus(dec_id).subscribe((res: any) => {
+                      console.log(res);
+                      if(res.detail.status != 'PENDING'){
+                        $("#successModal").modal("show");
+
+                      }
+                    }),
+                  2000
+                );
+               setTimeout(() => {
+                clearInterval(i);
+                    this.callTimeOut  = true;
+                    $("#timeoutModal").modal("show");
+               }, 600000);
+
+            }
+          });
         } else {
         }
       },
       (error) => {}
     );
   }
-  getKey() {
-    this.apiService.getPaymentkey().subscribe((res: any) => {
-      this.key = res.apiKey;
-      console.log(this.key)
-    });
-  }
-  get paymntfrm() {
-    return this.submitAddressForm.controls;
+
+  payNow(){
+    console.log(this.upiUri);
+    window.location.href = this.upiUri;
   }
 
-  showAddress() {
-    if (this.parti_address.address != "none") {
-      this.showaddress = false;
-      this.showpaymntbox = true;
-    } else {
-      this.showaddress = true;
-      this.showpaymntbox = false;
-    }
-    this.showGiftDetail = false;
-  }
 
-  goToPaymentPage() {
-    this.submitted = true;
-    this.clicked = true;
-    const formData = new FormData();
-    if (this.submitAddressForm.invalid) {
-      this.clicked = false;
-    }
-    if (
-      this.submitAddressForm.invalid === false &&
-      this.showaddress === true &&
-      this.parti_address.address === "none"
-    ) {
-      this.showaddress = false;
-      let formValue = this.submitAddressForm.value;
-      this.address = {
-        name: formValue.name,
-        email: formValue.email,
-        address: formValue.address,
-        phone: formValue.phone,
-      };
-      formData.append("email", formValue.email);
-      formData.append("name", formValue.name);
-      formData.append("event_id", this.evntid);
-      formData.append("participant_id", this.pid);
-
-      if (this.submitAddressForm.invalid === false) {
-        this.apiService
-          .updateParticipantEmail(formData)
-          .subscribe((res: any) => {
-            if (res.success == 1) {
-              this.showpaymntbox = true;
-              this.eventDetailsList();
-            }
-          });
-      }
-      localStorage.setItem("participantAddress", JSON.stringify(this.address));
-    } else {
-      this.showpaymntbox = false;
-    }
-  }
-
-  GiftAmount() {
-    this.loading = true;
-    this.submitted = true;
-    this.clicked = true;
-    this.spinner.show();
-    const formData = new FormData();
-    console.log(this.participant_email);
-    this.apiService
-      .getOrderId(
-        this.participant_email,
-        this.giftAmount,
-        this.gift_id,
-        this.event_id
-      )
-      .subscribe((res: any) => {
-        this.amount = res.convertedAmount;
-        this.orderId = res.orderId;
-        if (this.orderId) {
-          this.spinner.hide();
-          this.RAZORPAY_OPTIONS = {
-            key: "",
-            amount: "",
-            name: "Prezenty",
-            currency: "INR",
-            order_id: "",
-            customer_id: "",
-            description: "App Payment",
-                  prefill: {
-              name: "",
-              email: "",
-              contact: "",
-              method: "",
-            },
-            notes: {
-              type: "donate",
-              eid: this.evntid,
-              gid: this.gift_id,
-              pid: this.pid,
-            },
-            modal: {},
-
-          };
-          this.RAZORPAY_OPTIONS.amount = this.amount;
-          this.RAZORPAY_OPTIONS.key = this.key;
-          this.RAZORPAY_OPTIONS.order_id = this.orderId;
-          this.loading = false;
-          // this.RAZORPAY_OPTIONS.customer_id = this.customer_id;
-          this.RAZORPAY_OPTIONS["handler"] =
-            this.razorPaySuccessHandler.bind(this);
-          this.rzppay = new Razorpay(this.RAZORPAY_OPTIONS);
-          this.rzppay.open();
-          this.submitted = false;
-          this.clicked = false;
-        }
-      });
-  }
-  public razorPaySuccessHandler(response) {
-    this._ngZone.run(() => {
-      $('#successModal').modal('show');
-    });
-    this.razorpayResponse = "Razorpay Response";
-    if (response.razorpay_payment_id) {
-    }
-  }
   closeSuccessModal() {
-    $('#successModal').modal('hide');
-    this.router.navigateByUrl('/dashboard');
+    $("#successModal").modal("hide");
+    this.router.navigateByUrl("/dashboard");
+  }
+  closeTimeoutModal(){
+    $("#timeoutModal").modal("hide");
+    this.router.navigateByUrl("/voucher");
   }
 }

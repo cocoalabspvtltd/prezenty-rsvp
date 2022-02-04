@@ -1,7 +1,7 @@
 .btn-send{
   width: 100%;
   padding: 14px 30px 14px 30px;
-  background-color: #09094c;
+  background-color:  #d9117d;
   color: white;
   border-radius: 8px;
 }
@@ -79,4 +79,18 @@
 .f-btn-border-red{
   background-color: #d9117d;
   border: solid 2px #d9117d;
+}
+
+
+/* timer */
+
+.qrcode{
+  height: 53vh;
+    width: 99%;
+}
+@media screen and (max-width: 992px) {
+  .qrcode{
+    height: 38vh;
+      width: 99%;
+  }
 }

@@ -29,8 +29,15 @@ export class VoucherDetailsComponent implements OnInit {
   orderId: string;
   amount: number;
   showModal: boolean;
+  eventId: string;
+  va_number: any;
+  participant_id: string;
+  reference_id: string;
+  encodedDynamicQrCode: any;
   constructor(private fb: FormBuilder,private route:ActivatedRoute,private apiService:ApiService,private router:Router) {
         this.id = this.route.snapshot.paramMap.get('id');
+        this.eventId = localStorage.getItem('eventId');
+        this.participant_id = localStorage.getItem('pid');
         console.log(this.id)
         this.AmounttPayForm = this.fb.group({
           gift_amount:['',[Validators.required,Validators.pattern("^[0-9]*$")]]
@@ -38,6 +45,7 @@ export class VoucherDetailsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.voucherdetails();
+
   }
 
   get paymntfrm() {
@@ -57,6 +65,7 @@ export class VoucherDetailsComponent implements OnInit {
     }, error => {
     })
   }
+
   submitPayment(){
     this.submitted = true;
     this.clicked = true;
@@ -66,13 +75,9 @@ export class VoucherDetailsComponent implements OnInit {
     }
     let formValue =  this.AmounttPayForm.value
     if(this.AmounttPayForm.invalid === false){
-      console.log("kjj")
-      console.log(this.id)
-      this.router.navigateByUrl('/payment/' + this.id);
-      localStorage.setItem('giftAmount',this.AmounttPayForm.value.gift_amount)
-      localStorage.setItem('gift_id',this.id)
-
+      this.router.navigateByUrl('/payment/'+ this.AmounttPayForm.value.gift_amount)
       }
 
   }
 }
+// createDecentroUpi

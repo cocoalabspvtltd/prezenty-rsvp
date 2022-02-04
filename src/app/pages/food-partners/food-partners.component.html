@@ -1,0 +1,51 @@
+
+
+<div class="row div-width">
+  <div class="col-md-4 col-lg-7 col-sm-12 col-12">
+    <!-- <h3 class="ml-2" *ngIf="gift == true"><b>Gift Voucher</b></h3> -->
+    <h3 class="ml-2"><b>Food Voucher</b></h3>
+    </div>
+</div>
+<div class="row  mt-4 box-card div-width"  >
+  <div class="col-lg-4 col-md-6 col-sm-6 " *ngFor="let item of foodList;let i=index">
+    <div class="card card-stats">
+      <div class="card-body card1 " style="cursor: context-menu;">
+            <div class="row  mt-3  ml-lg-2">
+              <div class="col-lg-4 col-3"> {{baseUrl}}{{item.logo}}
+                  <img src="{{baseUrl}}{{item.logo}}" class="menu-img"  *ngIf="item.logo">
+                  <img src="./assets/img/icon_gallery2.png" *ngIf="!item.logo" class=" brand-logo">
+
+                 </div>
+                 <div class="col-lg-6 col-7 mt-2">
+                  <p style="color:#d9117d"><b>{{item.name}}</b></div>
+                    <p class="p-text" routerLink="/terms_and_conditions_food/{{item.id}}" style="cursor: pointer;">Terms & Conditions Apply</p>
+
+                    <div class="col-lg-2">
+                      <img src="./assets/img/drop-up.png" class="arrow-cat" *ngIf="i != itemIndex" (click)="showReply(i)">
+                      <img src="./assets/img/drop-down.png" class="arrow-cat" *ngIf="i == itemIndex" (click)="hideReply()">
+                   </div>
+
+            </div>
+
+
+      </div>
+
+
+    <div class="row mt-4" *ngIf="i === itemIndex">
+      <div class="col-lg-6 col-6 box-pdding" *ngFor="let voucher of item.vouchers">
+        <div class="card" style="border: 2px solid #d9117d !important;" >
+          <div class="card-body1">
+            <div class="row">
+            <div class="col-lg-12 col-12 ">
+              <span style="color:#d9117d">₹ {{voucher.coupon_value}} </span><br><span class="text-muted">Coupon </span>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+  </div>
+  </div>
+</div>
+</div>

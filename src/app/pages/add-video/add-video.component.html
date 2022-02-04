@@ -1,121 +1,114 @@
-
-
-
-
 <form [formGroup]="uploadVideoForm">
   <h3 class="text-center mb-5"></h3>
-    <div class="row">
-         <div class="col-lg-7 col-12">
-           <div class="text center">
-             <div class="Neon Neon-theme-dragdropbox">
-               <input
-                 class="img-box-height-mob"
-                 name="files[]"
-                 id="filer_input2"
-                 accept="video/mp4,video/x-m4v,video/*"
-                 type="file" capture="camera" id="recorder"
-                 #attachments
-                 formControlName="video"
-                 (change)="uploadVideo($event)"
-               />
-               <div class="Neon-input-dragDrop">
-                 <div class="Neon-input-inner">
-                   <div class="Neon-input-icon">
-                     <i class="fa fa-file-image-o"></i>
-                   </div>
-                   <div class="Neon-input-text">
-                   </div>
-                   <a class="Neon-input-choose-btn blue">Browse video</a>
-                 </div>
-               </div>
-             </div>
-           </div>
-         </div>
 
-     </div>
-          </form>
-          <video id="player" controls></video>
+  <div class="row">
+    <div class="col-lg-7 col-12">
+      <div class="text center">
+        <div class="Neon Neon-theme-dragdropbox">
+          <input
+            class="img-box-height-mob"
+            name="files[]"
+            id="filer_input2"
+            type="file"
+            #attachments
+            formControlName="video"
+            (change)="uploadVideo($event)"
+          />
 
+          <div class="Neon-input-dragDrop">
+            <div class="Neon-input-inner">
+              <div class="Neon-input-icon">
+                <i class="fa fa-file-image-o"></i>
+              </div>
+              <div class="Neon-input-text"></div>
+              <a class="Neon-input-choose-btn blue">Browse video</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
 
 <div class="row mt-4">
-  <div
-    class="d-flex justify-content-center mx-auto"
-    *ngIf="loadingvideo"
-  >
-    <div class="spinner-border text-success " role="status">
+  <div class="d-flex justify-content-center mx-auto" *ngIf="loadingvideo">
+    <div class="spinner-border text-success" role="status">
       <span class="sr-only">Loading...</span>
     </div>
   </div>
-  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-12 col-sm-12">
+    <span style="text-align: center;"><strong>{{fileName}}</strong></span>
 
-<div>
- <span> url: {{url}}</span>
- <span>selectedVideo: {{selectedVideo}} </span>
- <span>type {{this.selectedVideo.type}}</span>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12 col-12">
+    <div class="">
+      <video *ngIf="web && url"
+        class="video-img"
+        playsinline
+        [src]="url"
+        controls="true"
+        style="height: 287px"
+      ></video>
+
+      <img src="./assets/img/video-demo.jpg"  *ngIf="mob && url">
+    </div>
+  </div>
 </div>
 
-          <div class="row" >
-            <div class="col-lg-12 col-12 ">
-              <div class="">
-               <video class="video-img" playsinline
-               [src]="url"
-               *ngIf="url"
-               controls="true"  style="height: 287px;"
-             ></video>
-
-
-             </div>
-            </div>
-          </div>
-
-
-          <form [formGroup]="videowishUploadform" *ngIf="showuploadVideo">
-            <div class="row mt-4 mb-4">
-              <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="card card-user title-text" >
-                  <div class="card-header"></div>
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-md-11 col-lg-11 col-9 col-sm-12 pr-1">
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            class="form-control inpt-border"
-                            placeholder="Write something.."
-                            formControlName="videotitle"
-                            [ngClass]="{
-                              'is-invalid': submitted && uploadvideofrm.videotitle.errors
-                            }"
-                          />
-                          <div
-                            *ngIf="submitted && uploadvideofrm.videotitle.errors"
-                            class="invalid-feedback"
-                          >
-                            <div *ngIf="uploadvideofrm.videotitle.errors.required">
-                              This field is required
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-1 col-lg-1 col-3 pl-1">
-                        <span (click)="uploadVideoWish()">
-                          <i class="fa" [ngClass]="{ 'fa-spin fa-spinner': loading }"></i
-                          ><img src="./assets/img/send.png" style="cursor: pointer"
-                        /></span>
-                      </div>
-                    </div>
+<form [formGroup]="videowishUploadform" *ngIf="showuploadVideo">
+  <div class="row mt-4 mb-4">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <div class="card card-user title-text">
+        <div class="card-header"></div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-11 col-lg-11 col-9 col-sm-12 pr-1">
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control inpt-border"
+                  placeholder="Write something.."
+                  formControlName="videotitle"
+                  [ngClass]="{
+                    'is-invalid': submitted && uploadvideofrm.videotitle.errors
+                  }"
+                />
+                <div
+                  *ngIf="submitted && uploadvideofrm.videotitle.errors"
+                  class="invalid-feedback"
+                >
+                  <div *ngIf="uploadvideofrm.videotitle.errors.required">
+                    This field is required
                   </div>
                 </div>
               </div>
             </div>
-          </form>
+            <div class="col-md-1 col-lg-1 col-3 pl-1">
+              <span (click)="uploadVideoWish()">
+                <i class="fa" [ngClass]="{ 'fa-spin fa-spinner': loading }"></i
+                ><img src="./assets/img/send.png" style="cursor: pointer"
+              /></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
 
+<!-- success modal -->
 
-
-
- <!-- success modal -->
-
- <div class="modal fade payed-modal" id="successModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div
+  class="modal fade payed-modal"
+  id="successModal"
+  tabindex="-1"
+  role="dialog"
+  aria-hidden="true"
+>
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-body">
@@ -123,15 +116,23 @@
           <div class="row">
             <div class="col-lg-12 col-md-12">
               <div class="payd-msg">
-                <p class="mt-4">
-                  Video wish send successfully.</p>
+                <p class="mt-4">Video wish send successfully.</p>
                 <div class="row">
                   <div class="col-md-2 col-12"></div>
                   <div class="col-md-8 col-12">
-                    <button class="f-btn-border-red" type="submit"  data-dismiss="modal" (click)="closeSuccessModal()"  routerLink="/" >OK</button>
+                    <button
+                      class="f-btn-border-red"
+                      type="submit"
+                      data-dismiss="modal"
+                      (click)="closeSuccessModal()"
+                      routerLink="/"
+                    >
+                      OK
+                    </button>
                   </div>
                   <div class="col-md-2 col-12"></div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -139,17 +140,3 @@
     </div>
   </div>
 </div>
-</div>
-<script>
-  var recorder = document.getElementById('recorder');
-  var player = document.getElementById('player');
-
-  recorder.addEventListener('change', function(e) {
-    var file = e.target.files[0];
-    console.log(file)
-    // Do something with the video file.
-    player.src = URL.createObjectURL(file);
-    console.log( player.src)
-
-  });
-</script>

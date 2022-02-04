@@ -1,0 +1,139 @@
+.title{
+  font-size: 11px;
+  position: absolute;
+  left: 100px;
+  top: 5px;
+  background: lightgray;
+  border-radius: 9px;
+}
+.box-space{
+  padding: 0px 0px 0px 36px;
+}
+.card-desk{
+  box-shadow: 0px 0px 6px 0px rgb(110 123 131);
+}
+.box-sze{
+  /* background-color: #4e4e9d; */
+  max-height: 113px;
+  min-height: 113px;
+  border-radius: 14px;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.img-size{
+  padding: 29px 0px 0px 69px
+}
+.img-width{
+  width: 52%;
+  min-height: 57px;
+    max-height: 57px;
+}
+.p-text{
+  text-align: center;
+    font-size: 11px;
+}
+.title-size{
+  color: black;
+  font-size: 10px;
+}
+.btn-exitchat{
+  float: right;
+    padding: 12px 30px 12px 30px;
+    background-color: #d9117d;
+    color: white;
+    width: 165px;
+    height: 53px;
+}
+
+
+.gift-item {
+  background-color: white;
+  border-radius: 9px;
+}
+.menu-img {
+  width: 57px;
+  height: 50px;
+}
+.menu-cat {
+  width: 15px;
+  height: 15px;
+}
+.arrow-cat {
+  width: 19px;
+  height: 10px;
+  float: right;
+  cursor: pointer;
+}
+.brand-logo {
+  width: 50px;
+  min-height: 54px !important;
+  max-height: 54px;
+}
+.box-pdding{
+  padding: 0px 36px 0px 31px;
+}
+.arrow-cat{
+  width: 19px;
+  height: 10px;
+  float: right;
+  cursor: pointer;
+
+}
+.card-stats .card-body {
+  padding: 15px 15px 11px;
+  min-height: 216px;
+    max-height: 216px;
+}
+.card-stats .card1 {
+  padding: 15px 15px 11px;
+  min-height: 166px;
+    max-height: 166px;
+}
+.card-body1{
+  padding: 15px 15px 11px;
+
+}
+
+
+@media screen and (min-width: 1360px) and (max-width: 1400px) {
+  .box-pdding {
+    padding: 5px 18px 5px 20px;
+}
+.food_btn{
+  margin-left: 35px;
+}
+}
+
+
+@media screen and (max-width: 992px) {
+  .box-space{
+    padding: 0px 10px 0px 8px;
+  }
+  .img-size {
+    padding: 31px 0px 0px 49px;
+}
+.img-width{
+  width: 62%;
+}
+.title {
+  font-size: 10px;
+  position: absolute;
+  left: 72px;
+  top: 6px;
+}
+.title-size{
+  color: black;
+  font-size: 6px;
+}
+.btn-exitchat{
+  /* float: right; */
+    /* padding: 5px 10px 5px 10px; */
+    background-color: #d9117d;
+    color: white;
+    font-size: 10px;
+}
+}
+
+
+
