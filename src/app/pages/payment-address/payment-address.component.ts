@@ -55,6 +55,7 @@ export class PaymentAddressComponent implements OnInit {
   web: boolean;
   callTimeOut: boolean;
   display: string;
+  errorMessage: any;
   constructor(
     private fb: FormBuilder,
     private _ngZone: NgZone,
@@ -137,12 +138,12 @@ export class PaymentAddressComponent implements OnInit {
           };
           this.apiService.createDecentroUpi(data).subscribe((res: any) => {
             console.log(res);
+            if(res.success == true){
             var dec_id = res.detail.id;
             this.encodedDynamicQrCode = res.detail.encodedDynamicQrCode;
             this.upiUri =res.detail.upiUri;
             console.log(dec_id);
             this.spinner.hide();
-            if (res.statusCode == 200) {
               this.timer(10);
               var i = setInterval(
                   () =>
@@ -161,20 +162,32 @@ export class PaymentAddressComponent implements OnInit {
                     $("#timeoutModal").modal("show");
                }, 600000);
 
-            }
+
+          }
+          else{
+            $("#ErrorModal").modal("show");
+             this.errorMessage = res.detail.message;
+          }
           });
+
         } else {
         }
+
       },
+
       (error) => {}
     );
+
   }
 
   payNow(){
     console.log(this.upiUri);
     window.location.href = this.upiUri;
   }
-
+  closeErrorModal(){
+    $("#ErrorModal").modal("hide");
+    this.router.navigateByUrl("/dashboard");
+  }
 
   closeSuccessModal() {
     $("#successModal").modal("hide");

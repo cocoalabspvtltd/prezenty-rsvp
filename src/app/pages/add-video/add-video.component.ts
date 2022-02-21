@@ -13,7 +13,7 @@ declare var $: any;
   styleUrls: ["./add-video.component.css"],
 })
 export class AddVideoComponent implements OnInit {
-  @ViewChild('attachments', { static: false }) attachment: any;
+  @ViewChild("attachments", { static: false }) attachment: any;
   public mediaRecorder;
   public recordedBlobs: any;
   element: HTMLVideoElement;
@@ -56,26 +56,25 @@ export class AddVideoComponent implements OnInit {
     this.broseVideo = false;
     this.showtitle = false;
     this.videowishform = this.fb.group({
-      title: [''],
+      title: [""],
     });
     this.videowishUploadform = this.fb.group({
-      videotitle: [''],
+      videotitle: [""],
     });
 
     this.uploadVideoForm = this.fb.group({
-      video: [''],
+      video: [""],
     });
   }
 
   ngOnInit() {
-    $('html, body').animate({ scrollTop: 0 }, 'fast');
-    // this.startCamera();
+    $("html, body").animate({ scrollTop: 0 }, "fast");
     this.checkMobileorDesktop();
   }
   checkMobileorDesktop() {
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    console.log(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
-    var element = document.getElementById('text');
+    console.log(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+    var element = document.getElementById("text");
     if (isMobile) {
       this.mob = true;
       this.web = false;
@@ -91,158 +90,13 @@ export class AddVideoComponent implements OnInit {
   get uploadvideofrm() {
     return this.videowishUploadform.controls;
   }
-  /* globals MediaRecorder */
-
-  // const errorMsgElement = document.querySelector('span#errorMsg');
-  // const recordedVideo = document.querySelector('video#recorded');
-  // const recordButton = document.querySelector('button#record');
-  // const playButton = document.querySelector('button#play');
-  // const downloadButton = document.querySelector('button#download');
-
-  //  recordcideo
-  recordvideo() {
-    this.startCamera();
-    if (document.querySelector('button#record').textContent === 'Record') {
-      this.startRecording();
-      this.recording = true;
-    } else {
-      this.stopRecording();
-      this.recording = false;
-      document.querySelector('button#record').textContent = 'Record';
-      // document.getElementById('play').disabled = false;
-      // document.querySelector('button#download').disabled = false;
-    }
-  }
-
-  // play button
-  playVideo() {
-    this.superBuffer = new Blob(this.recordedBlobs, { type: 'video/webm' });
-    (<HTMLVideoElement>document.querySelector('video#recorded')).src = null;
-    (<HTMLVideoElement>document.querySelector('video#recorded')).srcObject =
-      null;
-    // (<HTMLVideoElement>document.querySelector('video#recorded')).volume = 0;
-    (<HTMLVideoElement>document.querySelector('video#recorded')).src =
-      window.URL.createObjectURL(this.superBuffer);
-    (<HTMLVideoElement>document.querySelector('video#recorded')).controls =
-      true;
-    (<HTMLVideoElement>document.querySelector('video#recorded')).play();
-    document.getElementById('gum').style.display = 'none';
-  }
-  // download
-  downloadVideo() {
-    const blob = new Blob(this.recordedBlobs, { type: 'video/mp4' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = 'test.mp4';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(() => {
-      document.body.removeChild(a);
-      window.URL.revokeObjectURL(url);
-    }, 100);
-  }
-  handleDataAvailable(event) {
-    if (event.data && event.data.size > 0) {
-      this.recordedBlobs.push(event.data);
-    }
-  }
-
-  startRecording() {
-    document.getElementById('gum').style.display = 'block';
-    document.getElementById('recorded').style.display = 'none';
-    this.recordedBlobs = [];
-    let options = { mimeType: 'video/webm;codecs=vp9,opus' };
-    try {
-      this.mediaRecorder = new MediaRecorder(window.MSStream, options);
-    } catch (e) {
-      // errorMsgElement.innerHTML = `Exception while creating MediaRecorder: ${JSON.stringify(e)}`;
-      return;
-    }
-
-    document.querySelector('button#record').textContent = 'Stop Recording';
-
-    // document.querySelector('button#play').disabled = true;
-    // document.querySelector('button#download').disabled = true;
-    this.mediaRecorder.onstop = (event) => {};
-    this.mediaRecorder.ondataavailable = this.handleDataAvailable.bind(this);
-    this.mediaRecorder.start();
-  }
-  stopRecording() {
-    this.mediaRecorder.stop();
-    document.getElementById('gum').style.display = 'block';
-    document.getElementById('recorded').style.display = 'none';
-    setTimeout(() => {
-      // this.stopCam();
-      this.showtitle = true;
-    }, 1000);
-    this.showuploadVideo = true
-  }
-  handleSuccess(stream) {
-    // document.querySelector('button#record').disabled = false;
-    window.MSStream = stream;
-
-    const gumVideo = <HTMLVideoElement>document.querySelector('video#gum');
-    gumVideo.srcObject = stream;
-    gumVideo.volume = 0;
-  }
-
-  async init(constraints) {
-    try {
-      this.stream = await navigator.mediaDevices.getUserMedia(constraints);
-      this.handleSuccess(this.stream);
-      this.startCam = true;
-    } catch (e) {
-      // errorMsgElement.innerHTML = `navigator.getUserMedia error:${e.toString()}`;
-    }
-  }
-
-  // start camera
-  async startCamera() {
-    this.startCam = false;
-    document.getElementById('gum').style.display = 'block';
-    document.getElementById('recorded').style.display = 'none';
-    this.showtitle = false;
-    // const hasEchoCancellation = document.querySelector('#echoCancellation').checked;
-    const constraints = {
-      audio: {
-        echoCancellation: { exact: true },
-        sampleRate: 48000,
-        channelCount: 2,
-      },
-      video: {
-        width: 1280,
-        height: 720,
-      },
-    };
-    console.log(constraints)
-    await this.init(constraints);
-  }
-  async stopCam() {
-    // document.getElementById('gum').style.display = 'none';
-    this.stream.getTracks().forEach((element) => {
-      element.stop();
-      if(this.broseVideo == true){
-        document.getElementById('recorded').style.display = 'none';
-
-      }
-      else{
-        document.getElementById('recorded').style.display = 'block';
-
-      }
-      setTimeout(() => {
-        this.playVideo();
-      }, 1000);
-    });
-  }
 
   uploadVideo(event: any) {
-    this.selectedVideo = '';
-    this.url = '';
+    this.selectedVideo = "";
+    this.url = "";
     this.eventt = event;
     this.selectedVideo = event.target.files[0];
-    this.selectedVideo
+    this.selectedVideo;
     this.loadingvideo = true;
     this.fileList.push(this.selectedVideo);
     var reader = new FileReader();
@@ -251,99 +105,66 @@ export class AddVideoComponent implements OnInit {
       this.fileData = event.target;
       this.thumbFileVideo = [];
       this.thumbFileVideo.push(this.fileData.result);
-      this.attachment.nativeElement.value = '';
-      console.log(this.selectedVideo.type)
-      if (this.selectedVideo.type == 'image/jpeg' || this.selectedVideo.type == 'image/png' || this.selectedVideo.type == 'image/jpg'   ) {
+      this.attachment.nativeElement.value = "";
+      console.log(this.selectedVideo.type);
+      if (
+        this.selectedVideo.type == "image/jpeg" ||
+        this.selectedVideo.type == "image/png" ||
+        this.selectedVideo.type == "image/jpg"
+      ) {
         this.uploadfileType = false;
         this.broseVideo = false;
         this.loadingvideo = false;
         this.showuploadVideo = false;
-
       } else {
         this.url = (<FileReader>event.target).result;
-        console.log(this.url)
-        this.fileType = 'video';
+        console.log(this.url);
+        this.fileType = "video";
         this.uploadfileType = true;
         this.showtitle = true;
         this.showuploadVideo = true;
         this.loadingvideo = false;
         this.broseVideo = true;
-        // this.stopCam();
         this.fileName = this.selectedVideo.name;
         console.log(this.fileName);
       }
     };
   }
-  sendWish() {
-    this.submitted = true;
-    this.clicked = true;
-    const formData = new FormData();
-    if (this.videowishform.invalid) {
-      this.clicked = false;
-    }
-    let formValue = this.videowishform.value;
-    formData.append('caption', formValue.title);
-    formData.append('event_participant_id', localStorage.getItem("pid"));
-    if (this.selectedVideo) {
-      formData.append('video', this.selectedVideo);
-    } else {
-      formData.append('video', this.superBuffer);
-    }
-    if (this.videowishform.invalid === false) {
-      this.loading = true;
-      this.apiService.sendVideo(formData).subscribe(
-        (res: any) => {
-          // location.reload();
-          this.videowishform.reset();
-          this.loading = false;
-          this.submitted = false;
-          this.clicked = false;
-          this.stream.getTracks().forEach((element) => {
-            console.log(element);
-            element.stop();
-            document.getElementById('recorded').style.display = 'block';
-          });
-          // this.mediaRecorder.stop();
-          this.router.navigateByUrl('/dashboard');
 
-          $('#successModal').modal('show');
-        },
-        (error) => {}
-      );
-    }
+  retry() {
+    this.router.navigateByUrl("/sent-video");
+    $("#payed-modal").modal("hide");
   }
-
   uploadVideoWish() {
     this.submitted = true;
     this.clicked = true;
     const formData = new FormData();
-    if (this.videowishUploadform.invalid) {
-      this.clicked = false;
-    }
     let formValue = this.videowishUploadform.value;
-    formData.append('caption', formValue.videotitle);
-    formData.append('event_participant_id', localStorage.getItem("pid"));
-    formData.append('video', this.selectedVideo);
+    formData.append("caption", formValue.videotitle);
+    formData.append("event_participant_id", localStorage.getItem("pid"));
+    formData.append("video", this.selectedVideo);
+    console.log(this.selectedVideo);
     if (this.videowishUploadform.invalid === false) {
       this.loading = true;
       this.apiService.sendVideo(formData).subscribe(
         (res: any) => {
-          // location.reload();
-          this.videowishUploadform.reset();
-          this.loading = false;
-          this.submitted = false;
-          this.clicked = false;
-          // this.stopCam();
-          // this.mediaRecorder.stop();
-          $('#successModal').modal('show');
-
+          if (res.success == true) {
+            this.videowishUploadform.reset();
+            this.loading = false;
+            this.submitted = false;
+            this.clicked = false;
+            $("#successModal").modal("show");
+          } else {
+            this.loading = false;
+            $("#payed-modal").modal("show");
+          }
         },
         (error) => {}
       );
     }
   }
   closeSuccessModal() {
-    $('#successModal').modal('hide');
-    this.router.navigateByUrl('/home');
+    $("#successModal").modal("hide");
+    this.router.navigateByUrl("/home");
   }
 }

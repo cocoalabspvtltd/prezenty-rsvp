@@ -13,7 +13,6 @@ export class ApiService {
 
   public BASE_URL = " http://prezenty.in/prezenty-staging/api/web/v1";
   // public BASE_URL = " http://prezenty.in/prezenty/api/web/v1";
-  // public BASE_URL ='https://5fbe-2409-4073-31c-9bd0-4914-78d6-92f6-23a3.ngrok.io/prezenty/api/web/v1/'
 
 
   constructor(private http: HttpClient) { }
