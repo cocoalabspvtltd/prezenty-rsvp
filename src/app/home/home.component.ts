@@ -49,6 +49,7 @@ export class HomeComponent implements OnInit {
   time: any;
   eventTime: string;
   created_by: any;
+  EventDate: any;
   constructor(private fb: FormBuilder,private datePipe: DatePipe,private route:ActivatedRoute,private apiService:ApiService,private router:Router,private toastr: ToastrService) {
     this.applicableStatus = false;
     this.sessionidList = [];
@@ -105,6 +106,7 @@ export class HomeComponent implements OnInit {
         this.title = this.evntDetail.title;
         this.time = this.evntDetail.time;
         this.created_by = this.evntDetail.created_by;
+        this.EventDate = this.evntDetail.created_at;
         this.eventTime = this.time = moment(this.time, ["HH:mm"]).format("hh:mm A");
         console.log(this.eventTime);
       if(res.detail.video_file){

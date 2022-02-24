@@ -159,6 +159,7 @@ export class PaymentAddressComponent implements OnInit {
                setTimeout(() => {
                 clearInterval(i);
                     this.callTimeOut  = true;
+                    this.spinner.hide();
                     $("#timeoutModal").modal("show");
                }, 600000);
 
@@ -166,6 +167,7 @@ export class PaymentAddressComponent implements OnInit {
           }
           else{
             $("#ErrorModal").modal("show");
+            this.spinner.hide();
              this.errorMessage = res.detail.message;
           }
           });

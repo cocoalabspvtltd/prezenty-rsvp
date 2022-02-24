@@ -11,8 +11,8 @@ var httpOptions = {
 })
 export class ApiService {
 
-  public BASE_URL = " http://prezenty.in/prezenty-staging/api/web/v1";
-  // public BASE_URL = " http://prezenty.in/prezenty/api/web/v1";
+  // public BASE_URL = " http://prezenty.in/prezenty-staging/api/web/v1";
+  public BASE_URL = " http://prezenty.in/prezenty/api/web/v1";
 
 
   constructor(private http: HttpClient) { }

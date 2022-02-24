@@ -11,9 +11,7 @@
     </ul>
   </div>
 </header>
-<div class="row">
-  <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
-    <div class="row d-icons" >
+<!-- <div class="row">
   <div class="col-lg-4 col-6">
     <span class="event-det">Title:<strong>&nbsp;&nbsp;{{title}}</strong> </span>
   </div>
@@ -23,15 +21,19 @@
   <div class="col-lg-4 col-12" *ngIf="created_by">
     <span class="event-det">created by:<strong>&nbsp;&nbsp;{{created_by}}</strong> </span>
   </div>
-
-</div>
-</div>
-</div>
-
+</div> -->
+<div class="row" style="margin: 0 auto;">
+  <div class="col-md-5 col-lg-5 col-10 col-sm-10 text-center mx-auto align-self-center " >
+    <div class="row d-icons" >
+      <div class="col-lg-9 col-md-6 col-12 col-sm-12 mx-auto ">
+        <span class="event-det" style="">Event Name:<strong>&nbsp;&nbsp;{{title}}</strong> </span>
+        </div>
+        </div>
+        </div></div>
   <div class="row" style="margin: 0 auto;">
     <div class="col-md-8 col-lg-8 col-12 col-sm-12 text-center mx-auto align-self-center " >
       <div class="row d-icons" *ngIf="eventStatus == true">
-        <div class="col-lg-96 col-md-6 col-12 col-sm-12c mx-auto ">
+        <div class="col-lg-9 col-md-6 col-12 col-sm-12c mx-auto ">
           <button  type="button" class="btn btn-sm btn-active"
            style="background-color: #0a0aab !important;color: #fff !important;border-radius: 10px;max-height: 53px;" (click)="joinThisEvent()">
            <span style="font-size: 12px;" >Join this Event (RSVP)</span>   <i class="fa fa-angle-right  fa-2x" style="float:right" aria-hidden="true"></i></button>
@@ -55,6 +57,18 @@
             </div>
             </div>
              </div>
+
+             <div class="row" style="margin: 0 auto;">
+              <div class="col-md-5 col-lg-5 col-10 col-sm-10 text-center mx-auto align-self-center " >
+                <div class="row d-icons" >
+                  <div class="col-lg-12 col-md-6 col-12 col-sm-12 mx-auto ">
+                    <span class="event-det" style="">Event Date & Time:<strong>&nbsp;&nbsp;{{EventDate}}</strong> </span>
+                    <span class="event-det ml-4" style="" *ngIf="created_by">Created_by:<strong>&nbsp;&nbsp;{{created_by}}</strong> </span>
+
+                    </div>
+                    </div>
+                    </div></div>
+
       <!-- question modal form -->
       <div class="modal fade payed-modal" id="rsvpModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
