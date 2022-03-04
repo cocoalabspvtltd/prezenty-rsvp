@@ -59,6 +59,7 @@ export class HomeComponent implements OnInit {
       phone_number: ['',[Validators.required]],
       email: ['',[Validators.required]],
       name:['',[Validators.required]],
+      lastName:['',[Validators.required]],
       address:['',[Validators.required]],
     })
   }
@@ -106,7 +107,7 @@ export class HomeComponent implements OnInit {
         this.title = this.evntDetail.title;
         this.time = this.evntDetail.time;
         this.created_by = this.evntDetail.created_by;
-        this.EventDate = this.evntDetail.created_at;
+        this.EventDate = this.evntDetail.date;
         this.eventTime = this.time = moment(this.time, ["HH:mm"]).format("hh:mm A");
         console.log(this.eventTime);
       if(res.detail.video_file){
@@ -146,6 +147,7 @@ export class HomeComponent implements OnInit {
      this.RSVPForm.controls['receive_foods'].setValidators([Validators.required])
      this.is_attending = 0;
      this.RSVPForm.controls['name'].setValidators([Validators.required]);
+     this.RSVPForm.controls['lastName'].setValidators([Validators.required]);
      this.RSVPForm.controls['email'].setValidators([Validators.required,Validators.pattern("[a-zA-Z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$")]);
      this.RSVPForm.controls['phone_number'].setValidators([Validators.required,Validators.pattern("^[0-9]*$")]);
      this.RSVPForm.controls['address'].setValidators([Validators.required])
@@ -160,6 +162,8 @@ export class HomeComponent implements OnInit {
      this.RSVPForm.controls['receive_foods'].updateValueAndValidity();
      this.RSVPForm.controls['name'].clearValidators();
      this.RSVPForm.controls['name'].updateValueAndValidity();
+     this.RSVPForm.controls['lastName'].clearValidators();
+     this.RSVPForm.controls['lastName'].updateValueAndValidity();
      this.RSVPForm.controls['email'].clearValidators();
      this.RSVPForm.controls['email'].updateValueAndValidity();
      this.RSVPForm.controls['phone_number'].clearValidators();
@@ -211,7 +215,7 @@ export class HomeComponent implements OnInit {
     formData.append('need_food',this.need_food);
     formData.append('phone',formValue.phone_number)
     formData.append('email',formValue.email.toLowerCase())
-    formData.append('name',formValue.name)
+    formData.append('name', formValue.name + '  ' + formValue.lastName);
     formData.append('address',formValue.address)
     formData.append('event_id',this.event_id);
     if(formValue.address){
@@ -238,7 +242,7 @@ export class HomeComponent implements OnInit {
       this.loading = true;
       this.apiService.submitRSVPForm(formData).subscribe((res:any)=>{
         console.log(res)
-        if (res.success == 1) {
+        if (res.success == true) {
           if(formValue.email){
             var OneSignal = window['OneSignal'] || [];
              OneSignal.sendTag("user_id", formValue.email.toLowerCase());

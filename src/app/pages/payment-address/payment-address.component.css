@@ -85,7 +85,7 @@
 /* timer */
 
 .qrcode{
-  height: 53vh;
+  height: 33vh;
     width: 99%;
 }
 @media screen and (max-width: 992px) {
