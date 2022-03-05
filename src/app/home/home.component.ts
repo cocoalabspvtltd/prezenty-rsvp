@@ -105,6 +105,8 @@ export class HomeComponent implements OnInit {
         console.log(res.menuOrGifts)
         this.evntDetail = res['detail'];
         this.title = this.evntDetail.title;
+        console.log(this.evntDetail.time)
+
         this.time = this.evntDetail.time;
         this.created_by = this.evntDetail.created_by;
         this.EventDate = this.evntDetail.date;

@@ -80,6 +80,8 @@ export class PaymentAddressComponent implements OnInit {
     $("html, body").animate({ scrollTop: 0 }, "fast");
     this.spinner.show();
     this.checkMobileorDesktop();
+    $("#timeoutModal").modal("hide");
+
   }
   checkMobileorDesktop() {
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
@@ -151,7 +153,7 @@ export class PaymentAddressComponent implements OnInit {
                       console.log(res);
                       if(res.detail.status != 'PENDING'){
                         $("#successModal").modal("show");
-
+                        clearInterval(i);
                       }
                     }),
                   2000
@@ -185,6 +187,8 @@ export class PaymentAddressComponent implements OnInit {
   payNow(){
     console.log(this.upiUri);
     window.location.href = this.upiUri;
+    $("#successModal").modal("show");
+
   }
   closeErrorModal(){
     $("#ErrorModal").modal("hide");
