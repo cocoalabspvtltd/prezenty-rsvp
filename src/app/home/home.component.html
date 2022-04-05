@@ -11,17 +11,6 @@
     </ul>
   </div>
 </header>
-<!-- <div class="row">
-  <div class="col-lg-4 col-6">
-    <span class="event-det">Title:<strong>&nbsp;&nbsp;{{title}}</strong> </span>
-  </div>
-  <div class="col-lg-4 col-6">
-    <span class="event-det">Time:<strong>&nbsp;&nbsp;{{eventTime}}</strong> </span>
-  </div>
-  <div class="col-lg-4 col-12" *ngIf="created_by">
-    <span class="event-det">created by:<strong>&nbsp;&nbsp;{{created_by}}</strong> </span>
-  </div>
-</div> -->
 <div class="row" style="margin: 0 auto;">
   <div class="col-md-5 col-lg-5 col-10 col-sm-10 text-center mx-auto align-self-center " >
     <div class="row d-icons" >
@@ -43,9 +32,15 @@
     </div>
 
     <div class="col-md-12 col-lg-12 col-12   " >
+
       <div class="col-md-7 col-lg-7 col-10 col-sm-10 text-center mx-auto align-self-center">
+
         <div class="row d-icons">
           <div class="col-lg-8 col-md-8 mx-auto col-12 col-sm-12 card " style="background-color: ghostwhite !important;border-radius: 10px;">
+            <mat-advanced-audio-player [playlist]="playlist" [autoPlay]="true" allow="autoplay" *ngIf="music_file_url != null"></mat-advanced-audio-player>
+</div>
+          <div class="col-lg-8 col-md-8 mx-auto col-12 col-sm-12 card " style="background-color: ghostwhite !important;border-radius: 10px;">
+
             <img src="{{imageFilesLocation}}{{image_url}}" *ngIf="image_url" alt="" class="tmp-image" >
             <video class="video-img"
             src="{{baseUrlVideo}}{{video_file}}"
@@ -53,6 +48,7 @@
             height="200"
             controls
           ></video>
+
             </div>
             </div>
             </div>
@@ -95,7 +91,6 @@
 
                             <form [formGroup]="RSVPForm">
 
-                              <hr style="color: white;border-color: white;">
                             <div class="row">
                               <div class="col-md-6 col-lg-7 col-sm-6 col-12">
                                 <!-- <div class="st-fd-form" style="max-height: 141px;min-height: 140px;"> -->

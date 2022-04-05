@@ -73,7 +73,6 @@ export class AddVideoComponent implements OnInit {
   }
   checkMobileorDesktop() {
     var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    console.log(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
     var element = document.getElementById("text");
     if (isMobile) {
       this.mob = true;
@@ -106,7 +105,6 @@ export class AddVideoComponent implements OnInit {
       this.thumbFileVideo = [];
       this.thumbFileVideo.push(this.fileData.result);
       this.attachment.nativeElement.value = "";
-      console.log(this.selectedVideo.type);
       if (
         this.selectedVideo.type == "image/jpeg" ||
         this.selectedVideo.type == "image/png" ||
@@ -118,7 +116,6 @@ export class AddVideoComponent implements OnInit {
         this.showuploadVideo = false;
       } else {
         this.url = (<FileReader>event.target).result;
-        console.log(this.url);
         this.fileType = "video";
         this.uploadfileType = true;
         this.showtitle = true;
@@ -126,7 +123,6 @@ export class AddVideoComponent implements OnInit {
         this.loadingvideo = false;
         this.broseVideo = true;
         this.fileName = this.selectedVideo.name;
-        console.log(this.fileName);
       }
     };
   }
@@ -143,7 +139,6 @@ export class AddVideoComponent implements OnInit {
     formData.append("caption", formValue.videotitle);
     formData.append("event_participant_id", localStorage.getItem("pid"));
     formData.append("video", this.selectedVideo);
-    console.log(this.selectedVideo);
     if (this.videowishUploadform.invalid === false) {
       this.loading = true;
       this.apiService.sendVideo(formData).subscribe(

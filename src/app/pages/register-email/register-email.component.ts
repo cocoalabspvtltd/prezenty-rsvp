@@ -53,7 +53,6 @@ export class RegisterEmailComponent implements OnInit {
       this.apiService.updateParticipantEmail(formData).subscribe((res:any)=>{
         if (res.success == 1) {
           this.loading = true;
-          console.log(res.detail['email']);
           var OneSignal = window['OneSignal'] || [];
           if(res){
            OneSignal.sendTag("user_id", res.detail['email']);

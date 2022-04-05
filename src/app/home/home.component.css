@@ -62,3 +62,6 @@
 #toast-container > div {
   opacity:1;
 }
+::ng-deep .mat-card, mat-slider{
+  display: none !important;
+}

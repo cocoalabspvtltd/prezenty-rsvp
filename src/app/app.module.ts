@@ -26,6 +26,7 @@ import { GroupChatComponent } from './pages/group-chat/group-chat.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {DatePipe} from '@angular/common';
 import { FoodPartnersComponent } from './pages/food-partners/food-partners.component';
+import { NgxAudioPlayerModule } from 'ngx-audio-player';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { FoodPartnersComponent } from './pages/food-partners/food-partners.compo
     MatCheckboxModule,
     ToastrModule.forRoot(),
     FooterModule,
-    FixedPluginModule
+    FixedPluginModule,
+    NgxAudioPlayerModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

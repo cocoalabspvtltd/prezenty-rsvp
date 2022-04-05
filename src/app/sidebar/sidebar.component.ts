@@ -59,7 +59,6 @@ this.handleEventDetail();
     handleEventDetail(){
       this.eventId = localStorage.getItem('eventId');
       this.apiService.getEventDetail(this.eventId).subscribe((res:any)=>{
-        console.log(res)
         if (res) {
           this.eventDetails = res.detail;
 
@@ -81,15 +80,11 @@ this.handleEventDetail();
          var strTime = hours + ':' + this.minutes + ' ' + ampm;
          var format = 'hh:mm:ss';
          this.currentTime =  moment(strTime, 'hh:mm A').format('HH:mm');
-         console.log(eventday)
-         console.log(currenDay)
-         console.log(this.currentTime)
-         console.log(this.time)
+
          var specific_date = new Date(this.eventDay);
          var current_date = new Date();
          if(current_date.getDate() == specific_date.getDate())
          {
-             console.log('current_date date is grater than specific_date')
              if(eventday ===  currenDay){
                this.sharelive = true;
              }
@@ -100,7 +95,6 @@ this.handleEventDetail();
          }
          else
          {
-             console.log('current_date date is lower than specific_date')
          }
          }
 
@@ -109,12 +103,9 @@ this.handleEventDetail();
     }
     eventDetailsList(){
       this.apiService.getEventdetailsList(this.pid).subscribe((res:any)=>{
-        console.log(res)
         if (res) {
         this.participant_email = res['detail'].email;
-        console.log(this.participant_email)
         if(this.participant_email){
-          console.log(this.participant_email)
           this.router.navigateByUrl('/dashboard')
         }
         // else{
@@ -136,7 +127,6 @@ this.handleEventDetail();
 
       const md5 = new Md5();
       // const link =  window.open('https://meet.jit.si/' +  md5.appendStr('event:'+this.eventId).end(), '_blank').focus();
-      console.log(this.liveLink)
       if(this.sharelive === true){
         window.open('https://meet.jit.si/' +  md5.appendStr('event:'+this.eventId).end(), '_blank').focus();
         // this.liveLink = 'https://meet.jit.si/Prezenty/' +  md5.appendStr(this.event_id).end() ;

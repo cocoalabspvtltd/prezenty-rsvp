@@ -31,7 +31,6 @@ export class NavbarComponent implements OnInit{
       this.router.events.subscribe((val: any) =>{
         this.routerUrl = val?.url!='/dashboard'? true: false;
       });
-     console.log(this.router.url)
       $(document).scroll(function () {
         var win_height = $(window).height();
         var doc_height = $(document).height();
@@ -100,7 +99,6 @@ export class NavbarComponent implements OnInit{
       collapse(){
         this.isCollapsed = !this.isCollapsed;
         const navbar = document.getElementsByTagName('nav')[0];
-        console.log(navbar);
         if (!this.isCollapsed) {
           navbar.classList.remove('navbar-transparent');
           navbar.classList.add('bg-white');

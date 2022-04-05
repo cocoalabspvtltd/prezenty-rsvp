@@ -59,12 +59,10 @@ export class FoodPartnersComponent implements OnInit {
     // getfoodCoupons
     this.apiService.getfoodVouchers().subscribe(
       (res: any) => {
-        console.log(res);
         if (res) {
           this.baseUrl = res.brand_image_location;
           this.foodList = res["list"];
           this.foodlength = this.foodList.length;
-          console.log(this.foodlength);
         } else {
         }
       },

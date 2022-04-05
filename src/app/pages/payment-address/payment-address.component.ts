@@ -114,7 +114,6 @@ export class PaymentAddressComponent implements OnInit {
       this.display = `${prefix}${Math.floor(seconds / 60)}:${textSec}`;
 
       if (seconds == 0) {
-        console.log("finished");
         clearInterval(timer);
       }
     }, 1000);
@@ -122,12 +121,10 @@ export class PaymentAddressComponent implements OnInit {
   handleEventDetail() {
     this.apiService.getEventDetail(this.eventId).subscribe(
       (res: any) => {
-        console.log(res);
         if (res) {
           this.amount = this.route.snapshot.paramMap.get("id");
           var date = Date.now();
           this.reference_id = this.eventId + "-" + "GIFT" + "-" + date;
-          console.log(this.reference_id);
           var data = {
             reference_id: this.reference_id,
             payee_account: res.detail.va_number,
@@ -139,18 +136,15 @@ export class PaymentAddressComponent implements OnInit {
             voucher_type: "GIFT",
           };
           this.apiService.createDecentroUpi(data).subscribe((res: any) => {
-            console.log(res);
             if(res.success == true){
             var dec_id = res.detail.id;
             this.encodedDynamicQrCode = res.detail.encodedDynamicQrCode;
             this.upiUri =res.detail.upiUri;
-            console.log(dec_id);
             this.spinner.hide();
               this.timer(10);
               var i = setInterval(
                   () =>
                     this.apiService.transactionStatus(dec_id).subscribe((res: any) => {
-                      console.log(res);
                       if(res.detail.status != 'PENDING'){
                         $("#successModal").modal("show");
                         clearInterval(i);
@@ -185,7 +179,6 @@ export class PaymentAddressComponent implements OnInit {
   }
 
   payNow(){
-    console.log(this.upiUri);
     window.location.href = this.upiUri;
     $("#successModal").modal("show");
 

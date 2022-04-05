@@ -50,6 +50,10 @@ export class HomeComponent implements OnInit {
   eventTime: string;
   created_by: any;
   EventDate: any;
+  music_file_url: any;
+  musicFileLocation: any;
+  previewbackground: any [];
+  playlist: any[];
   constructor(private fb: FormBuilder,private datePipe: DatePipe,private route:ActivatedRoute,private apiService:ApiService,private router:Router,private toastr: ToastrService) {
     this.applicableStatus = false;
     this.sessionidList = [];
@@ -65,16 +69,13 @@ export class HomeComponent implements OnInit {
   }
   ngOnInit(): void {
     this.sessionidList = JSON.parse(localStorage.getItem('id'));
-    console.log(this.sessionidList);
     this.route.queryParams.subscribe(params =>{
       this.event_id =params['event_id'];
-      console.log(this.sessionidList);
       if(this.sessionidList && this.sessionidList.length > 0){
         if(this.sessionidList.find(i => i.id == params['event_id'])){
           this.router.navigateByUrl('/dashboard');
         }
       }else{
-        console.log("TEST TEST::DEMO");
         this.sessionidList = [];
       }
 
@@ -102,16 +103,26 @@ export class HomeComponent implements OnInit {
     this.currentDtae = this.datePipe.transform(date,"yyyy-MM-dd"); //output : 2018-02-13
     this.apiService.getEventDetail(this.event_id).subscribe((res:any)=>{
       if (res) {
-        console.log(res.menuOrGifts)
         this.evntDetail = res['detail'];
         this.title = this.evntDetail.title;
-        console.log(this.evntDetail.time)
 
         this.time = this.evntDetail.time;
         this.created_by = this.evntDetail.created_by;
         this.EventDate = this.evntDetail.date;
         this.eventTime = this.time = moment(this.time, ["HH:mm"]).format("hh:mm A");
-        console.log(this.eventTime);
+        if(res.detail.music_file_url){
+          this.music_file_url = res.detail.music_file_url;
+          this.musicFileLocation = res.musicFilesLocation;
+          this.playlist = [];
+          this.playlist.push({
+            title: res.detail.music_file_url,
+            link: this.musicFileLocation + this.music_file_url,
+            id: res.detail.id,
+          });
+
+        }
+        console.log(res.detail.music_file_url);
+
       if(res.detail.video_file){
         this.baseUrlVideo = res.baseUrlVideo;
         this.video_file = res.detail.video_file;
@@ -124,17 +135,14 @@ export class HomeComponent implements OnInit {
       this.title =res['detail'].title;
       this.menuOrGifts = res.menuOrGifts;
       this.eventDate = res['detail'].date;
-      console.log(this.currentDtae)
-      console.log(this.eventDate)
+
 
       if(this.eventDate >= this.currentDtae){
         this.eventStatus = true;
-        console.log("ongoing")
       }
       else{
         this.eventStatus = false;
 
-        console.log("finished")
       }
        } else {
       }
@@ -204,7 +212,6 @@ export class HomeComponent implements OnInit {
   }
 
   submitRSVP(e){
-    console.log("jhgjhg")
     this.submitted = true;
     this.clicked = true;
     const formData = new FormData();
@@ -221,7 +228,6 @@ export class HomeComponent implements OnInit {
     formData.append('address',formValue.address)
     formData.append('event_id',this.event_id);
     if(formValue.address){
-      console.log(formValue.address)
     this.address ={
       name:formValue.name,
       email:formValue.email,
@@ -237,13 +243,11 @@ export class HomeComponent implements OnInit {
       phone:'none',
     }
   }
-  console.log(this.RSVPForm.controls);
-  console.log(this.RSVPForm.invalid)
+
     if(this.RSVPForm.invalid === false){
       localStorage.setItem('participantAddress',JSON.stringify(this.address))
       this.loading = true;
       this.apiService.submitRSVPForm(formData).subscribe((res:any)=>{
-        console.log(res)
         if (res.success == true) {
           if(formValue.email){
             var OneSignal = window['OneSignal'] || [];
@@ -255,7 +259,6 @@ export class HomeComponent implements OnInit {
           $('#rsvpModal').modal('show');
           this.submitted = false;
           this.clicked = false;
-          console.log(this.event_id);
           this.sessionidList.push({id: this.event_id});
 
          localStorage.setItem('id', JSON.stringify(this.sessionidList));

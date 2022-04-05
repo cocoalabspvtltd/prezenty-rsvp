@@ -48,13 +48,10 @@ export class ListUsersComponent implements OnInit {
   }
 
   listUsers(){
-    console.log(this.participantEmail)
     this.apiService.getUsers(this.participantEmail).subscribe((res:any)=>{
-      console.log(res);
       this.userList = res['list'];
       this.hostName= res.name;
       this.hostEmail = res.email;
-      console.log(this.hostEmail)
       this.userList = this.userList.filter( item => item.email != this.participantEmail);
       this.userListlength = this.userList.length;
 
@@ -88,8 +85,7 @@ handleBlockedUsers(){
   })
 }
 goToChat(uid, eid){
-  console.log(uid)
-  console.log(eid)
+
 
   this.router.navigate(['/chat',uid, 'true']);
 
@@ -114,7 +110,6 @@ hostData(){
 
 }
 hostDataRemove(uid,is_blocked){
-  console.log(is_blocked)
   localStorage.removeItem('hostEmail');
   localStorage.removeItem('hostName');
   this.router.navigate(['/chat',uid, is_blocked]);

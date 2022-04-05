@@ -38,7 +38,6 @@ export class VoucherDetailsComponent implements OnInit {
         this.id = this.route.snapshot.paramMap.get('id');
         this.eventId = localStorage.getItem('eventId');
         this.participant_id = localStorage.getItem('pid');
-        console.log(this.id)
         this.AmounttPayForm = this.fb.group({
           gift_amount:['',[Validators.required,Validators.pattern("^[0-9]*$")]]
        })
@@ -53,7 +52,6 @@ export class VoucherDetailsComponent implements OnInit {
   }
   voucherdetails(){
     this.apiService.getvoucherDetail(this.id).subscribe((res:any)=>{
-      console.log(res)
       if (res) {
         this.baseUrl = res.baseUrl;
       this.title = res['detail'].title;

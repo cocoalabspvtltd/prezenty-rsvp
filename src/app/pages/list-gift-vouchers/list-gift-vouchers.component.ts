@@ -48,12 +48,10 @@ export class ListGiftVouchersComponent implements OnInit {
   }
   listGiftItems(){
   this.apiService.getvouchers(this.event_id).subscribe((res:any)=>{
-    console.log(res)
     if (res) {
       this.baseUrl = res.baseUrl;
     this.giftVoucherList = res['Gifts'];
     this.voucherLength = this.giftVoucherList.length;
-    console.log(this.giftVoucherList)
      } else {
     }
   }, error => {

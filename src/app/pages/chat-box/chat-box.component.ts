@@ -42,7 +42,6 @@ export class ChatBoxComponent implements OnInit {
       this.id=urlParams['id'];
       this.blocked_user=urlParams['buser'];
     });
-    console.log(this.blocked_user)
     this.participantEmail = localStorage.getItem('participantEmail');
     this.hostName = localStorage.getItem('hostName');
     this.participant_id = localStorage.getItem('pid');
@@ -116,8 +115,6 @@ sentMessage(){
     formData.append('receiver_email',this.receiver_email)
     formData.append('date',date)
     formData.append('time',time)
-   console.log(this.participantEmail);
-   console.log(this.receiver_email);
     if(this.chatForm.invalid === false){
       this.apiService.sendMessages(formData).subscribe((res:any)=>{
         if (res.success == 1) {

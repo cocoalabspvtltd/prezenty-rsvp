@@ -9,14 +9,15 @@
     <h2 style="text-align: center;font-size: 20px;" class="mt-3" *ngIf="mob">Scan QR Code or tap Pay now</h2>
 
     <img src="data:image/png;base64,{{encodedDynamicQrCode}}" class="qrcode" >
-
+    <span style="text-align: center;color:#d9117d ;"><strong>PAY ₹{{amount}}</strong></span>
   </div>
 
 </div>
+
 <div class="row" *ngIf="encodedDynamicQrCode && mob" >
   <div class="col-md-12 col-lg-2 col-sm-12 mx-auto">
     <button type="submit" class="btn-send mb-3" (click)="payNow()">
-      PAY NOW
+      PAY NOW ₹{{amount}}
     </button>
   </div>
 </div>

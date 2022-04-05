@@ -50,13 +50,10 @@ export class ApiService {
   return this.http.get(this.BASE_URL + `/razorpay/get-order-id`,options )
   }
   getvoucherDetail(id){
-    console.log(id)
     return this.http.get(this.BASE_URL + `/event-participant/gift-detail?id=`+id)
   }
   sendVideo(data){
-    console.log(data)
       for(let val of data){
-    console.log(val)
   }
     return this.http.post(this.BASE_URL + `/event-participant/send-video-wishes`,data)
   }
@@ -80,9 +77,7 @@ export class ApiService {
   return this.http.get(this.BASE_URL + `/chat/message`,options )
   }
   sendMessages(data){
-    console.log(data)
       for(let val of data){
-    console.log(val)
   }
     return this.http.post(this.BASE_URL + `/chat/send-message`,data)
 
@@ -112,12 +107,9 @@ export class ApiService {
   }
 
   blockUserMessage(data){
-    console.log(data)
     for (let val of data) {
-      console.log(val);
     }
     var loginToken = localStorage.getItem("loginToken");
-    console.log(loginToken);
     var httpOptions1 = {
       headers: new HttpHeaders({
         Authorization: "Bearer " + loginToken,
@@ -128,7 +120,6 @@ export class ApiService {
 
     unblockUserMessage(data){
       var loginToken = localStorage.getItem("loginToken");
-      console.log(loginToken);
       var httpOptions1 = {
         headers: new HttpHeaders({
           Authorization: "Bearer " + loginToken,
@@ -165,7 +156,6 @@ createDecentroUpi(data){
 }
 
 transactionStatus(id){
-  console.log(id);
   let params = new HttpParams();
   params = params.append("id", id);
   const options = { params: params};
