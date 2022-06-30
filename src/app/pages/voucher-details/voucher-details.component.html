@@ -3,6 +3,7 @@
 </div>
 <div class="row" style="margin-top: 5%;">
 <div class="col-lg-6 col-md-6 col-sm-6 mx-auto">
+  <h1 class="text-center">Thank You for the gift!</h1>
   <div class="card card-stats amount-card">
     <div class="card-body ">
         <form [formGroup]="AmounttPayForm">
@@ -17,10 +18,15 @@
             </div>
             <div class="col-md-4 col-lg-4 col-12 col-sm-12">
               <div class="px-4 py-2 text-muted" style="text-align: center;">
-                <button class="button button2 btn-send1"  (click)="submitPayment()">Send Gift</button>
+                <button class="button button2 btn-send1"  (click)="submitPayment()">Continue</button>
               </div>
             </div>
+
           </div>
+          <div class="row text-muted mx-auto">
+            <span><img src="../../../assets/img/info.png"></span>
+            <p>The Gift Value can be redeemed in any of the brands/merchants <br>associated with prezenty!</p>
+      </div>
         </form>
     </div>
   </div>

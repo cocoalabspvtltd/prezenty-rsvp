@@ -303,3 +303,10 @@
   padding: 25px 20px 25px 20px;
 
 }
+.userImage{
+  width: 51px !important;
+          object-fit: cover;
+          border-radius: 22px;
+          min-height: 51px;
+          max-height: 51px;
+}

@@ -21,12 +21,20 @@
             <b>Preview</b>
           </div>
         </div>
-        <div class="row nav-padding " routerLink="/voucher-details/{{eventId}}" style="cursor: pointer;" [routerLinkActive]="['active']">
+        <div class="row nav-padding " routerLink="/send-gift/{{eventId}}" style="cursor: pointer;" [routerLinkActive]="['active']">
           <div class="col-md-3 col-3">
             <img src="./assets/img/send_gift.png" class="menu-img">
           </div>
           <div class="col-md-9 col-9">
-            <b>Sent Gift</b>
+            <b>Sent Gift Value</b>
+          </div>
+        </div>
+        <div class="row nav-padding "(click)="sendGiftCard()" style="cursor: pointer;" [routerLinkActive]="['active']">
+          <div class="col-md-3 col-3">
+            <img src="./assets/img/send_gift.png" class="menu-img">
+          </div>
+          <div class="col-md-9 col-9">
+            <b>Sent Gift Voucher</b>
           </div>
         </div>
         <div class="row nav-padding" routerLink="/sent-video" style="cursor: pointer;" [routerLinkActive]="['active']">

@@ -73,10 +73,8 @@
     <div class="card card-stats" style="background-color: pink;">
       <div class="card-body" style="height: 116px !important">
         <div class="mt-2" style="text-align: center">
-          <img
-            src="./assets/img/profile-1.png"
-            style="width: 50px !important"
-          />
+          <img [src]="'https://prezenty.in/prezenty/api/web/v1/user/user-image?user_id=&email=' + hostEmail" class="userImage"
+          >
 
           <div class="">{{ hostName }}(Host)</div>
         </div>
@@ -92,11 +90,8 @@
     <div class="card card-stats">
       <div class="card-body" style="height: 116px !important">
         <div class="mt-2" style="text-align: center">
-          <img
-            src="./assets/img/profile-1.png"
-            style="width: 50px !important"
-          />
-
+          <img [src]="'https://prezenty.in/prezenty/api/web/v1/user/user-image?user_id=&email=' + item.email" class="userImage"
+            >
           <div class="">{{ item.name }}</div>
         </div>
       </div>
@@ -114,10 +109,8 @@
     <div class="card card-stats">
       <div class="card-body" style="height: 116px !important">
         <div class="mt-2" style="text-align: center">
-          <img
-            src="./assets/img/profile-1.png"
-            style="width: 50px !important"
-          />
+          <img [src]="'https://prezenty.in/prezenty/api/web/v1/user/user-image?user_id=&email=' + items.blocked_by_user_email" class="userImage"
+            >
 
           <div class="">{{ items.participant.name }}</div>
         </div>

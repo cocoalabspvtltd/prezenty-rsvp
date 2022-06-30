@@ -58,7 +58,7 @@ export class ListGiftVouchersComponent implements OnInit {
   })
 }
 detailPage(){
-  this.router.navigateByUrl('/voucher-details')
+  this.router.navigateByUrl('/send-gift')
 }
 
 terms(id){

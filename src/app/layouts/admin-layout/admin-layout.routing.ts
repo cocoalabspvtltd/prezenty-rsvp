@@ -21,7 +21,7 @@ import { GroupChatComponent } from 'app/pages/group-chat/group-chat.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'list-gift-vouchers',      component: ListGiftVouchersComponent },
-    { path: 'voucher-details/:id',      component: VoucherDetailsComponent },
+    { path: 'send-gift/:id',      component: VoucherDetailsComponent },
     { path: 'payment/:id',           component: PaymentAddressComponent },
     { path: 'sent-video',           component: AddVideoComponent },
     { path: 'users',           component: ListUsersComponent },

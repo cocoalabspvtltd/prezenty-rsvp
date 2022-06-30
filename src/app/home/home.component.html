@@ -94,11 +94,11 @@
                             <div class="row">
                               <div class="col-md-6 col-lg-7 col-sm-6 col-12">
                                 <!-- <div class="st-fd-form" style="max-height: 141px;min-height: 140px;"> -->
-                                  <h4 style="padding: 8px 0px 0px 0px;">Do you want to physically attend this event ?</h4>
+                                  <h4 style="padding: 8px 0px 0px 0px;">Choice of presence</h4>
                                   <div class="form-row mt-2" >
                                     <mat-radio-group aria-label="Select an option" formControlName="physically_attend" (change)="changePhysicallyAttend()" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.physically_attend.errors }">
-                                      <mat-radio-button value="yes">Yes</mat-radio-button>
-                                      <mat-radio-button value="no">No</mat-radio-button>
+                                      <mat-radio-button value="yes">Physically</mat-radio-button>
+                                      <mat-radio-button value="no">Virtually</mat-radio-button>
                                     </mat-radio-group>
                                      <div *ngIf="submitted && rsvpfrm.physically_attend.errors" class="invalid-feedback">
                                           <div *ngIf="rsvpfrm.physically_attend.errors.required">This field is required</div>
@@ -106,8 +106,7 @@
                                    </div>
                                 <!-- </div> -->
                               </div>
-                              <div class="col-md-6 col-lg-5 col-sm-6 col-12"  *ngIf="receiveFood === true">
-                                <!-- <div class="st-fd-form" style="max-height: 141px;min-height: 140px;"> -->
+                              <!-- <div class="col-md-6 col-lg-5 col-sm-6 col-12"  *ngIf="receiveFood === true">
                                   <h4 style="padding: 8px 0px 0px 0px;">Do you want to receive the food ?</h4>
                                   <div class="form-row mt-2" >
                                     <mat-radio-group aria-label="Select an option" formControlName="receive_foods" (change)="changereceiveFood()" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.receive_foods.errors }">
@@ -118,13 +117,12 @@
                                       <div *ngIf="rsvpfrm.receive_foods.errors.required">This field is required</div>
                                       </div>
                                    </div>
-                                <!-- </div> -->
-                              </div>
+                              </div> -->
                             </div>
-                                    <hr style="color: white;border-color: white;" *ngIf="receiveFood === true || physically_attend === true">
+                                    <!-- <hr style="color: white;border-color: white;" *ngIf="receiveFood === true || physically_attend === true"> -->
 
 
-                                      <div class="row" *ngIf="receiveFood === true || physically_attend === true" >
+                                      <div class="row" >
                                         <div class="col-md-4 col-lg-4"  >
                                           <h4 style="padding: 8px 0px 0px 0px;">First Name</h4>
                                           <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Name" formControlName="name"   [ngClass]="{ 'is-invalid': submitted && rsvpfrm.name.errors }" >
@@ -152,7 +150,7 @@
                                         </div>
 
                                       </div>
-                                      <div class="row"  *ngIf="receiveFood === true || physically_attend === true" >
+                                      <div class="row" >
                                         <div class="col-md-6 col-lg-4" >
                                           <h4 style="padding: 8px 0px 0px 0px;">Phone Number</h4>
                                           <input type="text" class="st-fd-tbox brdr-clr"  placeholder="Phone Number" formControlName="phone_number"  maxlength="16" minlength="8" [ngClass]="{ 'is-invalid': submitted && rsvpfrm.phone_number.errors }">

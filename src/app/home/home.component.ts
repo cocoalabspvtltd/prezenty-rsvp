@@ -221,7 +221,7 @@ export class HomeComponent implements OnInit {
     this.checkphoneNumValidation();
     let formValue =  this.RSVPForm.value
     formData.append('is_attending',this.is_attending)
-    formData.append('need_food',this.need_food);
+    formData.append('need_food','1');
     formData.append('phone',formValue.phone_number)
     formData.append('email',formValue.email.toLowerCase())
     formData.append('name', formValue.name + '  ' + formValue.lastName);

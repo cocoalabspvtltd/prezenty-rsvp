@@ -22,11 +22,18 @@
   <div class="row">
     <div class="col-lg-5 col-md-2 col-12" style="display: flex">
       <div>
-        <img
-          src="./assets/img/profile-1.png"
-          style="    width: 65px !important;
-          height: 70px;"
-        />
+        <img [src]="'https://prezenty.in/prezenty/api/web/v1/user/user-image?user_id=&email=' + userDetailList.email" class="" style="object-fit: cover;
+        width: 60px !important;
+        min-height: 58px;
+        max-height: 53px;
+        border-radius: 61px;" *ngIf="id"
+        >
+        <img [src]="'https://prezenty.in/prezenty/api/web/v1/user/user-image?user_id=&email=' + receiver_email" class="" style="object-fit: cover;
+        width: 60px !important;
+        min-height: 58px;
+        max-height: 53px;
+        border-radius: 61px;" *ngIf="!id"
+        >
       </div>
       <div>
         <h3
